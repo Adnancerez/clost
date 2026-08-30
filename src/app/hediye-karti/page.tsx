@@ -38,7 +38,7 @@ export default function GiftCardPage() {
     addItem({
       productId: "prod_gift_card",
       variantId: giftCardId,
-      title: `VOID ARCHIVE Dijital Hediye Kartı (${currentAmount.toLocaleString("tr-TR")} ₺)`,
+      title: `CLOST Dijital Hediye Kartı (${currentAmount.toLocaleString("tr-TR")} ₺)`,
       handle: "hediye-karti",
       variantTitle: `Alıcı: ${recipientName}`,
       selectedOptions: [
@@ -47,7 +47,7 @@ export default function GiftCardPage() {
       ],
       price: currentAmount,
       image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDhVRpzb1ylxKworpFGnS9n9NPThs_A1JBQXmpHb0KPA0mK4ZFNf8Su2ZP6HZNpsMvuXCCaQ4gWtBhuuOyiA4uOB3qoKFfWvfK5Cv9RBuj50xdABVdQFLirtgan3BkAITJH7l1pDerfU1WeL8k3K7HM48Wu3t0EN3vM5l_vjmfzTpZIy1E5JOB4ZuMFRVh8Gs0bBlyINEHlHzlj-Hv8RuBHgcaPs61TwwMblhXxHSTD1s5HAN_TBcVb",
-      sku: "VA-GIFT-PASS",
+      sku: "CLOST-GIFT-PASS",
     });
 
     setTimeout(() => {
@@ -80,13 +80,13 @@ export default function GiftCardPage() {
           <div className="w-full max-w-md aspect-[1.6/1] border-2 border-primary bg-primary text-on-primary p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden select-none">
             {/* Background Aesthetic Watermark */}
             <div className="absolute -right-8 -bottom-8 font-display-lg text-8xl text-white/5 font-bold pointer-events-none">
-              VOID
+              CLOST
             </div>
 
             <div className="flex justify-between items-start z-10">
               <div>
                 <span className="font-label-mono text-[10px] tracking-widest uppercase opacity-80 block">
-                  VOID ARCHIVE // DIGITAL GIFT CARD
+                  CLOST // DIGITAL GIFT CARD
                 </span>
                 <span className="font-headline-sm uppercase text-lg font-bold tracking-tight">
                   ARŞİV PASAPORTU

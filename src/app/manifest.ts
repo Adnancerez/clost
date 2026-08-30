@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "VOID ARCHIVE — Techwear E-Ticaret",
-    short_name: "VOID ARCHIVE",
+    name: "CLOST — Techwear E-Ticaret",
+    short_name: "CLOST",
     description: "Kullanışlılık İçin Tasarlandı. Brutalist Techwear & Ağır Gramaj Giyim.",
     start_url: "/",
     display: "standalone",

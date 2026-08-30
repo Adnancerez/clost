@@ -29,10 +29,10 @@ export function Footer() {
       {/* Brand & Mission */}
       <div className="md:col-span-1">
         <div className="font-headline-sm font-bold text-primary mb-2 uppercase tracking-tighter">
-          VOID ARCHIVE
+          CLOST
         </div>
         <p className="font-label-mono text-on-surface-variant text-xs max-w-[240px] leading-relaxed">
-          © 2026 VOID ARCHIVE.<br />KULLANIŞLILIK İÇİN TASARLANDI.
+          © 2026 CLOST.<br />KULLANIŞLILIK İÇİN TASARLANDI.
         </p>
       </div>
 

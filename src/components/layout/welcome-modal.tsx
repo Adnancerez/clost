@@ -139,7 +139,7 @@ export function WelcomeModal() {
                 İLK SİPARİŞE ÖZEL %10 AVANTAJ
               </h2>
               <p className="font-body-md text-xs text-on-surface-variant mt-2 leading-relaxed">
-                VOID ARCHIVE editoryal bültenine kaydolun; yeni drop&apos;lardan, sınırlı stoklu parçalardan ilk siz haberdar olun ve anında %10 ilk sipariş kodu kazanın.
+                CLOST editoryal bültenine kaydolun; yeni drop&apos;lardan, sınırlı stoklu parçalardan ilk siz haberdar olun ve anında %10 ilk sipariş kodu kazanın.
               </p>
             </div>
 

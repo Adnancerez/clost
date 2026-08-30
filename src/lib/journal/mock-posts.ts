@@ -28,7 +28,7 @@ export const JOURNAL_POSTS: JournalPost[] = [
     subtitle: "20.000 mm su sütunu direnci ve mikro-gözenekli hava geçirgenliğinin mühendisliği.",
     date: "26 Ağustos 2026",
     readTime: "5 Dk Okuma",
-    author: "Void Material Lab // Kumaş Araştırma Ekibi",
+    author: "Clost Material Lab // Kumaş Araştırma Ekibi",
     category: "Malzeme Mühendisliği",
     imageUrl:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ",
@@ -49,7 +49,7 @@ export const JOURNAL_POSTS: JournalPost[] = [
         {
           heading: "03. Isıl Yapıştırmalı Dikiş Şeritleri (Seam Taping)",
           body:
-            "Kumaş ne kadar su geçirmez olursa olsun, dikiş iğnesinin açtığı mikro delikler su sızıntısına yol açabilir. VOID ARCHIVE tüm dikiş hatlarını 18 mm termoplastik şeritlerle presleyerek %100 sızdırmaz hale getirir.",
+            "Kumaş ne kadar su geçirmez olursa olsun, dikiş iğnesinin açtığı mikro delikler su sızıntısına yol açabilir. CLOST tüm dikiş hatlarını 18 mm termoplastik şeritlerle presleyerek %100 sızdırmaz hale getirir.",
         },
       ],
       pullQuote:

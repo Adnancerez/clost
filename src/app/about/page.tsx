@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Manifesto & İlkeler — VOID ARCHIVE",
+  title: "Manifesto & İlkeler — CLOST",
   description:
-    "Yapısal bütünlüğe tavizsiz bağlılık. Void Archive manifestosu gereksiz süslemeleri reddeder.",
+    "Yapısal bütünlüğe tavizsiz bağlılık. Clost manifestosu gereksiz süslemeleri reddeder.",
 };
 
 export default function AboutPage() {
@@ -37,7 +37,7 @@ export default function AboutPage() {
       <section className="border-b border-primary p-6 md:p-16 bg-surface-bright">
         <div className="max-w-5xl mx-auto flex flex-col gap-6">
           <span className="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest border-b border-outline-variant pb-2 inline-block w-max">
-            VOID ARCHIVE // MANİFESTO 001
+            CLOST // MANİFESTO 001
           </span>
           <h1 className="font-display-lg-mobile md:font-display-lg text-primary uppercase tracking-tighter leading-none">
             KULLANIŞLILIK İÇİN
@@ -46,7 +46,7 @@ export default function AboutPage() {
           </h1>
           <p className="font-body-lg text-on-surface-variant max-w-2xl text-base md:text-lg leading-relaxed mt-4">
             Hızlı tüketim modasının geçici döngülerini ve gereksiz süslemelerini tamamen reddediyoruz.
-            Void Archive; brutalist mimari, yüksek performanslı teknik kumaşlar ve agresif
+            Clost; brutalist mimari, yüksek performanslı teknik kumaşlar ve agresif
             fonksiyonel silüetlerin kesişim noktasında üretilir.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
           <div className="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-primary relative h-[450px] lg:h-auto overflow-hidden">
             <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ"
-              alt="VOID ARCHIVE Teknik Tasarım"
+              alt="CLOST Teknik Tasarım"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover grayscale contrast-125"

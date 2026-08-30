@@ -104,7 +104,7 @@ export function Header() {
           onClick={playClickSound}
           className="font-headline-sm font-bold tracking-tighter text-primary uppercase absolute left-1/2 -translate-x-1/2 text-base md:text-lg"
         >
-          VOID ARCHIVE
+          CLOST
         </Link>
 
         {/* Action Icons */}

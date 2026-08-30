@@ -9,7 +9,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Kullanışlılık için tasarlandı. V.2 Teknik Parka, yapıştırılmış dikişlere ve agresif bir siluet sunan mafsallı kollara sahip ağır gramajlı naylon dış yüzeye sahiptir.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Dış Giyim",
     tags: ["Yeni", "Dış Giyim", "Sonbahar 24"],
     modelInfo: "Manken 185 cm boyunda / M beden giyiyor",
@@ -117,7 +117,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Mimari sertlik ve minimal çevresel etki için tasarlanmış yapısal dış giyim parçası.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Dış Giyim",
     tags: ["Dış Giyim", "Sonbahar 24"],
     priceRange: {
@@ -167,7 +167,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Ağır dokulu ham denim kumaş, kaydırılmış asimetrik dikişler ve geniş paça kesim.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Alt Giyim",
     tags: ["Alt Giyim", "Ham Denim"],
     priceRange: {
@@ -211,7 +211,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Ağır balistik naylondan üretilmiş neo-brutalist yüksek moda taktik yelek.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Üst Giyim",
     tags: ["Yeni", "Üst Giyim", "Yelek"],
     priceRange: {
@@ -275,7 +275,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Keskin geometrik omuz hatlarına ve gizli ceplere sahip yapısal gri overshirt.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Üst Giyim",
     tags: ["Üst Giyim", "Gömlek"],
     priceRange: {
@@ -339,7 +339,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Yüksek kontrastlı, ağır gramajlı polar hoodie. Geniş kapüşonlu minimalist tasarım.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Üst Giyim",
     tags: ["Stok Az", "Üst Giyim", "Polar"],
     priceRange: {
@@ -393,7 +393,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Ağır güçlendirilmiş pamuk karışımlı kumaştan üretilmiş haki renkli taktik uzun kollu tişört.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Üst Giyim",
     tags: ["Üst Giyim", "Haki"],
     priceRange: {
@@ -467,7 +467,7 @@ export const MOCK_PRODUCTS: Product[] = [
     description:
       "Mühendislik ürünü modüler ceplere sahip, siyah geniş paça yırtılmaz kargo pantolon.",
     availableForSale: true,
-    vendor: "VOID ARCHIVE",
+    vendor: "CLOST",
     productType: "Alt Giyim",
     tags: ["Yeni", "Alt Giyim", "Kargo"],
     priceRange: {
@@ -510,7 +510,7 @@ export const MOCK_COLLECTIONS: Collection[] = [
     id: "col_all",
     handle: "all",
     title: "Tüm Ürünler",
-    description: "Eksiksiz VOID ARCHIVE kataloğu. Kullanışlılık için tasarlandı.",
+    description: "Eksiksiz CLOST kataloğu. Kullanışlılık için tasarlandı.",
     products: MOCK_PRODUCTS,
   },
   {

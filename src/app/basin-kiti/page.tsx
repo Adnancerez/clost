@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Download, FileText, Check, Mail, Image as ImageIcon } from "lucide-react";
+import { Download, FileText, Check, Mail, Image as ImageIcon, ExternalLink } from "lucide-react";
 import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function PressKitPage() {
@@ -62,7 +62,7 @@ export default function PressKitPage() {
             {/* Logo Dark on Light */}
             <div className="border border-primary bg-surface p-8 flex flex-col justify-between items-center gap-6 text-center">
               <span className="font-headline-sm font-bold tracking-tighter text-primary uppercase text-3xl">
-                VOID ARCHIVE
+                CLOST
               </span>
               <div className="w-full flex justify-between items-center border-t border-outline-variant pt-4 font-label-mono text-xs">
                 <span>Ana Tipografik Logo (Siyah)</span>
@@ -87,7 +87,7 @@ export default function PressKitPage() {
             {/* Logo Light on Dark */}
             <div className="border border-primary bg-primary text-on-primary p-8 flex flex-col justify-between items-center gap-6 text-center">
               <span className="font-headline-sm font-bold tracking-tighter uppercase text-3xl">
-                VOID ARCHIVE
+                CLOST
               </span>
               <div className="w-full flex justify-between items-center border-t border-white/20 pt-4 font-label-mono text-xs">
                 <span>Negatif Logo (Beyaz)</span>
@@ -108,6 +108,49 @@ export default function PressKitPage() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Media Coverage & Press Contact Grid */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-primary border-b border-primary">
+        {/* Media Mentions */}
+        <div className="bg-surface-bright p-6 md:p-12 flex flex-col gap-6">
+          <h3 className="font-headline-sm uppercase text-primary text-lg flex items-center gap-2">
+            <ExternalLink className="w-4 h-4" /> Basında CLOST
+          </h3>
+
+          <div className="flex flex-col gap-4 divide-y divide-outline-variant font-label-mono text-xs">
+            <div className="pt-3 first:pt-0">
+              <span className="text-on-surface-variant text-[11px] block">GQ Style Magazine — Ağustos 2026</span>
+              <p className="text-primary font-bold mt-1 text-sm">
+                &quot;Brutalist minimalizm ve ağır gramaj tekniğinin Türkiye&apos;deki en iddialı temsilcisi.&quot;
+              </p>
+            </div>
+            <div className="pt-3">
+              <span className="text-on-surface-variant text-[11px] block">Hypebeast TR — Temmuz 2026</span>
+              <p className="text-primary font-bold mt-1 text-sm">
+                &quot;Modanın süsleme fazlalığını temizleyen monokrom bir mimari manifesto.&quot;
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* PR & Media Inquiries */}
+        <div className="border border-primary bg-surface p-6 flex flex-col justify-between gap-6">
+          <div>
+            <h3 className="font-headline-sm uppercase text-primary text-lg flex items-center gap-2 mb-2">
+              <Mail className="w-4 h-4" /> Basın &amp; İletişim İrtibatı
+            </h3>
+            <p className="font-body-md text-xs text-on-surface-variant leading-relaxed">
+              Röportaj talepleri, editoryal çekim numunesi temini ve iş birlikleri için doğrudan basın koordinasyon ekibimizle iletişime geçebilirsiniz.
+            </p>
+          </div>
+
+          <div className="border-t border-outline-variant pt-4 font-label-mono text-xs text-primary flex flex-col gap-1">
+            <span className="font-bold">Basın Koordinasyonu:</span>
+            <span className="text-on-surface-variant">press@clost.store / +90 (212) 000 00 00</span>
+            <span className="text-on-surface-variant mt-1">Levent Mah. Cömert Sok. No: 12, Beşiktaş / İstanbul</span>
           </div>
         </div>
       </section>

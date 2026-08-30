@@ -45,7 +45,7 @@ export default function ContactPage() {
               LOKASYON 01 // İSTANBUL
             </span>
             <h2 className="font-headline-sm uppercase text-primary text-xl">
-              VOID ARCHIVE Showroom &amp; Tasarım Stüdyosu
+              CLOST Showroom &amp; Tasarım Stüdyosu
             </h2>
             <p className="font-body-md text-sm text-on-surface-variant leading-relaxed">
               Tüm temel arşiv parçalarının, prototiplerin ve kumaş örneklerinin sergilendiği monolitik showroom alanımız.

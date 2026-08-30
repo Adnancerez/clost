@@ -14,12 +14,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!collection) {
     return {
-      title: "Koleksiyon Bulunamadı — VOID ARCHIVE",
+      title: "Koleksiyon Bulunamadı — CLOST",
     };
   }
 
   return {
-    title: `${collection.title} — VOID ARCHIVE`,
+    title: `${collection.title} — CLOST`,
     description: collection.description || "Kullanışlılık için tasarlandı.",
   };
 }

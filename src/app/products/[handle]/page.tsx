@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!product) {
     return {
-      title: "Ürün Bulunamadı — VOID ARCHIVE",
+      title: "Ürün Bulunamadı — CLOST",
     };
   }
 
   return {
-    title: `${product.title} — VOID ARCHIVE`,
+    title: `${product.title} — CLOST`,
     description: product.description,
   };
 }
@@ -45,7 +45,7 @@ export default async function ProductDetailPage({ params }: Props) {
     sku: product.sku || product.handle,
     brand: {
       "@type": "Brand",
-      name: "VOID ARCHIVE",
+      name: "CLOST",
     },
     offers: {
       "@type": "Offer",
@@ -57,7 +57,7 @@ export default async function ProductDetailPage({ params }: Props) {
       url: `https://clost.store/products/${product.handle}`,
       seller: {
         "@type": "Organization",
-        name: "VOID ARCHIVE",
+        name: "CLOST",
       },
     },
     aggregateRating: {

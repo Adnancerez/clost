@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CLOST — Modern Brutalist Techwear E-Commerce Storefront
 
-## Getting Started
+Kullanışlılık için tasarlandı. Next.js 15+ (App Router), Tailwind CSS, Zustand ve Shopify Storefront API entegrasyonlu modern lüks techwear e-ticaret platformu.
 
-First, run the development server:
+---
 
+## ⚡ Özellikler
+
+- **Next.js 15+ App Router**: Hibrit SSR & React Server Components (RSC) ile ultra hızlı sayfa yükleme ve SEO indekslemesi.
+- **Shopify Storefront API Entegrasyonu**: Canlı GraphQL istemcisi, dinamik sepet yönetimi (`checkoutUrl`) ve zengin mock veri altyapısı.
+- **Zustand State Management**: Kalıcı sepet yönetimi (`useCartStore`), istek listesi (`useWishlistStore`), karşılaştırma ve VIP puan sistemi.
+- **Müşteri & Dönüşüm Odaklı UI**:
+  - PDP üzerinde sosyal kanıt rozetleri (canlı ziyaretçi nabzı, aynı gün kargo, güvenli ödeme).
+  - Akıllı hızlı arama ve son aramalar geçmişi (`localStorage`).
+  - Müşteri portalı ve geçmiş siparişlerden tek tıkla *"Tekrar Sipariş Ver"* özelliği.
+  - Brutalist minimal toast bildirim sistemi.
+- **Dinamik SEO & PWA**: Otomatik XML `sitemap.xml`, `robots.txt`, Web App Manifest (`manifest.webmanifest`) ve Schema.org Product JSON-LD desteği.
+- **Neo-Brutalist Tasarım Sistemi**: Monokrom palet, `JetBrains Mono` ve `Inter` tipografisi.
+
+---
+
+## 🚀 Başlangıç
+
+### 1. Bağımlılıkları Yükleyin
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Ortam Değişkenlerini Tanımlayın (Opsiyonel)
+Shopify mağazanızı bağlamak için `.env.example` dosyasını `.env.local` olarak kopyalayın:
+```bash
+cp .env.example .env.local
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Geliştirme Sunucusunu Başlatın
+```bash
+npm run dev
+```
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresini açın.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Derleme & Doğrulama
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 Lisans
+© 2026 CLOST. Tüm hakları saklıdır.

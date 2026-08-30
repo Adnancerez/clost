@@ -18,7 +18,7 @@ export default async function HomePage() {
       <section className="relative w-full h-[75vh] md:h-[870px] border-b border-primary overflow-hidden group select-none">
         <Image
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhVRpzb1ylxKworpFGnS9n9NPThs_A1JBQXmpHb0KPA0mK4ZFNf8Su2ZP6HZNpsMvuXCCaQ4gWtBhuuOyiA4uOB3qoKFfWvfK5Cv9RBuj50xdABVdQFLirtgan3BkAITJH7l1pDerfU1WeL8k3K7HM48Wu3t0EN3vM5l_vjmfzTpZIy1E5JOB4ZuMFRVh8Gs0bBlyINEHlHzlj-Hv8RuBHgcaPs61TwwMblhXxHSTD1s5HAN_TBcVb"
-          alt="VOID ARCHIVE Temel Koleksiyon"
+          alt="CLOST Temel Koleksiyon"
           fill
           priority
           sizes="100vw"
@@ -73,7 +73,7 @@ export default async function HomePage() {
           <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-outline-variant relative h-[400px] lg:h-auto overflow-hidden group">
             <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsnAGILp2S-cLEM0DzPAduoEeAkpSoeItOpjNIYXMuiEqWz3KXB2H3vgRklx_-pAF1WsB4kcPAl5D8ALH1_3eKkumhYmRh9nZ2B4pjYLzYZLv0FyIxKMXdLYXEgGXiLWNR2BIt5QJExHO5CoMJouW7aCapeGbWvcU8SZgrvcHpGdQLOO6Uld0MoU1FzJYABEGpyVJiBd4eGU_bMNpQJjdgn-voNIHMYuhrUczRrnAJwPqkHJpC_yJO"
-              alt="VOID ARCHIVE Manifesto"
+              alt="CLOST Manifesto"
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
               className="object-cover grayscale contrast-125 transition-transform duration-700 group-hover:scale-105"

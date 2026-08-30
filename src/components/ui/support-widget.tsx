@@ -9,7 +9,7 @@ export function SupportWidget() {
 
   const whatsappUrl =
     "https://wa.me/905000000000?text=" +
-    encodeURIComponent("Merhaba, VOID ARCHIVE siparişim ve ürünler hakkında bilgi almak istiyorum.");
+    encodeURIComponent("Merhaba, CLOST siparişim ve ürünler hakkında bilgi almak istiyorum.");
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end select-none">
@@ -22,7 +22,7 @@ export function SupportWidget() {
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <h3 className="font-headline-sm text-xs uppercase font-bold tracking-wider">
-                  VOID ARCHIVE // Canlı Destek
+                  CLOST // Canlı Destek
                 </h3>
               </div>
               <p className="font-label-mono text-[10px] opacity-80 mt-0.5">

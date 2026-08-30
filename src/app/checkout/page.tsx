@@ -60,16 +60,21 @@ export default function CheckoutPage() {
 
   const handleApplyCoupon = (e: React.FormEvent) => {
     e.preventDefault();
-    if (couponInput.toUpperCase() === "VOID10") {
+    const code = couponInput.trim().toUpperCase();
+    if (code === "CLOST10" || code === "VOID10" || code === "HOSGELDIN10") {
       setDiscountPercent(10);
       setCouponApplied(true);
       setCouponError("");
-    } else if (couponInput.toUpperCase() === "VOID20") {
+    } else if (code === "CLOST15" || code === "VOID15") {
+      setDiscountPercent(15);
+      setCouponApplied(true);
+      setCouponError("");
+    } else if (code === "CLOST20" || code === "VOID20") {
       setDiscountPercent(20);
       setCouponApplied(true);
       setCouponError("");
     } else {
-      setCouponError("Geçersiz kupon kodu. Deneyin: VOID10 veya VOID15");
+      setCouponError("Geçersiz kupon kodu. Deneyin: CLOST10 veya HOSGELDIN10");
     }
   };
 
@@ -433,7 +438,7 @@ export default function CheckoutPage() {
             {paymentMethod === "bank" && (
               <div className="p-6 border border-primary bg-surface font-label-mono text-xs leading-relaxed text-on-surface flex flex-col gap-2">
                 <span className="font-bold text-primary uppercase">Banka Hesap Bilgileri:</span>
-                <p>Alıcı: VOID ARCHIVE TEKSTİL A.Ş.</p>
+                <p>Alıcı: CLOST TEKSTİL A.Ş.</p>
                 <p>Banka: Garanti BBVA</p>
                 <p className="font-bold">IBAN: TR42 0006 2000 0001 2345 6789 01</p>
                 <p className="text-on-surface-variant text-[11px] mt-2">
@@ -519,7 +524,7 @@ export default function CheckoutPage() {
                   type="text"
                   value={couponInput}
                   onChange={(e) => setCouponInput(e.target.value)}
-                  placeholder="İNDİRİM KUPONU (VOID15)"
+                  placeholder="İNDİRİM KUPONU (CLOST10)"
                   className="w-full border border-primary bg-surface pl-9 pr-3 py-2.5 font-label-mono text-xs uppercase text-primary focus:outline-none"
                 />
               </div>

@@ -4,8 +4,8 @@ import { getProducts, getCollection } from "@/lib/shopify";
 import { CollectionView } from "@/components/product/collection-view";
 
 export const metadata: Metadata = {
-  title: "Koleksiyonlar — VOID ARCHIVE",
-  description: "Tüm VOID ARCHIVE koleksiyonlarını keşfedin. Kullanışlılık için tasarlandı.",
+  title: "Koleksiyonlar — CLOST",
+  description: "Tüm CLOST koleksiyonlarını keşfedin. Kullanışlılık için tasarlandı.",
 };
 
 export default async function CollectionsPage() {

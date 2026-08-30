@@ -23,7 +23,7 @@ interface Address {
 export default function AccountPage() {
   const [tab, setTab] = useState<"orders" | "addresses" | "profile" | "security">("orders");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [email, setEmail] = useState("caner.k@voidarchive.com");
+  const [email, setEmail] = useState("caner.k@clost.store");
   const [password, setPassword] = useState("••••••••");
   const [name, setName] = useState("Caner Kaya");
   const [phone, setPhone] = useState("0532 123 45 67");

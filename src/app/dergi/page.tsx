@@ -6,7 +6,7 @@ import { ArrowRight, Clock, User } from "lucide-react";
 import { JOURNAL_POSTS } from "@/lib/journal/mock-posts";
 
 export const metadata: Metadata = {
-  title: "Dergi & Makaleler — VOID ARCHIVE",
+  title: "Dergi & Makaleler — CLOST",
   description:
     "Kumaş mühendisliği, brutalist mimari, techwear kültürü ve üretim manifestoları.",
 };

@@ -7,7 +7,7 @@ import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function ReturnsPortalPage() {
   const [orderNumber, setOrderNumber] = useState("ORD-94218-TR");
-  const [email, setEmail] = useState("caner.k@voidarchive.com");
+  const [email, setEmail] = useState("caner.k@clost.store");
   const [isSearched, setIsSearched] = useState(false);
 
   // Return request form state
@@ -18,7 +18,7 @@ export default function ReturnsPortalPage() {
   const [isCompleted, setIsCompleted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const returnCode = "VOID-IADE-84920";
+  const returnCode = "CLOST-IADE-84920";
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -296,7 +296,7 @@ export default function ReturnsPortalPage() {
         <div className="border border-outline-variant p-4 bg-surface-container-low flex items-center gap-3 font-label-mono text-xs text-on-surface">
           <ShieldCheck className="w-5 h-5 text-primary flex-shrink-0" />
           <span>
-            VOID ARCHIVE siparişlerinde teslimat tarihinden itibaren 14 gün boyunca tüm Türkiye&apos;den ücretsiz iade ve değişim hakkınız mevcuttur.
+            CLOST siparişlerinde teslimat tarihinden itibaren 14 gün boyunca tüm Türkiye&apos;den ücretsiz iade ve değişim hakkınız mevcuttur.
           </span>
         </div>
       </div>

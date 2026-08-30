@@ -17,12 +17,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: "Makale Bulunamadı — VOID ARCHIVE",
+      title: "Makale Bulunamadı — CLOST",
     };
   }
 
   return {
-    title: `${post.title} — VOID ARCHIVE Dergi`,
+    title: `${post.title} — CLOST Dergi`,
     description: post.subtitle,
   };
 }
@@ -116,7 +116,7 @@ export default async function JournalDetailPage({ params }: Props) {
               &quot;{post.content.pullQuote}&quot;
             </p>
             <cite className="font-label-mono text-xs text-on-surface-variant uppercase mt-3 block not-italic">
-              — VOID ARCHIVE Manifestosu
+              — CLOST Manifestosu
             </cite>
           </blockquote>
         )}

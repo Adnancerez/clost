@@ -108,7 +108,7 @@ export default function MaterialsLabPage() {
                       waterTested ? "bg-primary text-on-primary" : "bg-surface text-primary"
                     }`}
                   >
-                    3L VOID Kumaşı
+                    3L CLOST Kumaşı
                   </button>
                   <button
                     type="button"

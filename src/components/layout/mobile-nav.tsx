@@ -41,7 +41,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       isOpen={isOpen}
       onClose={onClose}
       side="left"
-      title="VOID ARCHIVE"
+      title="CLOST"
       maxWidth="max-w-sm"
     >
       <div className="flex flex-col p-6 gap-3.5 font-label-mono uppercase tracking-widest text-[11px]">
@@ -60,7 +60,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         ))}
 
         <div className="mt-4 pt-3 border-t border-primary flex flex-col gap-1 text-[10px] text-on-surface-variant font-label-mono">
-          <p>© 2026 VOID ARCHIVE</p>
+          <p>© 2026 CLOST</p>
           <p>KULLANIŞLILIK İÇİN TASARLANDI</p>
         </div>
       </div>

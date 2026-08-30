@@ -87,7 +87,7 @@ export default function VIPClubPage() {
             <div className="flex justify-between items-start">
               <div>
                 <span className="font-label-mono text-[10px] tracking-widest uppercase opacity-80 block">
-                  VOID ARCHIVE // VIP OPERATIVE PASS
+                  CLOST // VIP OPERATIVE PASS
                 </span>
                 <span className="font-headline-sm uppercase text-lg font-bold">
                   {tier} KADEMESİ

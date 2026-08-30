@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VOID ARCHIVE — Kullanışlılık İçin Tasarlandı",
+  title: "CLOST — Kullanışlılık İçin Tasarlandı",
   description:
     "Yapısal bütünlüğe tavizsiz bağlılık. Modern brutalist lüks techwear e-ticaret platformu.",
 };

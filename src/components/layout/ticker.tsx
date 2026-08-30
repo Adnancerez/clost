@@ -5,7 +5,7 @@ export interface TickerProps {
 }
 
 export function Ticker({
-  text = "Tüm Türkiye'ye Ücretsiz Kargo • Birinci Sınıf Ağır Gramaj Kumaş • Fonksiyonel Tasarım • VOID ARCHIVE Temel Koleksiyon • ",
+  text = "Tüm Türkiye'ye Ücretsiz Kargo • Birinci Sınıf Ağır Gramaj Kumaş • Fonksiyonel Tasarım • CLOST Temel Koleksiyon • ",
 }: TickerProps) {
   return (
     <div className="border-b border-outline-variant bg-surface py-2 text-on-surface-variant select-none">

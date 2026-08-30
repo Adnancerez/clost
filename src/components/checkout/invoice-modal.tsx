@@ -81,7 +81,7 @@ export function InvoiceModal({
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-primary pb-6 gap-4">
             <div>
               <h2 className="font-headline-sm uppercase tracking-tighter text-xl">
-                VOID ARCHIVE TEKSTİL A.Ş.
+                CLOST TEKSTİL A.Ş.
               </h2>
               <span className="text-[11px] text-on-surface-variant block mt-0.5">
                 Maslak V.D. 9283019284 | MERSİS: 0928301928400001
