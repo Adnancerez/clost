@@ -164,7 +164,10 @@ export function Header() {
           >
             <ShoppingBag className="w-4 h-4" />
             {totalQuantity > 0 && (
-              <span className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface">
+              <span
+                key={totalQuantity}
+                className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface animate-cart-bounce"
+              >
                 {totalQuantity}
               </span>
             )}

@@ -173,3 +173,106 @@
     transform: translate3d(-50%, 0, 0);
   }
 }
+
+/* ========================================================================= */
+/* ORIGINAL HIGH-CONVERSION & LUXURY ANIMATION SYSTEM                        */
+/* ========================================================================= */
+
+/* 1. Radar Pulse (Live Urgency & Stock Status) */
+@keyframes radarBeacon {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.animate-radar-pulse {
+  animation: radarBeacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 2. Cart Badge Bounce Notification */
+@keyframes cartBounceAnim {
+  0%, 100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.35) rotate(-6deg);
+  }
+  60% {
+    transform: scale(0.9) rotate(4deg);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-cart-bounce {
+  animation: cartBounceAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 3. Futuristic Laser Scanline (Outfit Studio Dressing Effect) */
+@keyframes laserScan {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.animate-laser-scan {
+  animation: laserScan 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 4. Brutalist Shimmer Sheen */
+@keyframes brutalistShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-sheen {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: brutalistShimmer 3s infinite;
+}
+
+/* 5. Smooth Fade-in Slide Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

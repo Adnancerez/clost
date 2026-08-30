@@ -7,6 +7,7 @@ import { useCartStore } from "@/lib/store/useCartStore";
 import { useToastStore } from "@/lib/store/useToastStore";
 import { FitFinderModal } from "./fit-finder-modal";
 import { BackInStockModal } from "./back-in-stock-modal";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 export interface VariantSelectorProps {
@@ -254,14 +255,14 @@ export function VariantSelector({ product }: VariantSelectorProps) {
         </div>
 
         {isCurrentAvailable ? (
-          <button
+          <MagneticButton
             type="button"
             disabled={isAdding}
             onClick={handleAddToCart}
             className="w-full bg-primary text-white font-label-mono h-14 flex items-center justify-center hover:bg-surface-variant hover:text-primary border border-primary transition-colors duration-200 uppercase tracking-widest cursor-pointer text-xs font-bold"
           >
             {isAdding ? "Ekleniyor..." : "Sepete Ekle"}
-          </button>
+          </MagneticButton>
         ) : (
           <button
             type="button"

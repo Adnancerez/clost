@@ -18,6 +18,7 @@ import { MOCK_PRODUCTS } from "@/lib/shopify/mock-data";
 import { Product } from "@/lib/shopify/types";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useToastStore } from "@/lib/store/useToastStore";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 export default function OutfitStudioPage() {
@@ -254,6 +255,12 @@ export default function OutfitStudioPage() {
 
               {/* Central Realistic Styled Mannequin Canvas */}
               <div className="relative w-full max-w-sm md:max-w-md h-[560px] md:h-[680px] border border-primary bg-surface shadow-2xl flex flex-col justify-between p-4 overflow-hidden">
+                {/* Laser Scanline Beam on Update */}
+                <div
+                  key={`${selectedOuter.id}-${selectedTop.id}-${selectedBottom.id}-${showOuterwear}`}
+                  className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent pointer-events-none z-30 shadow-[0_0_15px_rgba(74,222,128,0.8)] animate-laser-scan"
+                />
+
                 {/* Mannequin Head & Hood Contour */}
                 <div className="w-full flex flex-col items-center justify-center pt-2 pb-1 relative z-10">
                   <div className="w-16 h-20 rounded-full border-2 border-primary bg-primary/90 flex flex-col items-center justify-center relative shadow-md">
@@ -279,7 +286,10 @@ export default function OutfitStudioPage() {
                 >
                   {/* Outerwear vs Top Image Dynamic Render */}
                   {showOuterwear ? (
-                    <div className="relative w-full h-full bg-surface-variant">
+                    <div
+                      key={`outer-${selectedOuter.id}`}
+                      className="relative w-full h-full bg-surface-variant animate-fade-in-up"
+                    >
                       <Image
                         src={selectedOuter.featuredImage?.url || selectedOuter.images[0]?.url || ""}
                         alt={selectedOuter.title}
@@ -298,7 +308,10 @@ export default function OutfitStudioPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className="relative w-full h-full bg-surface-variant">
+                    <div
+                      key={`top-${selectedTop.id}`}
+                      className="relative w-full h-full bg-surface-variant animate-fade-in-up"
+                    >
                       <Image
                         src={selectedTop.featuredImage?.url || selectedTop.images[0]?.url || ""}
                         alt={selectedTop.title}
@@ -328,7 +341,10 @@ export default function OutfitStudioPage() {
                       : "border-outline-variant hover:border-primary"
                   }`}
                 >
-                  <div className="relative w-full h-full bg-surface-variant">
+                  <div
+                    key={`bottom-${selectedBottom.id}`}
+                    className="relative w-full h-full bg-surface-variant animate-fade-in-up"
+                  >
                     <Image
                       src={selectedBottom.featuredImage?.url || selectedBottom.images[0]?.url || ""}
                       alt={selectedBottom.title}
@@ -706,18 +722,18 @@ export default function OutfitStudioPage() {
               </span>
             </div>
 
-            <button
+            <MagneticButton
               type="button"
               disabled={isAdding}
               onClick={handleAddOutfitToCart}
-              className="w-full bg-primary text-on-primary h-14 flex items-center justify-center gap-2 uppercase tracking-widest font-label-mono text-xs hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer disabled:opacity-50 mt-2"
+              className="w-full bg-primary text-on-primary h-14 flex items-center justify-center gap-2 uppercase tracking-widest font-label-mono text-xs hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer disabled:opacity-50 mt-2 font-bold"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>
                 {isAdding ? "Sepete Ekleniyor..." : "Kombini Sepete Ekle (%10 İndirimli)"}
               </span>
               <ArrowRight className="w-4 h-4 ml-1" />
-            </button>
+            </MagneticButton>
           </div>
         </div>
       </div>

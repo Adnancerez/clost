@@ -96,14 +96,28 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         href={`/products/${product.handle}`}
         className="relative w-full aspect-4-5 border border-primary overflow-hidden bg-surface-variant block"
       >
+        {/* Primary Image */}
         <Image
           src={imageUrl}
           alt={product.title}
           fill
           priority={priority}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover grayscale mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+          className={`object-cover grayscale mix-blend-multiply transition-all duration-500 ${
+            product.images?.[1] ? "group-hover:opacity-0 group-hover:scale-105" : "group-hover:scale-105"
+          }`}
         />
+
+        {/* Secondary Angle on Hover (Cross-fade) */}
+        {product.images?.[1] && (
+          <Image
+            src={product.images[1].url}
+            alt={`${product.title} - Detay Görünüm`}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover grayscale mix-blend-multiply absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none"
+          />
+        )}
 
         {/* Badges */}
         {isNew && (

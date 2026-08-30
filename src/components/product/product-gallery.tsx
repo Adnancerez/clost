@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Image as ImageType } from "@/lib/shopify/types";
 import { RotateCw, Grid } from "lucide-react";
 import { ProductSpinner360 } from "./product-spinner-360";
+import { ImageMagnifier } from "./image-magnifier";
 import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface ProductGalleryProps {
@@ -76,13 +76,10 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
               key={index}
               className="min-w-full md:min-w-0 snap-start border-b border-primary aspect-[4/5] relative bg-surface-variant"
             >
-              <Image
+              <ImageMagnifier
                 src={img.url}
                 alt={img.altText || `${title} - Fotoğraf ${index + 1}`}
-                fill
                 priority={index === 0}
-                sizes="(max-width: 768px) 100vw, 65vw"
-                className="object-cover grayscale mix-blend-multiply"
               />
             </div>
           ))}
