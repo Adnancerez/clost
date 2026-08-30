@@ -9,6 +9,8 @@ import { CheckoutShippingForm } from "@/components/checkout/checkout-shipping-fo
 import { CheckoutPaymentForm } from "@/components/checkout/checkout-payment-form";
 import { CheckoutOrderSummary } from "@/components/checkout/checkout-order-summary";
 
+import { playClickSound, playSuccessSound } from "@/lib/audio/sound-effects";
+
 const emptySubscribe = () => () => {};
 
 export default function CheckoutPage() {
@@ -64,18 +66,22 @@ export default function CheckoutPage() {
     e.preventDefault();
     const code = couponInput.trim().toUpperCase();
     if (code === "CLOST10" || code === "VOID10" || code === "HOSGELDIN10") {
+      playSuccessSound();
       setDiscountPercent(10);
       setCouponApplied(true);
       setCouponError("");
     } else if (code === "CLOST15" || code === "VOID15") {
+      playSuccessSound();
       setDiscountPercent(15);
       setCouponApplied(true);
       setCouponError("");
     } else if (code === "CLOST20" || code === "VOID20") {
+      playSuccessSound();
       setDiscountPercent(20);
       setCouponApplied(true);
       setCouponError("");
     } else {
+      playClickSound();
       setCouponError("Geçersiz kupon kodu. Deneyin: CLOST10 veya HOSGELDIN10");
     }
   };
@@ -84,6 +90,7 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (items.length === 0) return;
 
+    playSuccessSound();
     setIsProcessing(true);
 
     const generatedOrderId = `ORD-${Math.floor(100000 + Math.random() * 900000)}-TR`;

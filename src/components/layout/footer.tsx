@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FOOTER_SECTIONS } from "@/lib/constants/navigation";
-import { playClickSound } from "@/lib/audio/sound-effects";
+import { playClickSound, playSuccessSound } from "@/lib/audio/sound-effects";
 import { useToastStore } from "@/lib/store/useToastStore";
 
 export function Footer() {
@@ -14,7 +14,7 @@ export function Footer() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      playClickSound();
+      playSuccessSound();
       setSubscribed(true);
       setEmail("");
       addToast({
