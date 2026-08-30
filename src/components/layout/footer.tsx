@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { FOOTER_SECTIONS } from "@/lib/constants/navigation";
 import { playClickSound } from "@/lib/audio/sound-effects";
 import { useToastStore } from "@/lib/store/useToastStore";
 
@@ -38,146 +39,21 @@ export function Footer() {
 
       {/* Structured Links */}
       <div className="md:col-span-3 flex flex-col sm:flex-row gap-8 sm:gap-14 justify-end">
-        {/* Shopping & Discovery */}
-        <div className="flex flex-col gap-2 font-label-mono text-xs">
-          <span className="uppercase text-primary font-bold mb-1">Keşfet &amp; Alışveriş</span>
-          <Link
-            href="/collections/all"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Tüm Koleksiyon
-          </Link>
-          <Link
-            href="/kombin-olustur"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Kombin Stüdyosu
-          </Link>
-          <Link
-            href="/lookbook"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Lookbook Sonbahar &apos;24
-          </Link>
-          <Link
-            href="/materyal-lab"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Materyal Laboratuvarı
-          </Link>
-          <Link
-            href="/vip-kulup"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            VIP Arşiv Kulübü
-          </Link>
-          <Link
-            href="/karsilastir"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Ürün Karşılaştırma
-          </Link>
-          <Link
-            href="/hediye-karti"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Dijital Hediye Kartı
-          </Link>
-          <Link
-            href="/dergi"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Editoryal Dergi
-          </Link>
-        </div>
-
-        {/* Support & Returns */}
-        <div className="flex flex-col gap-2 font-label-mono text-xs">
-          <span className="uppercase text-primary font-bold mb-1">Müşteri Destek &amp; İade</span>
-          <Link
-            href="/kargo-takip"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Canlı Kargo Takibi
-          </Link>
-          <Link
-            href="/iade-talebi"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors font-bold"
-          >
-            İade &amp; Değişim Portalı
-          </Link>
-          <Link
-            href="/beden-rehberi"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Beden &amp; Silüet Rehberi
-          </Link>
-          <Link
-            href="/sss"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Sıkça Sorulan Sorular (SSS)
-          </Link>
-          <Link
-            href="/iletisim"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Showroom &amp; İletişim
-          </Link>
-          <Link
-            href="/kampanyalar"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Aktif Kampanyalar
-          </Link>
-        </div>
-
-        {/* Legal & Press */}
-        <div className="flex flex-col gap-2 font-label-mono text-xs">
-          <span className="uppercase text-primary font-bold mb-1">Kurumsal &amp; Medya</span>
-          <Link
-            href="/about"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Manifesto &amp; İlkeler
-          </Link>
-          <Link
-            href="/basin-kiti"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors font-bold"
-          >
-            Basın Kiti &amp; Medya
-          </Link>
-          <Link
-            href="/about"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Kullanım Koşulları
-          </Link>
-          <Link
-            href="/about"
-            onClick={playClickSound}
-            className="text-on-surface-variant hover:text-primary underline transition-colors"
-          >
-            Gizlilik Politikası
-          </Link>
-        </div>
+        {FOOTER_SECTIONS.map((sec) => (
+          <div key={sec.title} className="flex flex-col gap-2 font-label-mono text-xs">
+            <span className="uppercase text-primary font-bold mb-1">{sec.title}</span>
+            {sec.links.map((link) => (
+              <Link
+                key={link.href + link.label}
+                href={link.href}
+                onClick={playClickSound}
+                className="text-on-surface-variant hover:text-primary underline transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        ))}
 
         {/* Newsletter */}
         <div className="flex flex-col gap-2 w-full sm:w-72">

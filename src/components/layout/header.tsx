@@ -9,6 +9,7 @@ import { useWishlistStore } from "@/lib/store/useWishlistStore";
 import { isAudioMuted, setAudioMuted, playClickSound, playDrawerSound } from "@/lib/audio/sound-effects";
 import { MobileNav } from "./mobile-nav";
 import { SearchModal } from "./search-modal";
+import { MAIN_NAV_LINKS } from "@/lib/constants/navigation";
 
 const emptySubscribe = () => () => {};
 
@@ -45,21 +46,12 @@ export function Header() {
   const totalQuantity = isMounted ? getTotalQuantity() : 0;
   const wishlistCount = isMounted ? getWishlistCount() : 0;
 
-  // Streamlined 5 essential desktop navigation links
-  const navLinks = [
-    { label: "Tüm Ürünler", href: "/collections/all" },
-    { label: "Koleksiyonlar", href: "/collections" },
-    { label: "Kombin Stüdyosu", href: "/kombin-olustur" },
-    { label: "Lookbook", href: "/lookbook" },
-    { label: "Dergi", href: "/dergi" },
-  ];
-
   return (
     <>
       <header className="fixed top-8 w-full z-40 flex justify-between items-center px-4 md:px-10 h-16 bg-surface border-b border-primary transition-all duration-200">
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex gap-6 font-label-mono text-xs items-center">
-          {navLinks.map((link) => {
+          {MAIN_NAV_LINKS.map((link) => {
             const isActive =
               link.href === "/collections"
                 ? pathname.startsWith("/collections") &&
