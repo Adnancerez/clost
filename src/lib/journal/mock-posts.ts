@@ -23,96 +23,93 @@ export interface JournalPost {
 
 export const JOURNAL_POSTS: JournalPost[] = [
   {
-    slug: "3l-naylon-membranlar-ve-su-gecirmezlik-bilimi",
-    title: "3L Naylon Membranlar ve Su Geçirmezlik Bilimi",
-    subtitle: "20.000 mm su sütunu direnci ve mikro-gözenekli hava geçirgenliğinin mühendisliği.",
-    date: "26 Ağustos 2026",
-    readTime: "5 Dk Okuma",
-    author: "Clost Material Lab // Kumaş Araştırma Ekibi",
-    category: "Malzeme Mühendisliği",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ",
-    content: {
-      lead:
-        "Modern teknik dış giyimde su geçirmezlik, kumaşın sadece suyu engellemesi değil; aynı zamanda yüksek tempolu fiziksel aktivitede vücut ısısını tahliye edebilmesidir.",
-      sections: [
-        {
-          heading: "01. Üç Katmanlı (3-Layer) Laminasyon Yapısı",
-          body:
-            "3L yapımız; en dışta yüksek mukavemetli yırtılmaz naylon yüzey, ortada hidrofilik mikro-gözenekli membran ve en içte sürtünmeyi önleyen lamine astarın ısıl yapıştırma yöntemiyle birleştirilmesiyle elde edilir.",
-        },
-        {
-          heading: "02. 20.000 mm Su Direnci Ne Anlama Geliyor?",
-          body:
-            "Kumaş üzerine yerleştirilen 20 metrelik bir su sütununun tabana uyguladığı hidrostatik basınca dahi su sızdırmazlık direnci göstermesidir. Şiddetli fırtına ve metropol koşullarında mutlak koruma sağlar.",
-        },
-        {
-          heading: "03. Isıl Yapıştırmalı Dikiş Şeritleri (Seam Taping)",
-          body:
-            "Kumaş ne kadar su geçirmez olursa olsun, dikiş iğnesinin açtığı mikro delikler su sızıntısına yol açabilir. CLOST tüm dikiş hatlarını 18 mm termoplastik şeritlerle presleyerek %100 sızdırmaz hale getirir.",
-        },
-      ],
-      pullQuote:
-        "Dekorasyon bir zaafiyettir; kumaşın yapısı formunu ve fonksiyonunu tayin eder.",
-    },
-    relatedProducts: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[1]],
-  },
-  {
-    slug: "brutalist-mimari-ve-sokak-giyimi",
-    title: "Brutalist Mimari ve Sokak Giyimi: Form ve Fonksiyon",
-    subtitle: "Ham betonun dürüstlüğü ve giyilebilir monolitik siluetler.",
-    date: "14 Ağustos 2026",
+    slug: "y2k-ve-gen-z-sokak-kulturu-baggy-siluetlerin-donusu",
+    title: "Y2K & Gen-Z Sokak Kültürü: Baggy Silüetlerin ve Jorts'un Yükselişi",
+    subtitle: "2000'ler skater estetiği, balon paça raw denimler ve diz altı jorts bermudaların sokak manifestosu.",
+    date: "28 Ağustos 2026",
     readTime: "4 Dk Okuma",
-    author: "Arşiv Tasarım Direktörlüğü",
-    category: "Tasarım Felsefesi",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDsnAGILp2S-cLEM0DzPAduoEeAkpSoeItOpjNIYXMuiEqWz3KXB2H3vgRklx_-pAF1WsB4kcPAl5D8ALH1_3eKkumhYmRh9nZ2B4pjYLzYZLv0FyIxKMXdLYXEgGXiLWNR2BIt5QJExHO5CoMJouW7aCapeGbWvcU8SZgrvcHpGdQLOO6Uld0MoU1FzJYABEGpyVJiBd4eGU_bMNpQJjdgn-voNIHMYuhrUczRrnAJwPqkHJpC_yJO",
+    author: "CLOST Editorial // Sokak Kültürü Departmanı",
+    category: "Sokak Stili & Trend",
+    imageUrl: "/products/striped-rugby-baggy-denim.jpg",
     content: {
       lead:
-        "20. yüzyıl ortası brutalist mimarinin ham beton (béton brut) anlayışı, süslemesiz dürüst malzemeleri ve katı geometrisiyle bugünün fonksiyonel giyimine rehberlik ediyor.",
+        "Dar kalıpların ve kısıtlayıcı formların yerini; özgür, cesur ve dökümlü Y2K silüetleri aldı. Ham selvedge denimler ve jorts şortlar modern gardıropların omurgasını oluşturuyor.",
       sections: [
         {
-          heading: "01. Malzemenin Kendisini Göstermesi",
+          heading: "01. Balon Paça & Yığılma (Stacking) Mimarisi",
           body:
-            "Brutalizmde duvar sıvanmaz, betonun dokusu olduğu gibi bırakılır. Biz de kumaşlarımızın teknik dokusunu, yapıştırma bantlarını ve endüstriyel fermuarlarını saklamak yerine tasarımın ana karakteri haline getiriyoruz.",
+            "Ultra bol kesimli ham denimler, ayakkabı bileğinde dökümlü ve hacimli bir duruş sergileyerek proporsiyonu yeniden tanımlar. 14.5 oz sert denim yapısı formunu kaybetmez.",
         },
         {
-          heading: "02. Kutu Kesim ve Mimari Hatlar",
+          heading: "02. Jorts & Bermuda Şortların Geri Dönüşü",
           body:
-            "Düşük omuzlar, geniş sırt panelleri ve dik açılı cepler; vücudu saran dar kalıplar yerine bağımsız ve heykelimsi bir alan oluşturur.",
+            "Diz altı ham paçalı kot şortlar; kalın tabanlı botlar, fütüristik terlikler veya retro sneaker'larla kusursuz bir tezat oluşturur.",
+        },
+        {
+          heading: "03. Çizgili Oversize Üstlerle Denge",
+          body:
+            "Kalın blok çizgili rugby tişörtler ve yatay desenli longsleeve parçalar, alt giyimin hacimli yapısını tamamlayarak 90'lar ve 2000'ler skate ruhunu günümüze taşır.",
         },
       ],
       pullQuote:
-        "Giysi bir barınaktır; bedenin şehir mimarisiyle kurduğu ilk fiziksel temas yüzeyidir.",
+        "Sokak modası kuralları takip etmez; kendi hacmini, tavrını ve enerjisini yaratır.",
     },
-    relatedProducts: [MOCK_PRODUCTS[4], MOCK_PRODUCTS[7]],
+    relatedProducts: [MOCK_PRODUCTS[2], MOCK_PRODUCTS[3]],
   },
   {
-    slug: "sonbahar-24-kumas-analizi-ve-agir-gramaj-uretim",
-    title: "Sonbahar '24 Kumaş Analizi ve Ağır Gramaj Üretim",
-    subtitle: "450 GSM kompakt pamuk polar ve balistik naylonun dayanıklılık testi.",
-    date: "02 Ağustos 2026",
-    readTime: "6 Dk Okuma",
-    author: "Tekstil Üretim Birimi",
-    category: "Üretim Raporu",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMt4XmPAa-NLHGZAZn-UUdIdUosMYNjBrq9nzGMX3r9-hoscdSUc--V8FTgjhq3q6epSbSbQfA8LW01mkBGJLgEs7aMgTmHMagAq_aVNdn2exYA2X7qPPAuT_4mqJwNQnPfhXs8T8CHmXVUoiDY34EtqbSqnZygJIpGdkJLgYLfJY_igN7n8oWFFUhDjAWD3ikoMTFgsqPH8xYFxdli7mZKrIfItVWTdb6qW1C2UbqknhkShA7d4s5",
+    slug: "acubi-ve-harajuku-estetigi-baby-tee-rehberi",
+    title: "Acubi & Harajuku Estetiği: Baby Tee ve Grafik Baskıların Anatomisi",
+    subtitle: "Kanarya sarısı zeminler, Japonca tipografi, yıldız motifleri ve crop kalıpların yükselişi.",
+    date: "19 Ağustos 2026",
+    readTime: "5 Dk Okuma",
+    author: "CLOST Tasarım Stüdyosu",
+    category: "Tasarım & Sanat",
+    imageUrl: "/products/sloid-unicorn-zip-hoodie.jpg",
     content: {
       lead:
-        "Sonbahar '24 koleksiyonunda kullandığımız kumaşlar, sıradan hazır giyimin iki katı gramaja sahip olup yıllar süren yoğun kullanıma dayanacak şekilde dokunmuştur.",
+        "Tokyo Harajuku sokaklarından global Gen-Z akımına yayılan Acubi stili; mikro kesim baby tee'ler ile devasa alt giyim parçalarını tezat halinde birleştirir.",
       sections: [
         {
-          heading: "01. Kompakt Doku Teknolojisi",
+          heading: "01. Renk Blokları ve Canlı Kontrastlar",
           body:
-            "Eğrilmiş liflerin yüksek gerilim altında sıkılaştırılmasıyla kumaşın yıkama sonrası formunu kaybetmesi ve tüylenmesi tamamen engellenir.",
+            "Pastel pembeler, kanarya sarıları ve turkuaz tonları; siyah ve ham koyu renklerle birleştiğinde dikkat çekici bir estetik sunar.",
         },
         {
-          heading: "02. Metal Aksam ve YKK Endüstriyel Fermuarlar",
+          heading: "02. Nostaljik Grafik İllüstrasyonları",
           body:
-            "Aşınmaya karşı mat siyah fırın boyalı çinko alaşım donanımlar, en zorlu kış şartlarında dahi takılmadan çalışır.",
+            "Yıldız motifleri, tek boynuzlu at illüstrasyonları ve Japonca tipografiler, dijital çağın sokak mizahını ve nostaljisini kumaşa işler.",
+        },
+      ],
+      pullQuote:
+        "Giyim bir kimlik oyunudur; ne kadar cesur ve özgün olursanız, o kadar sizsiniz.",
+    },
+    relatedProducts: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[6]],
+  },
+  {
+    slug: "selvedge-raw-denim-ve-agir-gramaj-interlok-dokuma",
+    title: "14.5 oz Raw Denim ve 380 GSM Kompakt Kumaş Rehberi",
+    subtitle: "Solmayan serigrafi baskılar, dayanıklı dikiş hatları ve doğal kumaş gramajları.",
+    date: "08 Ağustos 2026",
+    readTime: "6 Dk Okuma",
+    author: "Kumaş & Üretim Laboratuvarı",
+    category: "Kumaş Bilimi",
+    imageUrl: "/products/lafam-striped-jorts.jpg",
+    content: {
+      lead:
+        "Bir giysinin kalitesi ağırlığından ve dokusundan anlaşılır. CLOST sokak koleksiyonu, hafif hazır giyim yerine yıllarca giyilebilecek ağır gramajlı kumaşlar kullanır.",
+      sections: [
+        {
+          heading: "01. 380 GSM Ağır İnterlok Pamuk",
+          body:
+            "Geleneksel tişört ve hırkaların iki katı yoğunluktadır. Yıkama sonrasında sarkma ve çekme yapmaz.",
+        },
+        {
+          heading: "02. 14.5 oz Ham Selvedge Denim",
+          body:
+            "Kimyasal taşlama veya suni eskitme yapılmamıştır. Siz giydikçe sizin hareketlerinize göre doğal olarak iz kazanır.",
         },
       ],
     },
-    relatedProducts: [MOCK_PRODUCTS[5], MOCK_PRODUCTS[3]],
+    relatedProducts: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[5]],
   },
 ];

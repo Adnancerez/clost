@@ -5,7 +5,7 @@ export interface TickerProps {
 }
 
 export function Ticker({
-  text = "Tüm Türkiye'ye Ücretsiz Kargo • Birinci Sınıf Ağır Gramaj Kumaş • Fonksiyonel Tasarım • CLOST Temel Koleksiyon • ",
+  text = "Tüm Türkiye'ye 1.500 ₺ Üzeri Ücretsiz Kargo • Y2K & Gen-Z Streetwear Archive • 14.5 oz Raw Denim & Kompakt Pamuk • Yeni Drop '24 Yayında • ",
 }: TickerProps) {
   return (
     <div className="border-b border-outline-variant bg-surface py-2 text-on-surface-variant select-none">
