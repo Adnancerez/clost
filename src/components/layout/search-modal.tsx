@@ -253,7 +253,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           alt={product.title}
                           fill
                           sizes="80px"
-                          className="object-cover grayscale group-hover:scale-105 transition-transform duration-300"
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </Link>
 

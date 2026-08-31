@@ -133,7 +133,7 @@ export function ShopTheLookModal({
                     alt={product.title}
                     fill
                     sizes="80px"
-                    className="object-cover grayscale"
+                    className="object-cover"
                   />
                 </div>
 

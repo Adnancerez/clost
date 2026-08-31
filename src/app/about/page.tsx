@@ -4,50 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Manifesto & İlkeler — CLOST",
+  title: "Manifesto & Marka Kimliği — CLOST",
   description:
-    "Yapısal bütünlüğe tavizsiz bağlılık. Clost manifestosu gereksiz süslemeleri reddeder.",
+    "Y2K, Acubi ve Skater sokak modası arşivi. Kuralsız silüetler, raw denim kumaşlar ve özgün sokak dili.",
 };
 
 export default function AboutPage() {
   const pillars = [
     {
       number: "01",
-      title: "Yapısal Dayanıklılık",
+      title: "Kusursuz Baggy & Oversized Kesimler",
       description:
-        "Her dikiş, pens ve fermuar yapısal kalıcılık için hesaplanmıştır. Dış giyimi dekoratif bir giysi değil, mimari bir koruma kalkanı olarak tasarlıyoruz.",
+        "Her dikiş, paça genişliği ve omuz düşüklüğü sokak duruşu için milimetrik hesaplanır. Standart kalıpların ötesinde, özgür ve heykelsi bir silüet sunuyoruz.",
     },
     {
       number: "02",
-      title: "Monokrom Netlik",
+      title: "Y2K & Harajuku Grafik Estetiği",
       description:
-        "Renkler en temel tonlarına indirgenmiştir: derin siyahlar, beton grileri ve teknik yırtılmaz dokular. Monokrom netlik, formu dikkat dağıtıcı unsurlardan arındırır.",
+        "2000'lerin başındaki sokak asi ruhunu, Japon Harajuku tipografileri ve yıldız motifleriyle bugünün modern Acubi çizgisine taşıyoruz.",
     },
     {
       number: "03",
-      title: "Ham Fonksiyonellik",
+      title: "14.5 oz Ağır Gramajlı Kumaş Mimarisi",
       description:
-        "Yüksek tempolu metropol ortamları için tasarlandı. Ağır gramajlı metal aksamlar, su geçirmez yapıştırılmış membranlar ve ergonomik mafsallı kesimler.",
+        "Gerçek sokak dayanıklılığı için %100 kompakt pamuk, 14.5 oz ham selvedge denimler ve yıkamalı vintage kumaşlar kullanıyoruz.",
     },
   ];
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Hero Statement */}
       <section className="border-b border-primary p-6 md:p-16 bg-surface-bright">
         <div className="max-w-5xl mx-auto flex flex-col gap-6">
-          <span className="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest border-b border-outline-variant pb-2 inline-block w-max">
-            CLOST // MANİFESTO 001
+          <span className="font-label-mono text-xs uppercase text-on-surface-variant tracking-widest border-b border-outline-variant pb-2 inline-block w-max font-bold">
+            CLOST // MANİFESTO &amp; ARŞİV
           </span>
-          <h1 className="font-display-lg-mobile md:font-display-lg text-primary uppercase tracking-tighter leading-none">
-            KULLANIŞLILIK İÇİN
+          <h1 className="font-display-lg-mobile md:font-display-lg text-primary uppercase tracking-tighter leading-none font-bold">
+            KURALLARI SOKAK
             <br />
-            TASARLANDI.
+            BELİRLER.
           </h1>
           <p className="font-body-lg text-on-surface-variant max-w-2xl text-base md:text-lg leading-relaxed mt-4">
-            Hızlı tüketim modasının geçici döngülerini ve gereksiz süslemelerini tamamen reddediyoruz.
-            Clost; brutalist mimari, yüksek performanslı teknik kumaşlar ve agresif
-            fonksiyonel silüetlerin kesişim noktasında üretilir.
+            Tekdüze ve sıkıcı hızlı modayı reddediyoruz. CLOST; Y2K nostaljisi, skate kültürü ve çağdaş sokak giyiminin buluştuğu bağımsız bir tasarım arşividir.
           </p>
         </div>
       </section>
@@ -57,17 +55,17 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
           <div className="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-primary relative h-[450px] lg:h-auto overflow-hidden">
             <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ"
-              alt="CLOST Teknik Tasarım"
+              src="/products/striped-rugby-baggy-denim.jpg"
+              alt="CLOST Sokak Tasarım Arşivi"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover grayscale contrast-125"
+              className="object-cover"
             />
           </div>
 
           <div className="lg:col-span-6 p-6 md:p-16 flex flex-col justify-center gap-10 bg-surface">
-            <h2 className="font-headline-md text-primary uppercase tracking-tighter">
-              Tasarım İlkeleri
+            <h2 className="font-headline-md text-primary uppercase tracking-tighter font-bold">
+              Tasarım İlkelerimiz
             </h2>
             <div className="flex flex-col gap-8">
               {pillars.map((pillar) => (
@@ -76,7 +74,7 @@ export default function AboutPage() {
                     <h3 className="font-body-lg font-bold text-primary uppercase text-base">
                       {pillar.title}
                     </h3>
-                    <span className="font-label-mono text-xs text-on-surface-variant">
+                    <span className="font-label-mono text-xs text-on-surface-variant font-bold">
                       {pillar.number}
                     </span>
                   </div>
@@ -92,17 +90,17 @@ export default function AboutPage() {
 
       {/* CTA Bottom */}
       <section className="p-8 md:p-20 text-center bg-surface border-b border-primary">
-        <h2 className="font-headline-sm uppercase text-primary mb-4 tracking-tight">
-          Koleksiyonu Keşfedin
+        <h2 className="font-headline-sm uppercase text-primary mb-4 tracking-tight font-bold">
+          Arşivi Keşfedin
         </h2>
         <p className="font-label-mono text-xs uppercase text-on-surface-variant mb-8 max-w-md mx-auto">
-          Her parça sınırlı sayıda üretilmekte olup takip edilebilir seri numarasına sahiptir.
+          Her drop sınırlı sayıda üretilmektedir.
         </p>
         <Link
           href="/collections/all"
-          className="inline-block bg-primary text-on-primary font-label-mono text-xs px-12 py-4 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors"
+          className="inline-block bg-primary text-on-primary font-label-mono text-xs px-12 py-4 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors font-bold"
         >
-          Tüm Ürünleri Gör
+          Tüm Koleksiyonu Gör
         </Link>
       </section>
     </main>

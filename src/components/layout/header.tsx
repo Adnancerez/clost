@@ -38,7 +38,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-7 w-full z-40 flex justify-between items-center px-4 md:px-8 h-14 bg-surface border-b border-outline-variant transition-all duration-200">
+      <header className="fixed top-8 left-0 right-0 w-full z-40 flex justify-between items-center px-4 md:px-8 h-14 bg-surface border-b border-outline-variant transition-all duration-200 select-none">
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex gap-8 font-label-mono text-xs items-center">
           {MAIN_NAV_LINKS.map((link) => {
@@ -72,24 +72,22 @@ export function Header() {
             aria-label="Menüyü aç"
             className="text-primary p-2 hover:opacity-70 transition-opacity cursor-pointer"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Brand Logo */}
+        {/* Centered Brand Logo */}
         <Link
           href="/"
-          className="font-headline-sm tracking-tight text-primary uppercase absolute left-1/2 -translate-x-1/2 text-base md:text-lg"
+          className="font-headline-sm tracking-tight text-primary uppercase absolute left-1/2 -translate-x-1/2 text-lg md:text-xl"
         >
           CLOST
         </Link>
 
-        {/* Action Icons */}
-        <div className="flex gap-2 sm:gap-4 text-primary items-center">
-          {/* Currency Switcher */}
-          <div className="hidden sm:block">
-            <CurrencySwitcher />
-          </div>
+        {/* Right Actions: Currency, Search, Wishlist, Account, Cart */}
+        <div className="flex gap-2 sm:gap-3 text-primary items-center">
+          {/* Multi-Currency Dropdown */}
+          <CurrencySwitcher />
 
           {/* Search Trigger */}
           <button
@@ -108,7 +106,7 @@ export function Header() {
           >
             <Heart className="w-4 h-4" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface font-bold">
+              <span className="absolute -top-0.5 -right-0.5 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 rounded-full flex items-center justify-center border border-surface font-bold">
                 {wishlistCount}
               </span>
             )}
@@ -142,7 +140,7 @@ export function Header() {
             {totalQuantity > 0 && (
               <span
                 key={totalQuantity}
-                className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface animate-cart-bounce font-bold"
+                className="absolute -top-0.5 -right-0.5 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 rounded-full flex items-center justify-center border border-surface animate-cart-bounce font-bold"
               >
                 {totalQuantity}
               </span>

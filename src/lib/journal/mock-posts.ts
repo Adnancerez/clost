@@ -25,91 +25,86 @@ export const JOURNAL_POSTS: JournalPost[] = [
   {
     slug: "y2k-ve-gen-z-sokak-kulturu-baggy-siluetlerin-donusu",
     title: "Y2K & Gen-Z Sokak Kültürü: Baggy Silüetlerin ve Jorts'un Yükselişi",
-    subtitle: "2000'ler skater estetiği, balon paça raw denimler ve diz altı jorts bermudaların sokak manifestosu.",
+    subtitle: "2000'ler skater estetiği, 14.5 oz ham selvedge denimler ve diz altı jorts bermudaların sokak manifestosu.",
     date: "28 Ağustos 2026",
     readTime: "4 Dk Okuma",
     author: "CLOST Editorial // Sokak Kültürü Departmanı",
     category: "Sokak Stili & Trend",
-    imageUrl: "/products/striped-rugby-baggy-denim.jpg",
+    imageUrl: "/products/ultra-baggy-raw-denim-jorts-1.jpg",
     content: {
       lead:
         "Dar kalıpların ve kısıtlayıcı formların yerini; özgür, cesur ve dökümlü Y2K silüetleri aldı. Ham selvedge denimler ve jorts şortlar modern gardıropların omurgasını oluşturuyor.",
       sections: [
         {
-          heading: "01. Balon Paça & Yığılma (Stacking) Mimarisi",
+          heading: "01. Ham Selvedge Denim & Jorts Hacmi",
           body:
-            "Ultra bol kesimli ham denimler, ayakkabı bileğinde dökümlü ve hacimli bir duruş sergileyerek proporsiyonu yeniden tanımlar. 14.5 oz sert denim yapısı formunu kaybetmez.",
+            "Diz kapağının altına inen ham denim jorts; yüksek kontrastlı neon dikişleri ve heykelsi duruşuyla proporsiyonu yeniden tanımlar.",
         },
         {
-          heading: "02. Jorts & Bermuda Şortların Geri Dönüşü",
+          heading: "02. Neon Blok Çizgili Üstlerle Denge",
           body:
-            "Diz altı ham paçalı kot şortlar; kalın tabanlı botlar, fütüristik terlikler veya retro sneaker'larla kusursuz bir tezat oluşturur.",
-        },
-        {
-          heading: "03. Çizgili Oversize Üstlerle Denge",
-          body:
-            "Kalın blok çizgili rugby tişörtler ve yatay desenli longsleeve parçalar, alt giyimin hacimli yapısını tamamlayarak 90'lar ve 2000'ler skate ruhunu günümüze taşır.",
+            "Elektrik mavisi ve neon yeşil çizgili boxy rugby polo parçalar, alt giyimin geniş yapısını tamamlayarak otantik skater enerjisini zirveye taşır.",
         },
       ],
       pullQuote:
         "Sokak modası kuralları takip etmez; kendi hacmini, tavrını ve enerjisini yaratır.",
     },
-    relatedProducts: [MOCK_PRODUCTS[2], MOCK_PRODUCTS[3]],
+    relatedProducts: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[3]],
   },
   {
-    slug: "acubi-ve-harajuku-estetigi-baby-tee-rehberi",
-    title: "Acubi & Harajuku Estetiği: Baby Tee ve Grafik Baskıların Anatomisi",
-    subtitle: "Kanarya sarısı zeminler, Japonca tipografi, yıldız motifleri ve crop kalıpların yükselişi.",
-    date: "19 Ağustos 2026",
+    slug: "siber-rave-ve-harajuku-estetigi-kanji-grafikleri",
+    title: "Siber Rave & Harajuku Estetiği: Sıvı Krom ve Kanji Tipografisi",
+    subtitle: "Elektrik moru zeminler, Japonca kanji tipografi ve sıvı krom kabartma serigrafi baskılar.",
+    date: "22 Ağustos 2026",
     readTime: "5 Dk Okuma",
     author: "CLOST Tasarım Stüdyosu",
     category: "Tasarım & Sanat",
-    imageUrl: "/products/sloid-unicorn-zip-hoodie.jpg",
+    imageUrl: "/products/acid-purple-kanji-heavy-tee-1.jpg",
     content: {
       lead:
-        "Tokyo Harajuku sokaklarından global Gen-Z akımına yayılan Acubi stili; mikro kesim baby tee'ler ile devasa alt giyim parçalarını tezat halinde birleştirir.",
+        "Tokyo Harajuku sokaklarından global Gen-Z akımına yayılan siber estetik; 280 GSM ağır kompakt pamuklu tişörtler üzerinde sıvı krom yansımalarla buluşuyor.",
       sections: [
         {
-          heading: "01. Renk Blokları ve Canlı Kontrastlar",
+          heading: "01. Yüksek Kontrastlı Canlı Renk Paleti",
           body:
-            "Pastel pembeler, kanarya sarıları ve turkuaz tonları; siyah ve ham koyu renklerle birleştiğinde dikkat çekici bir estetik sunar.",
+            "Asit moru ve neon sarı tonları, sokakta fark edilmekten çekinmeyen cesur bir kimlik sunar.",
         },
         {
-          heading: "02. Nostaljik Grafik İllüstrasyonları",
+          heading: "02. Kabartmalı Sıvı Krom Baskı",
           body:
-            "Yıldız motifleri, tek boynuzlu at illüstrasyonları ve Japonca tipografiler, dijital çağın sokak mizahını ve nostaljisini kumaşa işler.",
+            "Özel serigrafi tekniğiyle kumaşa aktarılan metalik sıvı krom grafikler, yıkamada asla çatlama ve dökülme yapmaz.",
         },
       ],
       pullQuote:
         "Giyim bir kimlik oyunudur; ne kadar cesur ve özgün olursanız, o kadar sizsiniz.",
     },
-    relatedProducts: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[6]],
+    relatedProducts: [MOCK_PRODUCTS[2], MOCK_PRODUCTS[1]],
   },
   {
-    slug: "selvedge-raw-denim-ve-agir-gramaj-interlok-dokuma",
-    title: "14.5 oz Raw Denim ve 380 GSM Kompakt Kumaş Rehberi",
-    subtitle: "Solmayan serigrafi baskılar, dayanıklı dikiş hatları ve doğal kumaş gramajları.",
-    date: "08 Ağustos 2026",
+    slug: "teknik-parasut-ve-yazlik-mesh-rüzgarlık-mimarisi",
+    title: "Teknik Paraşüt ve Yazlık File Rüzgarlık Kumaş Rehberi",
+    subtitle: "Crinkle naylon, nefes alabilen file paneller ve 3D taktik kargo cepleri.",
+    date: "15 Ağustos 2026",
     readTime: "6 Dk Okuma",
     author: "Kumaş & Üretim Laboratuvarı",
     category: "Kumaş Bilimi",
-    imageUrl: "/products/lafam-striped-jorts.jpg",
+    imageUrl: "/products/cyber-orange-parachute-cargo-1.jpg",
     content: {
       lead:
-        "Bir giysinin kalitesi ağırlığından ve dokusundan anlaşılır. CLOST sokak koleksiyonu, hafif hazır giyim yerine yıllarca giyilebilecek ağır gramajlı kumaşlar kullanır.",
+        "Yaz aylarında teknik stilinden ödün vermek istemeyenler için tasarlanan ultra hafif micro-ripstop naylon kumaşlar ve ayarlanabilir bungee stoperler.",
       sections: [
         {
-          heading: "01. 380 GSM Ağır İnterlok Pamuk",
+          heading: "01. Ultra Hafif Crinkle Naylon (135 GSM)",
           body:
-            "Geleneksel tişört ve hırkaların iki katı yoğunluktadır. Yıkama sonrasında sarkma ve çekme yapmaz.",
+            "Rüzgara dayanıklı, su itici ve nefes alabilen yapısıyla sıcak günlerde bile maksimum konfor sağlar.",
         },
         {
-          heading: "02. 14.5 oz Ham Selvedge Denim",
+          heading: "02. Ayarlanabilir Balon Silüet",
           body:
-            "Kimyasal taşlama veya suni eskitme yapılmamıştır. Siz giydikçe sizin hareketlerinize göre doğal olarak iz kazanır.",
+            "Ayak bileklerindeki elastik stoperler ile pantolonun hacmi ve dökümü anında kişiselleştirilebilir.",
         },
       ],
     },
-    relatedProducts: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[5]],
+    relatedProducts: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[4]],
   },
 ];

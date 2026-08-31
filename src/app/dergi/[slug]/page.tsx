@@ -36,7 +36,7 @@ export default async function JournalDetailPage({ params }: Props) {
   }
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Back to Index Nav */}
       <div className="p-4 md:px-12 border-b border-primary bg-surface flex items-center justify-between">
         <Link
@@ -84,7 +84,7 @@ export default async function JournalDetailPage({ params }: Props) {
           fill
           priority
           sizes="100vw"
-          className="object-cover grayscale contrast-110"
+          className="object-cover"
         />
       </div>
 

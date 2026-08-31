@@ -23,35 +23,35 @@ export default function LookbookPage() {
   const looks: LookItem[] = [
     {
       id: "look-01",
-      title: "LOOK 01 // HARAJUKU UNICORN ZIP HOODIE + RETRO STAR TEE",
-      imageUrl: "/products/sloid-unicorn-zip-hoodie.jpg",
+      title: "LOOK 01 // CYBER NEON RUGBY + RAW DENIM JORTS",
+      imageUrl: "/products/cyber-neon-rugby-polo-1.jpg",
       location: "Tokyo Harajuku // Shibuya District",
-      productHandle: "sloid-unicorn-graphic-zip-hoodie",
-      products: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[6]],
+      productHandle: "cyber-neon-rugby-boxy-polo",
+      products: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[3]],
     },
     {
       id: "look-02",
-      title: "LOOK 02 // SAILOR RUGBY TOP + ULTRA BAGGY RAW DENIM",
-      imageUrl: "/products/striped-rugby-baggy-denim.jpg",
-      location: "Milano Vintage Skate Spot",
-      productHandle: "ultra-baggy-balloon-raw-denim",
-      products: [MOCK_PRODUCTS[3], MOCK_PRODUCTS[2]],
+      title: "LOOK 02 // VOLT MESH TRACK JACKET + PARACHUTE CARGO",
+      imageUrl: "/products/volt-yellow-mesh-track-jacket-1.jpg",
+      location: "Berlin Rave & Underground Bunker",
+      productHandle: "volt-yellow-mesh-summer-track-jacket",
+      products: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[4]],
     },
     {
       id: "look-03",
-      title: "LOOK 03 // LA FAM STRIPED TOP + DISTRESSED DENIM JORTS",
-      imageUrl: "/products/lafam-striped-jorts.jpg",
-      location: "Amsterdam Indie Boulevard",
-      productHandle: "la-fam-start-and-end-striped-top",
-      products: [MOCK_PRODUCTS[4], MOCK_PRODUCTS[5]],
+      title: "LOOK 03 // ACID PURPLE KANJI TEE + BAGGY CARGO",
+      imageUrl: "/products/acid-purple-kanji-heavy-tee-1.jpg",
+      location: "Osaka Dotonbori Skater Area",
+      productHandle: "acid-purple-cyber-kanji-heavyweight-tee",
+      products: [MOCK_PRODUCTS[2], MOCK_PRODUCTS[4]],
     },
     {
       id: "look-04",
-      title: "LOOK 04 // JELLY STAR LONGSLEEVE + RAW BAGGY DENIM",
-      imageUrl: "/products/jelly-star-longsleeve.jpg",
-      location: "London Neo-Y2K Archive",
-      productHandle: "jelly-star-striped-longsleeve",
-      products: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[2]],
+      title: "LOOK 04 // ULTRA BAGGY RAW JORTS + CYBER POLO",
+      imageUrl: "/products/ultra-baggy-raw-denim-jorts-1.jpg",
+      location: "London Neo-Y2K Street Archive",
+      productHandle: "ultra-baggy-raw-denim-skater-jorts",
+      products: [MOCK_PRODUCTS[3], MOCK_PRODUCTS[0]],
     },
   ];
 
@@ -61,7 +61,7 @@ export default function LookbookPage() {
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2 font-bold">
-            SONBAHAR &apos;24 // EDİTORYAL SOKAK KAMPANYASI
+            SUMMER DROP &apos;24 // EDİTORYAL SOKAK KAMPANYASI
           </span>
           <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary font-bold">
             LOOKBOOK
@@ -86,7 +86,7 @@ export default function LookbookPage() {
                 alt={look.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
 
               {/* Overlay on hover */}

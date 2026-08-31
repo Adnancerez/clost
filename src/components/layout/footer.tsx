@@ -2,17 +2,20 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { MessageSquareHeart } from "lucide-react";
 import {
   FOOTER_SECTIONS,
   SOCIAL_LINKS,
   PAYMENT_METHODS,
 } from "@/lib/constants/navigation";
 import { useToastStore } from "@/lib/store/useToastStore";
+import { useFeedbackStore } from "@/lib/store/useFeedbackStore";
 
 export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const { addToast } = useToastStore();
+  const { openFeedback } = useFeedbackStore();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +24,7 @@ export function Footer() {
       setEmail("");
       addToast({
         title: "Bültene Kaydoldunuz",
-        message: "%10 indirim kodunuz: HOSGELDIN10",
+        message: "%10 indirim kodunuz: CLOST10",
         type: "success",
       });
     }
@@ -43,6 +46,14 @@ export function Footer() {
               Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Kullanışlılık
               için tasarlandı.
             </p>
+            <button
+              type="button"
+              onClick={openFeedback}
+              className="mt-2 flex items-center gap-1.5 font-label-mono text-xs text-primary underline hover:opacity-60 cursor-pointer w-max"
+            >
+              <MessageSquareHeart className="w-3.5 h-3.5" />
+              <span>Geri Bildirim / Öneri Gönder</span>
+            </button>
           </div>
 
           <div className="flex flex-col gap-3 md:items-end md:justify-center">

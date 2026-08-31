@@ -49,7 +49,7 @@ export default function VIPClubPage() {
   const handleRedeem = (cost: number, codePrefix: string, title: string, discount: string) => {
     const success = redeemReward(cost, codePrefix, title, discount);
     if (!success) {
-      alert("Yetersiz VOID Puanı. Alışveriş yaparak veya yorum yazarak puan kazanabilirsiniz.");
+      alert("Yetersiz CLOST Puanı. Alışveriş yaparak veya yorum yazarak puan kazanabilirsiniz.");
     }
   };
 
@@ -60,7 +60,7 @@ export default function VIPClubPage() {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
@@ -101,12 +101,12 @@ export default function VIPClubPage() {
                 <span className="font-price-lg text-3xl md:text-4xl font-bold">
                   {points.toLocaleString("tr-TR")}
                 </span>
-                <span className="font-label-mono text-xs uppercase">VOID PUANI (VP)</span>
+                <span className="font-label-mono text-xs uppercase">CLOST PUANI (CP)</span>
               </div>
             </div>
 
             <div className="flex justify-between items-end border-t border-white/20 pt-3 text-[10px] font-label-mono opacity-80 uppercase">
-              <span>HESAP: VIP-892401</span>
+              <span>HESAP: CLOST-CLUB</span>
               <span>ÜYELİK: ÖMÜR BOYU</span>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function VIPClubPage() {
                 </span>
                 {progress.nextTier ? (
                   <span className="text-on-surface-variant">
-                    {progress.nextTier} Kademesine {progress.pointsNeeded} VP Kaldı
+                    {progress.nextTier} Kademesine {progress.pointsNeeded} CP Kaldı
                   </span>
                 ) : (
                   <span className="text-green-600 font-bold uppercase">
@@ -289,21 +289,21 @@ export default function VIPClubPage() {
 
         {/* How to Earn Points Guide */}
         <div className="border-t border-primary pt-8 flex flex-col gap-4">
-          <h4 className="font-headline-sm uppercase text-primary text-base">
-            Nasıl VOID Puanı (VP) Kazanırım?
+          <h4 className="font-headline-sm uppercase text-primary text-base font-bold">
+            Nasıl CLOST Puanı (CP) Kazanırım?
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-label-mono text-xs">
             <div className="p-4 border border-outline-variant bg-surface">
               <span className="font-bold text-primary uppercase block mb-1">Alışveriş Yapın</span>
-              <p className="text-on-surface-variant">Her 100 ₺ sipariş tutarı için anında 10 VP kazanın.</p>
+              <p className="text-on-surface-variant">Her 100 ₺ sipariş tutarı için anında 10 CP kazanın.</p>
             </div>
             <div className="p-4 border border-outline-variant bg-surface">
               <span className="font-bold text-primary uppercase block mb-1">Ürün Değerlendirin</span>
-              <p className="text-on-surface-variant">Satın aldığınız ürünlere onaylı yorum yazarak 50 VP kazanın.</p>
+              <p className="text-on-surface-variant">Satın aldığınız ürünlere onaylı yorum yazarak 50 CP kazanın.</p>
             </div>
             <div className="p-4 border border-outline-variant bg-surface">
               <span className="font-bold text-primary uppercase block mb-1">Arkadaşını Davet Et</span>
-              <p className="text-on-surface-variant">Davet linkinizle yapılan ilk alışverişte 200 VP kazanın.</p>
+              <p className="text-on-surface-variant">Davet linkinizle yapılan ilk alışverişte 200 CP kazanın.</p>
             </div>
           </div>
         </div>

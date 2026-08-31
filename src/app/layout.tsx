@@ -1,21 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto_Condensed } from "next/font/google";
 import "./globals.css";
-import { CountdownBanner } from "@/components/layout/countdown-banner";
+import { TopAnnouncementTicker } from "@/components/layout/top-announcement-ticker";
 import { Header } from "@/components/layout/header";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { SupportWidget } from "@/components/ui/support-widget";
 import { WelcomeModal } from "@/components/layout/welcome-modal";
+import { FeedbackModal } from "@/components/ui/feedback-modal";
+import { FeedbackTrigger } from "@/components/ui/feedback-trigger";
 import { ToastContainer } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
 import { PwaProvider } from "@/components/pwa/pwa-provider";
-
-const robotoCondensed = Roboto_Condensed({
-  variable: "--font-roboto-condensed",
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-});
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -30,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s — CLOST",
   },
   description:
-    "Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Oversized silüetler, raw denimler ve özel grafik tasarımlar.",
+    "Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Oversized silüetler, 14.5 oz raw denimler ve özel serigrafi baskılar.",
   applicationName: "CLOST",
   appleWebApp: {
     capable: true,
@@ -50,25 +44,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="tr"
-      className={`${robotoCondensed.variable} h-full antialiased`}
-    >
+    <html lang="tr" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-surface text-on-surface">
         <PwaProvider>
-          {/* 1. Slim Announcement / Ticker Band */}
-          <CountdownBanner />
+          {/* 1. Global Infinite Marquee Announcement Ticker (32px / top-0) */}
+          <TopAnnouncementTicker />
 
-          {/* 2. Compact Modern Header */}
+          {/* 2. Global Rigid Header (56px / top-8) */}
           <Header />
 
-          {/* 3. Main Content Container (No redundant extra bars) */}
-          <div className="flex-grow flex flex-col pt-[84px]">
+          {/* 3. Main Page Body (Unified 88px top offset across all pages) */}
+          <div className="flex-grow flex flex-col pt-[88px]">
             {children}
           </div>
 
           <CartDrawer />
           <SupportWidget />
+          <FeedbackModal />
+          <FeedbackTrigger />
           <WelcomeModal />
           <ToastContainer />
           <Footer />

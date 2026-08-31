@@ -22,6 +22,8 @@ import {
   ArrowRight,
   Database,
   Eye,
+  MessageSquareHeart,
+  Star,
 } from "lucide-react";
 import { Product } from "@/lib/shopify/types";
 import {
@@ -38,6 +40,7 @@ import { useWishlistStore } from "@/lib/store/useWishlistStore";
 import { useCompareStore } from "@/lib/store/useCompareStore";
 import { useLoyaltyStore } from "@/lib/store/useLoyaltyStore";
 import { useAuthStore } from "@/lib/store/useAuthStore";
+import { useFeedbackStore } from "@/lib/store/useFeedbackStore";
 
 const emptySubscribe = () => () => {};
 
@@ -69,7 +72,7 @@ export default function DeveloperPanelPage() {
 
   // Active Panel Tab
   const [activeTab, setActiveTab] = useState<
-    "overview" | "catalog" | "orders" | "coupons" | "inventory" | "diagnostics"
+    "overview" | "catalog" | "orders" | "coupons" | "feedbacks" | "diagnostics"
   >("overview");
 
   // PWA Store
@@ -85,6 +88,7 @@ export default function DeveloperPanelPage() {
   const { clearCompare, items: compareItems } = useCompareStore();
   const { resetLoyalty, points: loyaltyPoints, tier: loyaltyTier } = useLoyaltyStore();
   const { user, isAuthenticated, login, logout } = useAuthStore();
+  const { feedbacks, deleteFeedback, clearAllFeedbacks } = useFeedbackStore();
 
   // Local Catalog State
   const [version, setVersion] = useState<number>(0);
@@ -103,11 +107,9 @@ export default function DeveloperPanelPage() {
   const [newCategory, setNewCategory] = useState("Dış Giyim");
   const [newColor, setNewColor] = useState("Siyah");
   const [newSizes, setNewSizes] = useState("S, M, L, XL");
-  const [newImage, setNewImage] = useState(
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ"
-  );
+  const [newImage, setNewImage] = useState("/products/cyber-neon-rugby-polo-1.jpg");
   const [newDesc, setNewDesc] = useState(
-    "Brutalist techwear silüeti ve yüksek performanslı dikiş yapısı."
+    "Y2K sokak silüeti, ağır gramajlı kompakt pamuk ve özel serigrafi baskı."
   );
 
   // Live Orders Simulator State
@@ -146,11 +148,25 @@ export default function DeveloperPanelPage() {
   // Live Coupons Management State
   const [coupons, setCoupons] = useState<MockCoupon[]>([
     {
-      code: "VOID20",
+      code: "CLOST20",
       discount: "%20",
       minSpend: "3.000 ₺",
       status: "Aktif",
       description: "Büyük Sepet Avantajı",
+    },
+    {
+      code: "CLOST15",
+      discount: "%15",
+      minSpend: "1.500 ₺",
+      status: "Aktif",
+      description: "Sonbahar Lansman İndirimi",
+    },
+    {
+      code: "CLOST10",
+      discount: "%10",
+      minSpend: "Alt limitsiz",
+      status: "Aktif",
+      description: "İlk Sipariş Hoşgeldin Kuponu",
     },
     {
       code: "SET10",
@@ -158,13 +174,6 @@ export default function DeveloperPanelPage() {
       minSpend: "2 parça",
       status: "Aktif",
       description: "Lookbook Set İndirimi",
-    },
-    {
-      code: "VIP500",
-      discount: "500 ₺",
-      minSpend: "2.500 ₺",
-      status: "Aktif",
-      description: "VIP Sadakat Kuponu",
     },
   ]);
 
@@ -480,6 +489,18 @@ export default function DeveloperPanelPage() {
         </button>
 
         <button
+          onClick={() => setActiveTab("feedbacks")}
+          className={`px-5 py-3 border-r border-t border-primary -mb-[1px] transition-colors cursor-pointer flex items-center gap-1.5 ${
+            activeTab === "feedbacks"
+              ? "bg-primary text-on-primary font-bold"
+              : "bg-surface text-primary hover:bg-surface-variant"
+          }`}
+        >
+          <MessageSquareHeart className="w-3.5 h-3.5" />
+          <span>Geri Bildirimler ({feedbacks.length})</span>
+        </button>
+
+        <button
           onClick={() => setActiveTab("diagnostics")}
           className={`px-5 py-3 border-r border-t border-primary -mb-[1px] transition-colors cursor-pointer flex items-center gap-1.5 ${
             activeTab === "diagnostics"
@@ -768,7 +789,7 @@ export default function DeveloperPanelPage() {
                                 src={img}
                                 alt={p.title}
                                 fill
-                                className="object-cover grayscale"
+                                className="object-cover"
                                 sizes="48px"
                               />
                             )}
@@ -959,7 +980,113 @@ export default function DeveloperPanelPage() {
         </div>
       )}
 
-      {/* TAB 5: DIAGNOSTICS & PWA */}
+      {/* TAB: FEEDBACKS & BUG REPORTS */}
+      {activeTab === "feedbacks" && (
+        <div className="space-y-6">
+          <div className="border border-primary bg-surface p-6 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-1">
+                KULLANICI GERİ BİLDİRİM MERKEZİ
+              </span>
+              <h3 className="font-headline-sm uppercase text-primary text-xl font-bold">
+                Müşteri Geri Bildirimleri &amp; Hata Raporları ({feedbacks.length})
+              </h3>
+            </div>
+
+            {feedbacks.length > 0 && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (confirm("Tüm geri bildirimleri silmek istediğinize emin misiniz?")) {
+                    clearAllFeedbacks();
+                    showFeedback("Tüm geri bildirimler temizlendi.");
+                  }
+                }}
+                className="px-4 py-2 border border-red-700 text-red-700 hover:bg-red-700 hover:text-white uppercase font-bold text-xs transition-colors cursor-pointer flex items-center gap-1.5"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                <span>Tümünü Temizle</span>
+              </button>
+            )}
+          </div>
+
+          {feedbacks.length === 0 ? (
+            <div className="p-12 border border-primary bg-surface text-center flex flex-col items-center justify-center gap-3">
+              <MessageSquareHeart className="w-10 h-10 text-outline-variant stroke-1" />
+              <p className="font-headline-sm uppercase text-primary text-base font-bold">
+                Henüz Geri Bildirim Bulunmuyor
+              </p>
+              <p className="font-body-md text-xs text-on-surface-variant max-w-sm">
+                Müşteriler alt bardaki veya footer&apos;daki geri bildirim formunu doldurdukça buraya anında düşecektir.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-4">
+              {feedbacks.map((fb) => {
+                const typeLabels: Record<string, { label: string; color: string }> = {
+                  experience: { label: "Alışveriş Deneyimi", color: "bg-blue-100 text-blue-800 border-blue-300" },
+                  product: { label: "Ürün Kalitesi & Kalıp", color: "bg-emerald-100 text-emerald-800 border-emerald-300" },
+                  bug: { label: "Hata / Bug Raporu", color: "bg-red-100 text-red-800 border-red-300" },
+                  suggestion: { label: "Öneri & İstek", color: "bg-purple-100 text-purple-800 border-purple-300" },
+                };
+                const badge = typeLabels[fb.type] || { label: fb.type, color: "bg-gray-100 text-gray-800 border-gray-300" };
+
+                return (
+                  <div
+                    key={fb.id}
+                    className="border border-primary bg-surface p-6 shadow-sm flex flex-col justify-between gap-4 font-label-mono"
+                  >
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-outline-variant pb-3">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[10px] uppercase font-bold px-2.5 py-0.5 border ${badge.color}`}>
+                          {badge.label}
+                        </span>
+                        <div className="flex items-center text-amber-500">
+                          {[1, 2, 3, 4, 5].map((s) => (
+                            <Star
+                              key={s}
+                              className={`w-3.5 h-3.5 ${s <= fb.rating ? "fill-amber-500 text-amber-500" : "text-gray-300"}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="text-on-surface-variant text-[11px] flex items-center gap-3">
+                        <span>Sayfa: <code className="bg-surface-container-low px-1 py-0.5 border border-outline-variant text-primary">{fb.pageUrl}</code></span>
+                        <span>•</span>
+                        <span>{fb.createdAt}</span>
+                      </div>
+                    </div>
+
+                    <p className="font-body-md text-sm text-primary leading-relaxed py-1">
+                      &ldquo;{fb.message}&rdquo;
+                    </p>
+
+                    <div className="flex justify-between items-center border-t border-outline-variant pt-3 text-xs">
+                      <span className="text-on-surface-variant">
+                        İletişim: <strong className="text-primary">{fb.email || "Anonim Kullanıcı"}</strong>
+                      </span>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          deleteFeedback(fb.id);
+                          showFeedback("Geri bildirim silindi.");
+                        }}
+                        className="text-red-700 hover:text-red-900 font-bold uppercase text-[11px] flex items-center gap-1 cursor-pointer"
+                      >
+                        <Trash2 className="w-3 h-3" /> Sil
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* TAB 6: DIAGNOSTICS & PWA */}
       {activeTab === "diagnostics" && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="border border-primary bg-surface p-6 shadow-sm space-y-4">

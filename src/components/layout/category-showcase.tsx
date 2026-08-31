@@ -11,22 +11,22 @@ const CATEGORIES: Category[] = [
   {
     title: "Dış Giyim",
     href: "/collections/outerwear",
-    image: "/products/sloid-unicorn-zip-hoodie.jpg",
+    image: "/products/volt-yellow-mesh-track-jacket-1.jpg",
   },
   {
     title: "Üst Giyim",
     href: "/collections/tops",
-    image: "/products/starlet-baby-tee.jpg",
+    image: "/products/acid-purple-kanji-heavy-tee-1.jpg",
   },
   {
     title: "Alt Giyim",
     href: "/collections/bottoms",
-    image: "/products/striped-rugby-baggy-denim.jpg",
+    image: "/products/ultra-baggy-raw-denim-jorts-1.jpg",
   },
   {
     title: "Lookbook",
     href: "/lookbook",
-    image: "/products/lafam-striped-jorts.jpg",
+    image: "/products/cyber-neon-rugby-polo-2.jpg",
   },
 ];
 
@@ -51,7 +51,7 @@ export function CategoryShowcase() {
               alt={category.title}
               fill
               sizes="(max-width: 640px) 50vw, 25vw"
-              className="object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/30" />
             <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 flex flex-col gap-1">

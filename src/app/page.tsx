@@ -7,26 +7,25 @@ import { getProducts } from "@/lib/shopify";
 
 export default async function HomePage() {
   const products = await getProducts();
-  const featuredProducts = products.slice(0, 4);
 
   return (
     <main className="flex-grow flex flex-col">
       {/* Hero Section */}
       <section className="relative w-full h-[75vh] md:h-[820px] border-b border-outline-variant overflow-hidden group select-none">
         <Image
-          src="/products/striped-rugby-baggy-denim.jpg"
-          alt="CLOST Y2K & Gen-Z Streetwear Drop"
+          src="/products/cyber-neon-rugby-polo-1.jpg"
+          alt="CLOST Summer Drop '24 — Y2K & Gen-Z Streetwear"
           fill
           priority
           sizes="100vw"
-          className="object-cover transition-transform duration-[10s] group-hover:scale-105"
+          className="object-cover object-[center_15%] transition-transform duration-[10s] group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-10 pb-12 md:pb-16 z-10 pointer-events-none">
           <div className="pointer-events-auto mb-3">
             <span className="font-label-mono text-xs text-white/80 tracking-widest inline-block">
-              YENİ DROP // FALL 2024
+              YENİ DROP // SUMMER 2024
             </span>
           </div>
           <h1 className="font-display-lg-mobile md:font-display-lg text-white mb-8 uppercase tracking-tight pointer-events-auto">
@@ -49,27 +48,27 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Grid (Yeni Gelenler) */}
+      {/* Featured Grid (Tüm Yeni Parçalar) */}
       <section className="py-14 md:py-20 border-b border-outline-variant bg-surface" id="featured">
         <div className="px-4 md:px-10 mb-8 flex justify-between items-end">
           <div>
             <span className="font-label-mono text-xs text-on-surface-variant block mb-1">
-              ÖNE ÇIKAN SOKAK PARÇALARI
+              SUMMER DROP &apos;24 ARŞİVİ
             </span>
             <h2 className="font-headline-md uppercase text-primary tracking-tight">
-              Yeni Drop &apos;24
+              Tüm Koleksiyon ({products.length})
             </h2>
           </div>
           <Link
             href="/collections/all"
             className="font-label-mono text-xs border-b border-primary pb-1 hover:opacity-60 transition-opacity"
           >
-            Tümünü Gör ({products.length})
+            Filtrele &amp; Sırala →
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-10">
-          {featuredProducts.map((product, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 px-4 md:px-10">
+          {products.map((product, idx) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -85,27 +84,27 @@ export default async function HomePage() {
           {/* Large Image (Left, spanning 7 cols) */}
           <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-outline-variant relative h-[360px] lg:h-auto overflow-hidden group">
             <Image
-              src="/products/lafam-striped-jorts.jpg"
+              src="/products/volt-yellow-mesh-track-jacket-1.jpg"
               alt="CLOST Streetwear Manifesto"
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           </div>
 
           {/* Narrative Text Block (Right, spanning 4 cols, offset by 1) */}
           <div className="lg:col-span-4 lg:col-start-9 flex flex-col justify-center p-6 md:p-10 py-12">
             <span className="font-label-mono text-on-surface-variant mb-3 border-b border-outline-variant pb-2 inline-block w-max text-xs">
-              EDİTORYAL 001 // Y2K ESTETİĞİ
+              EDİTORYAL 001 // SOKAK DİLİ
             </span>
             <h2 className="font-headline-md uppercase text-primary mb-4 tracking-tight leading-none text-2xl md:text-3xl">
-              Kuralsız
+              Kuralları
               <br />
-              Sokak Dili
+              Sokak Belirler
             </h2>
             <p className="font-body-lg text-on-surface-variant mb-6 text-sm leading-relaxed">
-              2000&apos;ler skate kültürü, Japon Harajuku grafikleri ve Acubi estetiğinin kesişim noktası.
-              Geniş paçalı raw selvedge denimler, canlı renk bloklu çizgili üstler ve ikonik baby tee silüetleri.
+              2000&apos;ler Y2K skater silüetleri, siber neon kontrastlar ve 14.5 oz ham selvedge denimler.
+              Yüksek kaliteli kompakt kumaşlar ve nefes alabilen yazlık teknik file panellerle hazırlandı.
             </p>
             <Link
               href="/collections/all"
