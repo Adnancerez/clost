@@ -44,7 +44,7 @@ export default async function CollectionDetailPage({ params }: Props) {
   }
 
   return (
-    <main className="flex-grow pt-16">
+    <main className="flex-grow">
       <CollectionView
         collection={collection}
         initialProducts={products}

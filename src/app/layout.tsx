@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CountdownBanner } from "@/components/layout/countdown-banner";
 import { Header } from "@/components/layout/header";
-import { NavigationHistoryBar } from "@/components/layout/navigation-history-bar";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { SupportWidget } from "@/components/ui/support-widget";
 import { WelcomeModal } from "@/components/layout/welcome-modal";
@@ -62,12 +61,17 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-surface text-on-surface">
         <PwaProvider>
+          {/* 1. Slim Announcement / Ticker Band */}
           <CountdownBanner />
+
+          {/* 2. Compact Modern Header */}
           <Header />
-          <div className="flex-grow flex flex-col pt-24">
-            <NavigationHistoryBar />
+
+          {/* 3. Main Content Container (No redundant extra bars) */}
+          <div className="flex-grow flex flex-col pt-[84px]">
             {children}
           </div>
+
           <CartDrawer />
           <SupportWidget />
           <WelcomeModal />

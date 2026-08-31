@@ -126,7 +126,7 @@ export default function AccountPage() {
   // Unauthenticated Gate
   if (!isAuthenticated) {
     return (
-      <main className="flex-grow pt-20 pb-16 bg-surface-container-low min-h-screen flex items-center justify-center p-4">
+      <main className="flex-grow pb-16 bg-surface-container-low min-h-screen flex items-center justify-center p-4">
         <div className="max-w-md w-full border-2 border-primary bg-surface p-6 md:p-8 shadow-2xl font-label-mono text-xs">
           <div className="border-b border-primary pb-4 mb-6">
             <span className="text-[10px] uppercase text-on-surface-variant block mb-1">
@@ -224,7 +224,7 @@ export default function AccountPage() {
   const isAdmin = user?.role === "admin";
 
   return (
-    <main className="flex-grow pt-20 pb-16 bg-surface-container-low min-h-screen">
+    <main className="flex-grow pb-16 bg-surface-container-low min-h-screen">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Account Header */}
         <header className="py-6 border-b border-primary mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 bg-surface p-6">

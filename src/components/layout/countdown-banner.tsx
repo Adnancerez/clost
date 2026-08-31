@@ -59,28 +59,31 @@ export function CountdownBanner() {
   if (!isMounted || !isVisible) return null;
 
   return (
-    <aside aria-label="Duyuru ve Kampanya Bandı" className="fixed top-0 left-0 right-0 z-50 bg-primary text-on-primary font-label-mono text-[10px] md:text-[11px] py-1.5 px-4 flex items-center justify-between border-b border-surface select-none">
+    <aside
+      aria-label="Duyuru ve Kampanya Bandı"
+      className="fixed top-0 left-0 right-0 z-50 h-7 bg-primary text-on-primary font-label-mono text-[10px] px-3 flex items-center justify-between border-b border-white/20 select-none"
+    >
       <div className="flex items-center gap-2 max-w-full overflow-hidden mx-auto tracking-wider">
-        <span className="truncate uppercase">
-          1.500 ₺ ÜZERİ TÜM TÜRKİYE&apos;YE ÜCRETSİZ SİGORTALI TESLİMAT • SONBAHAR DROP 01 // KOD:
+        <span className="truncate uppercase font-medium">
+          1.500 ₺ Üzeri Ücretsiz Kargo • Sonbahar Drop 01 // Kod:
         </span>
         <button
           onClick={handleCopy}
-          className="border border-white/40 hover:border-white px-2 py-0.5 flex items-center gap-1 font-bold text-white uppercase cursor-pointer"
+          className="border border-white/40 hover:border-white px-1.5 py-0.2 flex items-center gap-1 font-bold text-white uppercase cursor-pointer text-[10px]"
         >
-          VOID15 {copied ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
+          VOID15 {copied ? <Check className="w-2.5 h-2.5 text-emerald-400" /> : <Copy className="w-2.5 h-2.5" />}
         </button>
-        <span className="hidden lg:inline-flex items-center gap-1 opacity-80 pl-2">
-          <Clock className="w-3 h-3" /> {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+        <span className="hidden lg:inline-flex items-center gap-1 opacity-80 pl-1 text-[10px]">
+          <Clock className="w-2.5 h-2.5" /> {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
         </span>
       </div>
 
       <button
         onClick={() => setIsVisible(false)}
         aria-label="Duyuruyu kapat"
-        className="hover:opacity-70 cursor-pointer p-0.5 text-on-primary ml-2"
+        className="hover:opacity-70 cursor-pointer p-0.5 text-on-primary ml-1"
       >
-        <X className="w-3.5 h-3.5" />
+        <X className="w-3 h-3" />
       </button>
     </aside>
   );

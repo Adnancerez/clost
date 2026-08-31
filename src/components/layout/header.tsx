@@ -38,7 +38,7 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-8 w-full z-40 flex justify-between items-center px-4 md:px-10 h-16 bg-surface border-b border-primary transition-all duration-200">
+      <header className="fixed top-7 w-full z-40 flex justify-between items-center px-4 md:px-8 h-14 bg-surface border-b border-primary transition-all duration-200">
         {/* Desktop Nav Links */}
         <div className="hidden lg:flex gap-6 font-label-mono text-xs items-center">
           {MAIN_NAV_LINKS.map((link) => {

@@ -70,7 +70,7 @@ export default async function ProductDetailPage({ params }: Props) {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col w-full max-w-[1920px] mx-auto bg-surface">
+    <main className="flex-grow flex flex-col w-full max-w-[1920px] mx-auto bg-surface">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
