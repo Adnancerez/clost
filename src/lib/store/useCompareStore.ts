@@ -2,6 +2,8 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { Product } from "@/lib/shopify/types";
 
+import { useToastStore } from "./useToastStore";
+
 interface CompareStore {
   items: Product[];
   addToCompare: (product: Product) => void;
@@ -20,7 +22,11 @@ export const useCompareStore = create<CompareStore>()(
       addToCompare: (product) => {
         const { items } = get();
         if (items.length >= 4) {
-          alert("En fazla 4 ürünü aynı anda karşılaştırabilirsiniz.");
+          useToastStore.getState().addToast({
+            title: "Karşılaştırma Limiti",
+            message: "En fazla 4 ürünü aynı anda karşılaştırabilirsiniz.",
+            type: "warning",
+          });
           return;
         }
         if (!items.some((item) => item.id === product.id)) {

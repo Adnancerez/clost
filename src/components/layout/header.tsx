@@ -28,6 +28,17 @@ export function Header() {
   const { getTotalCount: getWishlistCount } = useWishlistStore();
   const { user, isAuthenticated } = useAuthStore();
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   const handleOpenCart = () => {
     openCart();
   };
@@ -92,10 +103,13 @@ export function Header() {
           {/* Search Trigger */}
           <button
             onClick={() => setIsSearchOpen(true)}
-            aria-label="Arama yap"
-            className="p-1.5 hover:opacity-70 transition-opacity duration-200 cursor-pointer"
+            aria-label="Arama yap (Cmd+K)"
+            className="p-1.5 hover:opacity-70 transition-opacity duration-200 cursor-pointer flex items-center gap-1.5"
           >
             <Search className="w-4 h-4" />
+            <kbd className="hidden md:inline-block font-label-mono text-[9px] text-on-surface-variant border border-outline-variant px-1 py-0.5 bg-surface-container-low">
+              ⌘K
+            </kbd>
           </button>
 
           {/* Wishlist Link */}

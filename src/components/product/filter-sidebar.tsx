@@ -37,12 +37,11 @@ export function FilterSidebar({
   const lowerSizes = ["30", "32", "34", "36"];
   
   const colors = [
-    { name: "Sarı", hex: "#eab308", label: "Sarı / Neon" },
-    { name: "Turkuaz", hex: "#06b6d4", label: "Turkuaz / Mavi" },
-    { name: "Pembe", hex: "#f472b6", label: "Pembe / Bordo" },
-    { name: "Mavi", hex: "#2563eb", label: "İndigo / Marin" },
-    { name: "Siyah", hex: "#000000", label: "Ham Siyah" },
-    { name: "Gri", hex: "#4A4A4A", label: "Kırçıllı Gri" },
+    { name: "Mavi", hex: "#2563eb", label: "Neon Yeşil / Mavi" },
+    { name: "Sarı", hex: "#eab308", label: "Volt Sarı / Siyah" },
+    { name: "Mor", hex: "#a855f7", label: "Asit Mor" },
+    { name: "Lacivert", hex: "#1e3a8a", label: "Ham Lacivert (Raw)" },
+    { name: "Turuncu", hex: "#f97316", label: "Siber Neon Turuncu" },
   ];
 
   const priceRanges = [

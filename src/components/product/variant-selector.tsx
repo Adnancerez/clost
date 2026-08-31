@@ -157,11 +157,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
             </button>
             <button
               type="button"
-              onClick={() =>
-                alert(
-                  "Beden Tablosu (cm):\nS: Göğüs 92-96 | Boy 170-178\nM: Göğüs 97-102 | Boy 175-185\nL: Göğüs 103-108 | Boy 180-190\nXL: Göğüs 109-115 | Boy 185-195"
-                )
-              }
+              onClick={() => setIsFitFinderOpen(true)}
               className="text-on-surface-variant hover:text-primary underline decoration-1 underline-offset-4 cursor-pointer uppercase"
             >
               BEDEN TABLOSU

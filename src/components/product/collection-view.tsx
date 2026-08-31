@@ -25,22 +25,19 @@ export function CollectionView({
     const req = requestedColor.toLowerCase();
 
     if (req === "sarı") {
-      return val.includes("sarı") || val.includes("yellow") || val.includes("neon");
+      return val.includes("sarı") || val.includes("yellow") || val.includes("volt");
     }
-    if (req === "turkuaz") {
-      return val.includes("turkuaz") || val.includes("cyan") || val.includes("mavi");
+    if (req === "mor") {
+      return val.includes("mor") || val.includes("purple") || val.includes("asit");
     }
-    if (req === "pembe") {
-      return val.includes("pembe") || val.includes("pink") || val.includes("bordo");
+    if (req === "turuncu") {
+      return val.includes("turuncu") || val.includes("orange") || val.includes("siber");
     }
     if (req === "mavi") {
-      return val.includes("mavi") || val.includes("blue") || val.includes("indigo") || val.includes("lacivert");
+      return val.includes("mavi") || val.includes("blue") || val.includes("yeşil");
     }
-    if (req === "siyah") {
-      return val.includes("siyah") || val.includes("black") || val.includes("ham");
-    }
-    if (req === "gri") {
-      return val.includes("gri") || val.includes("gray") || val.includes("grey") || val.includes("kırçıllı");
+    if (req === "lacivert") {
+      return val.includes("lacivert") || val.includes("indigo") || val.includes("raw");
     }
     return val.includes(req);
   };
@@ -190,8 +187,8 @@ export function CollectionView({
           {/* Catalog Header */}
           <header className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-primary pb-6">
             <div>
-              <span className="font-label-mono text-[10px] uppercase text-on-surface-variant block mb-1">
-                KATALOG GÖRÜNÜMÜ // SONBAHAR &apos;24
+              <span className="font-label-mono text-[10px] uppercase text-on-surface-variant block mb-1 font-bold">
+                KATALOG GÖRÜNÜMÜ // SUMMER &apos;24
               </span>
               <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
                 {collection.title}

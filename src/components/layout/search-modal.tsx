@@ -91,7 +91,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     );
   }, [query]);
 
-  const popularTags = ["Parka", "Kargo", "Denim", "Hoodie", "Dış Giyim", "Yelek"];
+  const popularTags = ["Rugby Polo", "Volt Ceket", "Kanji Tişört", "Raw Denim Jorts", "Paraşüt Kargo", "Y2K"];
 
   const handleQuickAdd = (product: typeof MOCK_PRODUCTS[0], e: React.MouseEvent) => {
     e.preventDefault();
@@ -150,7 +150,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 saveRecentSearch(query);
               }
             }}
-            placeholder="ARŞİVDE ARA (PARKA, KARGO, HOODIE, DENIM)..."
+            placeholder="ARŞİVDE ARA (POLO, CEKET, JORTS, TİŞÖRT, PARAŞÜT)..."
             className="w-full bg-transparent border-none focus:outline-none font-label-mono text-sm md:text-base text-primary placeholder-on-surface-variant uppercase tracking-wider"
           />
           {query && (
