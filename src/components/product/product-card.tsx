@@ -49,7 +49,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     <article className="group flex flex-col gap-2 relative select-none">
       <Link
         href={`/products/${product.handle}`}
-        className="relative w-full aspect-4-5 border border-primary overflow-hidden bg-surface-variant block"
+        className="relative w-full aspect-4-5 border border-outline-variant overflow-hidden bg-surface-variant block"
       >
         {/* Primary Image */}
         <Image
@@ -76,12 +76,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         {/* Badges */}
         {isNew && (
-          <div className="absolute top-4 left-4 border border-primary bg-surface px-3 py-1 font-label-mono text-[10px] uppercase text-primary">
+          <div className="absolute top-4 left-4 bg-surface px-3 py-1 font-label-mono text-[10px] text-primary">
             Yeni
           </div>
         )}
         {isLowStock && (
-          <div className="absolute top-4 left-4 border border-primary bg-primary text-on-primary px-3 py-1 font-label-mono text-[10px] uppercase">
+          <div className="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-mono text-[10px]">
             Son Parçalar
           </div>
         )}
@@ -92,9 +92,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             type="button"
             onClick={handleWishlistClick}
             aria-label={isFavorite ? "Favorilerden çıkar" : "Favorilere ekle"}
-            className={`w-9 h-9 border border-primary flex items-center justify-center transition-colors cursor-pointer ${
+            className={`w-9 h-9 border border-outline-variant flex items-center justify-center transition-colors cursor-pointer ${
               isFavorite
-                ? "bg-primary text-on-primary"
+                ? "bg-primary text-on-primary border-primary"
                 : "bg-surface text-primary hover:bg-surface-variant"
             }`}
           >
@@ -107,9 +107,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             type="button"
             onClick={handleCompareClick}
             aria-label={inCompare ? "Karşılaştırmadan çıkar" : "Karşılaştırmaya ekle"}
-            className={`w-9 h-9 border border-primary flex items-center justify-center transition-colors cursor-pointer ${
+            className={`w-9 h-9 border border-outline-variant flex items-center justify-center transition-colors cursor-pointer ${
               inCompare
-                ? "bg-primary text-on-primary"
+                ? "bg-primary text-on-primary border-primary"
                 : "bg-surface text-primary hover:bg-surface-variant"
             }`}
           >
@@ -119,15 +119,15 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       </Link>
 
       {/* Product Card Details */}
-      <div className="flex justify-between items-start pt-1">
+      <div className="flex justify-between items-start pt-2">
         <div className="flex flex-col">
           <Link
             href={`/products/${product.handle}`}
-            className="font-body-md uppercase font-bold tracking-tight text-primary hover:underline text-sm line-clamp-1"
+            className="font-body-md tracking-tight text-primary hover:opacity-60 transition-opacity text-sm line-clamp-1"
           >
             {product.title}
           </Link>
-          <p className="font-label-mono text-on-surface-variant text-xs mt-1">
+          <p className="font-label-mono text-on-surface-variant text-[11px] mt-0.5">
             {product.options.find(
               (o) => o.name.toLowerCase() === "renk" || o.name.toLowerCase() === "color"
             )?.values[0] || "Siyah"}{" "}

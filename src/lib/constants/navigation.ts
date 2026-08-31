@@ -40,35 +40,53 @@ export const MOBILE_NAV_LINKS: NavLink[] = [
 
 export const FOOTER_SECTIONS: FooterSection[] = [
   {
-    title: "Koleksiyonlar",
+    title: "Mağaza",
     links: [
       { label: "Tüm Ürünler", href: "/collections/all" },
-      { label: "Dış Giyim", href: "/collections/outerwear" },
-      { label: "Üst Giyim", href: "/collections/tops" },
-      { label: "Alt Giyim", href: "/collections/bottoms" },
+      { label: "Koleksiyonlar", href: "/collections" },
       { label: "Yeni Gelenler", href: "/collections/new" },
-      { label: "Lookbook '24", href: "/lookbook" },
+      { label: "Lookbook", href: "/lookbook" },
+      { label: "Dergi", href: "/dergi" },
+      { label: "Hediye Kartı", href: "/hediye-karti" },
     ],
   },
   {
-    title: "Müşteri Deneyimi",
+    title: "Yardım",
     links: [
       { label: "Müşteri Hesabı", href: "/account" },
       { label: "Kargo Takibi", href: "/kargo-takip" },
       { label: "İade & Değişim", href: "/iade-talebi" },
-      { label: "Beden Tablosu", href: "/beden-rehberi" },
-      { label: "VIP Kulüp", href: "/vip-kulup" },
-      { label: "Hediye Kartı", href: "/hediye-karti" },
+      { label: "Beden Rehberi", href: "/beden-rehberi" },
       { label: "Sıkça Sorulan Sorular", href: "/sss" },
     ],
   },
   {
-    title: "Kurumsal & İrtibat",
+    title: "Kurumsal & Yasal",
     links: [
       { label: "Manifesto", href: "/about" },
-      { label: "Dergi & Kumaş Lab", href: "/dergi" },
       { label: "Showroom & İletişim", href: "/iletisim" },
-      { label: "Gizlilik & Şartlar", href: "/about" },
+      { label: "Gizlilik Politikası", href: "/gizlilik-politikasi" },
+      { label: "Mesafeli Satış Sözleşmesi", href: "/mesafeli-satis-sozlesmesi" },
+      { label: "Kargo Bilgileri", href: "/kargo-takip" },
     ],
   },
+];
+
+export interface SocialLink {
+  label: string;
+  href: string;
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { label: "Instagram", href: "https://www.instagram.com/clost" },
+  { label: "TikTok", href: "https://www.tiktok.com/@clost" },
+];
+
+export const PAYMENT_METHODS: string[] = [
+  "Visa",
+  "Mastercard",
+  "American Express",
+  "PayPal",
+  "Apple Pay",
+  "Google Pay",
 ];

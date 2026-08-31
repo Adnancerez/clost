@@ -38,9 +38,9 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-7 w-full z-40 flex justify-between items-center px-4 md:px-8 h-14 bg-surface border-b border-primary transition-all duration-200">
+      <header className="fixed top-7 w-full z-40 flex justify-between items-center px-4 md:px-8 h-14 bg-surface border-b border-outline-variant transition-all duration-200">
         {/* Desktop Nav Links */}
-        <div className="hidden lg:flex gap-6 font-label-mono text-xs items-center">
+        <div className="hidden lg:flex gap-8 font-label-mono text-xs items-center">
           {MAIN_NAV_LINKS.map((link) => {
             const isActive =
               link.href === "/collections"
@@ -53,10 +53,10 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`transition-opacity duration-200 uppercase tracking-wider ${
+                className={`transition-opacity duration-200 tracking-wide ${
                   isActive
-                    ? "text-primary border-b border-primary pb-0.5 font-bold"
-                    : "text-on-surface-variant hover:text-primary"
+                    ? "text-primary opacity-100"
+                    : "text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary"
                 }`}
               >
                 {link.label}
@@ -79,7 +79,7 @@ export function Header() {
         {/* Brand Logo */}
         <Link
           href="/"
-          className="font-headline-sm font-bold tracking-tighter text-primary uppercase absolute left-1/2 -translate-x-1/2 text-base md:text-lg"
+          className="font-headline-sm tracking-tight text-primary uppercase absolute left-1/2 -translate-x-1/2 text-base md:text-lg"
         >
           CLOST
         </Link>

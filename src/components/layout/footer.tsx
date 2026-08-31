@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { FOOTER_SECTIONS } from "@/lib/constants/navigation";
+import {
+  FOOTER_SECTIONS,
+  SOCIAL_LINKS,
+  PAYMENT_METHODS,
+} from "@/lib/constants/navigation";
 import { useToastStore } from "@/lib/store/useToastStore";
 
 export function Footer() {
@@ -24,64 +28,107 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full py-12 px-4 md:px-10 grid grid-cols-1 md:grid-cols-4 gap-8 bg-surface border-t border-primary mt-auto">
-      {/* Brand & Mission */}
-      <div className="md:col-span-1">
-        <div className="font-headline-sm font-bold text-primary mb-2 uppercase tracking-tighter">
-          CLOST
-        </div>
-        <p className="font-label-mono text-on-surface-variant text-xs max-w-[240px] leading-relaxed">
-          © 2026 CLOST.<br />KULLANIŞLILIK İÇİN TASARLANDI.
-        </p>
-      </div>
+    <footer className="w-full bg-surface mt-auto">
+      <div className="px-4 md:px-10">
+        {/* Top: Brand + Newsletter */}
+        <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-10 border-b border-outline-variant">
+          <div className="flex flex-col gap-4">
+            <Link
+              href="/"
+              className="font-display-lg-mobile md:text-[80px] md:leading-[72px] font-light tracking-tight text-primary uppercase"
+            >
+              CLOST
+            </Link>
+            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-xs">
+              Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Kullanışlılık
+              için tasarlandı.
+            </p>
+          </div>
 
-      {/* Structured Links */}
-      <div className="md:col-span-3 flex flex-col sm:flex-row gap-8 sm:gap-14 justify-end">
-        {FOOTER_SECTIONS.map((sec) => (
-          <div key={sec.title} className="flex flex-col gap-2 font-label-mono text-xs">
-            <span className="uppercase text-primary font-bold mb-1">{sec.title}</span>
-            {sec.links.map((link) => (
-              <Link
-                key={link.href + link.label}
-                href={link.href}
-                className="text-on-surface-variant hover:text-primary underline transition-colors"
+          <div className="flex flex-col gap-3 md:items-end md:justify-center">
+            <span className="font-label-mono text-on-surface-variant text-xs">
+              Bülten
+            </span>
+            {subscribed ? (
+              <p className="font-body-md text-sm text-primary">
+                ✓ Bültene başarıyla abone oldunuz.
+              </p>
+            ) : (
+              <form
+                onSubmit={handleSubscribe}
+                className="flex w-full md:w-80 border-b border-outline-variant focus-within:border-primary transition-colors"
               >
-                {link.label}
-              </Link>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="E-posta adresiniz"
+                  className="bg-transparent border-none focus:outline-none font-body-md text-sm px-0 py-2.5 w-full text-primary placeholder-on-surface-variant"
+                />
+                <button
+                  type="submit"
+                  className="font-label-mono text-xs text-primary hover:opacity-60 px-2 cursor-pointer"
+                >
+                  Kayıt Ol
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+
+        {/* Middle: Link Columns + Social */}
+        <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-10">
+          {FOOTER_SECTIONS.map((sec) => (
+            <div key={sec.title} className="flex flex-col gap-3">
+              <span className="font-label-mono text-primary text-xs">
+                {sec.title}
+              </span>
+              {sec.links.map((link) => (
+                <Link
+                  key={link.href + link.label}
+                  href={link.href}
+                  className="font-body-md text-on-surface-variant text-sm hover:text-primary transition-colors leading-snug"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+
+          <div className="flex flex-col gap-3">
+            <span className="font-label-mono text-primary text-xs">
+              Takip Et
+            </span>
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body-md text-on-surface-variant text-sm hover:text-primary transition-colors leading-snug"
+              >
+                {social.label}
+              </a>
             ))}
           </div>
-        ))}
+        </div>
 
-        {/* Newsletter */}
-        <div className="flex flex-col gap-2 w-full sm:w-72">
-          <span className="font-label-mono uppercase text-primary font-bold mb-1 text-xs">
-            Arşiv E-Bülteni
-          </span>
-          {subscribed ? (
-            <p className="font-label-mono text-xs text-primary uppercase border border-primary p-2">
-              ✓ Bültene başarıyla abone oldunuz
-            </p>
-          ) : (
-            <form
-              onSubmit={handleSubscribe}
-              className="flex border-b border-primary focus-within:border-primary transition-colors"
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="E-POSTA ADRESİNİZ"
-                className="bg-transparent border-none focus:outline-none font-label-mono text-xs px-0 py-2 w-full text-primary placeholder-on-surface-variant uppercase"
-              />
-              <button
-                type="submit"
-                className="font-label-mono text-xs text-primary hover:opacity-70 px-2 uppercase cursor-pointer"
+        {/* Bottom: Copyright + Payment */}
+        <div className="py-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="font-body-md text-on-surface-variant text-xs">
+            © 2026 clost.tr — Tüm hakları saklıdır.
+          </p>
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            {PAYMENT_METHODS.map((method) => (
+              <span
+                key={method}
+                className="font-label-mono text-on-surface-variant text-[10px]"
               >
-                Kayıt Ol
-              </button>
-            </form>
-          )}
+                {method}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
