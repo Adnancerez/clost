@@ -3,11 +3,13 @@
 import React, { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, User, ShoppingBag, Heart } from "lucide-react";
+import { Menu, Search, User, ShoppingBag, Heart, Shield } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useWishlistStore } from "@/lib/store/useWishlistStore";
+import { useAuthStore } from "@/lib/store/useAuthStore";
 import { MobileNav } from "./mobile-nav";
 import { SearchModal } from "./search-modal";
+import { CurrencySwitcher } from "./currency-switcher";
 import { MAIN_NAV_LINKS } from "@/lib/constants/navigation";
 
 const emptySubscribe = () => () => {};
@@ -24,6 +26,7 @@ export function Header() {
 
   const { openCart, getTotalQuantity } = useCartStore();
   const { getTotalCount: getWishlistCount } = useWishlistStore();
+  const { user, isAuthenticated } = useAuthStore();
 
   const handleOpenCart = () => {
     openCart();
@@ -31,6 +34,7 @@ export function Header() {
 
   const totalQuantity = isMounted ? getTotalQuantity() : 0;
   const wishlistCount = isMounted ? getWishlistCount() : 0;
+  const isUserAdmin = isMounted && isAuthenticated && user?.role === "admin";
 
   return (
     <>
@@ -51,7 +55,7 @@ export function Header() {
                 href={link.href}
                 className={`transition-opacity duration-200 uppercase tracking-wider ${
                   isActive
-                    ? "text-primary border-b border-primary pb-0.5"
+                    ? "text-primary border-b border-primary pb-0.5 font-bold"
                     : "text-on-surface-variant hover:text-primary"
                 }`}
               >
@@ -82,6 +86,11 @@ export function Header() {
 
         {/* Action Icons */}
         <div className="flex gap-2 sm:gap-4 text-primary items-center">
+          {/* Currency Switcher */}
+          <div className="hidden sm:block">
+            <CurrencySwitcher />
+          </div>
+
           {/* Search Trigger */}
           <button
             onClick={() => setIsSearchOpen(true)}
@@ -99,19 +108,28 @@ export function Header() {
           >
             <Heart className="w-4 h-4" />
             {wishlistCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface">
+              <span className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface font-bold">
                 {wishlistCount}
               </span>
             )}
           </Link>
 
-          {/* Account Link */}
+          {/* Account Link with Auth indication */}
           <Link
             href="/account"
             aria-label="Müşteri Hesabı"
-            className="p-1.5 hover:opacity-70 transition-opacity duration-200 hidden sm:block"
+            className="p-1.5 hover:opacity-70 transition-opacity duration-200 hidden sm:flex items-center gap-1.5 font-label-mono text-xs uppercase"
           >
-            <User className="w-4 h-4" />
+            {isUserAdmin ? (
+              <Shield className="w-4 h-4 text-emerald-600" />
+            ) : (
+              <User className="w-4 h-4" />
+            )}
+            {isMounted && isAuthenticated && user && (
+              <span className="text-[11px] font-bold max-w-[90px] truncate hidden xl:inline">
+                {user.name.split(" ")[0]}
+              </span>
+            )}
           </Link>
 
           {/* Cart Trigger */}
@@ -124,7 +142,7 @@ export function Header() {
             {totalQuantity > 0 && (
               <span
                 key={totalQuantity}
-                className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface animate-cart-bounce"
+                className="absolute -top-1 -right-1 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center border border-surface animate-cart-bounce font-bold"
               >
                 {totalQuantity}
               </span>
