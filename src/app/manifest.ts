@@ -3,9 +3,9 @@ import { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "clost-storefront",
-    name: "CLOST — Brutalist Techwear Storefront",
+    name: "CLOST — Y2K & Gen-Z Streetwear Storefront",
     short_name: "CLOST",
-    description: "Kullanışlılık İçin Tasarlandı. Brutalist Techwear & Ağır Gramaj Giyim.",
+    description: "Kullanışlılık İçin Tasarlandı. Y2K, Skater & Gen-Z Sokak Modası Arşivi.",
     start_url: "/",
     display: "standalone",
     orientation: "portrait-primary",
@@ -33,7 +33,7 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     shortcuts: [
       {
-        name: "Lookbook Sonbahar '24",
+        name: "Lookbook Summer '24",
         short_name: "Lookbook",
         description: "Editoryal Çekimler ve Katalog",
         url: "/lookbook",

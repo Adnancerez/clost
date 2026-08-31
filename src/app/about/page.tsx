@@ -55,7 +55,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[600px]">
           <div className="lg:col-span-6 border-b lg:border-b-0 lg:border-r border-primary relative h-[450px] lg:h-auto overflow-hidden">
             <Image
-              src="/products/striped-rugby-baggy-denim.jpg"
+              src="/products/cyber-neon-rugby-polo-1.jpg"
               alt="CLOST Sokak Tasarım Arşivi"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
