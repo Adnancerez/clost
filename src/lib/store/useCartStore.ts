@@ -98,7 +98,7 @@ export const useCartStore = create<CartStore>()(
         if (existingIndex > -1) {
           const updatedItems = [...items];
           updatedItems[existingIndex].quantity += qtyToAdd;
-          set({ items: updatedItems, isOpen: true });
+          set({ items: updatedItems });
         } else {
           const newItem: CartItem = {
             id: input.variantId,
@@ -113,7 +113,7 @@ export const useCartStore = create<CartStore>()(
             image: input.image,
             sku: input.sku,
           };
-          set({ items: [...items, newItem], isOpen: true });
+          set({ items: [...items, newItem] });
         }
       },
 

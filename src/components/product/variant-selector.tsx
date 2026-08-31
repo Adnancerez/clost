@@ -8,7 +8,6 @@ import { useToastStore } from "@/lib/store/useToastStore";
 import { FitFinderModal } from "./fit-finder-modal";
 import { BackInStockModal } from "./back-in-stock-modal";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 export interface VariantSelectorProps {
   product: Product;
@@ -74,7 +73,6 @@ export function VariantSelector({ product }: VariantSelectorProps) {
       return;
     }
 
-    playAddCartSound();
     setIsAdding(true);
     addItem({
       productId: product.id,
@@ -132,10 +130,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 <button
                   key={color}
                   type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setSelectedColor(color);
-                  }}
+                  onClick={() => setSelectedColor(color)}
                   aria-label={color}
                   className={`w-10 h-10 border border-primary transition-transform cursor-pointer ${getColorClass(
                     color
@@ -154,10 +149,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
           <div className="flex items-center gap-4">
             <button
               type="button"
-              onClick={() => {
-                playClickSound();
-                setIsFitFinderOpen(true);
-              }}
+              onClick={() => setIsFitFinderOpen(true)}
               className="text-primary font-bold hover:opacity-70 flex items-center gap-1 cursor-pointer uppercase border-b border-primary pb-0.5"
             >
               <Sparkles className="w-3.5 h-3.5 text-primary" /> AKILLI BEDENİMİ BUL
@@ -194,10 +186,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
                 <button
                   key={size}
                   type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setSelectedSize(size);
-                  }}
+                  onClick={() => setSelectedSize(size)}
                   className={`h-12 flex items-center justify-center font-label-mono text-xs strike-through cursor-pointer transition-colors ${
                     isSelected
                       ? "bg-primary text-white"
@@ -214,10 +203,7 @@ export function VariantSelector({ product }: VariantSelectorProps) {
               <button
                 key={size}
                 type="button"
-                onClick={() => {
-                  playClickSound();
-                  setSelectedSize(size);
-                }}
+                onClick={() => setSelectedSize(size)}
                 className={`h-12 flex items-center justify-center font-label-mono text-xs transition-colors cursor-pointer ${
                   isSelected
                     ? "bg-primary text-white"

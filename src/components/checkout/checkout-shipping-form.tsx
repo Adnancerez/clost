@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Truck, Gift } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface CheckoutShippingFormProps {
   email: string;
@@ -189,7 +188,6 @@ export function CheckoutShippingForm({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-label-mono text-xs">
           <label
             onClick={() => {
-              playClickSound();
               setShippingMethod("standard");
             }}
             className={`border p-4 flex flex-col gap-2 cursor-pointer transition-colors ${
@@ -213,7 +211,6 @@ export function CheckoutShippingForm({
 
           <label
             onClick={() => {
-              playClickSound();
               setShippingMethod("express");
             }}
             className={`border p-4 flex flex-col gap-2 cursor-pointer transition-colors ${
@@ -242,7 +239,6 @@ export function CheckoutShippingForm({
             type="checkbox"
             checked={isGift}
             onChange={(e) => {
-              playClickSound();
               setIsGift(e.target.checked);
             }}
             className="w-4 h-4 accent-primary"

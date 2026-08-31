@@ -8,7 +8,6 @@ import { OrdersTab, OrderItem } from "@/components/account/orders-tab";
 import { AddressesTab, Address } from "@/components/account/addresses-tab";
 import { ProfileTab } from "@/components/account/profile-tab";
 import { SecurityTab } from "@/components/account/security-tab";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function AccountPage() {
   const [tab, setTab] = useState<"orders" | "addresses" | "profile" | "security">("orders");
@@ -99,7 +98,7 @@ export default function AccountPage() {
           <div className="flex gap-2">
             <Link
               href="/collections/all"
-              className="bg-primary text-on-primary px-4 py-2 font-label-mono text-xs uppercase hover:bg-surface-variant hover:text-primary border border-primary transition-colors"
+              className="bg-primary text-on-primary px-4 py-2 font-label-mono text-xs uppercase hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer"
             >
               Alışverişe Başla
             </Link>
@@ -114,7 +113,6 @@ export default function AccountPage() {
               <button
                 type="button"
                 onClick={() => {
-                  playClickSound();
                   setTab("orders");
                 }}
                 className={`p-4 text-left flex items-center gap-3 transition-colors cursor-pointer ${
@@ -130,7 +128,6 @@ export default function AccountPage() {
               <button
                 type="button"
                 onClick={() => {
-                  playClickSound();
                   setTab("addresses");
                 }}
                 className={`p-4 text-left flex items-center gap-3 transition-colors cursor-pointer ${
@@ -146,7 +143,6 @@ export default function AccountPage() {
               <button
                 type="button"
                 onClick={() => {
-                  playClickSound();
                   setTab("profile");
                 }}
                 className={`p-4 text-left flex items-center gap-3 transition-colors cursor-pointer ${
@@ -162,7 +158,6 @@ export default function AccountPage() {
               <button
                 type="button"
                 onClick={() => {
-                  playClickSound();
                   setTab("security");
                 }}
                 className={`p-4 text-left flex items-center gap-3 transition-colors cursor-pointer ${

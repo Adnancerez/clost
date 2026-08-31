@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { X, Bell, CheckCircle2 } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface BackInStockModalProps {
   isOpen: boolean;
@@ -27,7 +26,6 @@ export function BackInStockModal({
     e.preventDefault();
     if (!email) return;
 
-    playClickSound();
     setIsSubmitted(true);
   };
 

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Gift, ShoppingBag, ShieldCheck } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
-import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 export default function GiftCardPage() {
   const { addItem, openCart } = useCartStore();
@@ -30,7 +29,6 @@ export default function GiftCardPage() {
       return;
     }
 
-    playAddCartSound();
     setIsAdding(true);
 
     const giftCardId = `gift-card-${currentAmount}-${Date.now()}`;
@@ -52,7 +50,6 @@ export default function GiftCardPage() {
 
     setTimeout(() => {
       setIsAdding(false);
-      openCart();
     }, 400);
   };
 
@@ -149,7 +146,6 @@ export default function GiftCardPage() {
                     key={val}
                     type="button"
                     onClick={() => {
-                      playClickSound();
                       setAmount(val);
                       setCustomAmount("");
                     }}

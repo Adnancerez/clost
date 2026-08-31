@@ -6,7 +6,6 @@ import { Truck, Printer, RefreshCw } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useToastStore } from "@/lib/store/useToastStore";
 import { MOCK_PRODUCTS } from "@/lib/shopify/mock-data";
-import { playAddCartSound, playClickSound } from "@/lib/audio/sound-effects";
 
 export interface OrderItem {
   id: string;
@@ -28,7 +27,6 @@ export function OrdersTab({ orders, onOpenInvoice }: OrdersTabProps) {
   const { addToast } = useToastStore();
 
   const handleReorder = (order: OrderItem) => {
-    playAddCartSound();
     const product = MOCK_PRODUCTS[0];
     if (product && product.variants[0]) {
       const v = product.variants[0];
@@ -49,8 +47,6 @@ export function OrdersTab({ orders, onOpenInvoice }: OrdersTabProps) {
         message: `${order.id} siparişindeki parçalar sepete aktarıldı.`,
         type: "success",
       });
-
-      openCart();
     }
   };
 
@@ -94,7 +90,6 @@ export function OrdersTab({ orders, onOpenInvoice }: OrdersTabProps) {
               <div className="flex flex-wrap gap-2">
                 <Link
                   href={`/kargo-takip?trackCode=${order.tracking}`}
-                  onClick={playClickSound}
                   className="bg-surface hover:bg-surface-variant border border-primary px-3 py-1.5 font-label-mono text-[11px] uppercase flex items-center gap-1 text-primary transition-colors"
                 >
                   <Truck className="w-3.5 h-3.5" /> Kargo Takip
@@ -103,7 +98,6 @@ export function OrdersTab({ orders, onOpenInvoice }: OrdersTabProps) {
                 <button
                   type="button"
                   onClick={() => {
-                    playClickSound();
                     onOpenInvoice(order);
                   }}
                   className="bg-surface hover:bg-surface-variant border border-primary px-3 py-1.5 font-label-mono text-[11px] uppercase flex items-center gap-1 text-primary transition-colors cursor-pointer"

@@ -12,7 +12,6 @@ export interface FooterSection {
 export const MAIN_NAV_LINKS: NavLink[] = [
   { label: "Tüm Ürünler", href: "/collections/all" },
   { label: "Koleksiyonlar", href: "/collections" },
-  { label: "Kombin Stüdyosu", href: "/kombin-olustur" },
   { label: "Lookbook", href: "/lookbook" },
   { label: "Dergi", href: "/dergi" },
 ];
@@ -20,10 +19,8 @@ export const MAIN_NAV_LINKS: NavLink[] = [
 export const MOBILE_NAV_LINKS: NavLink[] = [
   { label: "Tüm Ürünler", href: "/collections/all" },
   { label: "Yeni Gelenler", href: "/collections/new" },
-  { label: "Kombin Stüdyosu", href: "/kombin-olustur" },
   { label: "Lookbook Sonbahar '24", href: "/lookbook" },
   { label: "Dergi & Makaleler", href: "/dergi" },
-  { label: "Materyal Laboratuvarı", href: "/materyal-lab" },
   { label: "Beden & Silüet Rehberi", href: "/beden-rehberi" },
   { label: "İade & Değişim Portalı", href: "/iade-talebi" },
   { label: "VIP Arşiv Kulübü", href: "/vip-kulup" },
@@ -37,7 +34,6 @@ export const MOBILE_NAV_LINKS: NavLink[] = [
   { label: "Kargo Takibi", href: "/kargo-takip" },
   { label: "Sıkça Sorulan Sorular", href: "/sss" },
   { label: "Showroom & İletişim", href: "/iletisim" },
-  { label: "Basın Kiti & Medya", href: "/basin-kiti" },
   { label: "Manifesto & İlkeler", href: "/about" },
   { label: "Müşteri Portalı", href: "/account" },
 ];
@@ -52,7 +48,6 @@ export const FOOTER_SECTIONS: FooterSection[] = [
       { label: "Alt Giyim", href: "/collections/bottoms" },
       { label: "Yeni Gelenler", href: "/collections/new" },
       { label: "Lookbook '24", href: "/lookbook" },
-      { label: "Kombin Stüdyosu", href: "/kombin-olustur" },
     ],
   },
   {
@@ -71,9 +66,7 @@ export const FOOTER_SECTIONS: FooterSection[] = [
     title: "Kurumsal & İrtibat",
     links: [
       { label: "Manifesto", href: "/about" },
-      { label: "Dergi & Makaleler", href: "/dergi" },
-      { label: "Materyal Lab", href: "/materyal-lab" },
-      { label: "Basın Kiti", href: "/basin-kiti" },
+      { label: "Dergi & Kumaş Lab", href: "/dergi" },
       { label: "Showroom & İletişim", href: "/iletisim" },
       { label: "Gizlilik & Şartlar", href: "/about" },
     ],

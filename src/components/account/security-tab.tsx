@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { KeyRound, ShieldCheck } from "lucide-react";
 import { useToastStore } from "@/lib/store/useToastStore";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export function SecurityTab() {
   const { addToast } = useToastStore();
@@ -14,7 +13,6 @@ export function SecurityTab() {
 
   const handleUpdatePassword = (e: React.FormEvent) => {
     e.preventDefault();
-    playClickSound();
 
     if (newPassword !== confirmPassword) {
       addToast({
@@ -56,7 +54,6 @@ export function SecurityTab() {
         <button
           type="button"
           onClick={() => {
-            playClickSound();
             setTwoFactorEnabled(!twoFactorEnabled);
             addToast({
               title: twoFactorEnabled ? "2FA Devre Dışı Bırakıldı" : "2FA Etkinleştirildi",

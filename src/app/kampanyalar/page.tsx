@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Tag, Copy, Check, Sparkles, ArrowRight, ShieldCheck } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 interface Coupon {
   code: string;
@@ -47,18 +46,17 @@ export default function PromotionsPage() {
       badge: "VIP SEPET",
     },
     {
-      code: "KOMBIN10",
-      title: "Shop The Look Kombin İndirimi",
+      code: "SET10",
+      title: "Lookbook Koleksiyon Seti İndirimi",
       discount: "%10 EK İNDİRİM",
       minSpend: "2 parça ve üzeri",
-      description: "Lookbook üzerinden seçilen kombin setlerinde sepete anında otomatik %10 indirim uygulanır.",
+      description: "Lookbook ve katalog üzerinden seçilen 2 ve üzeri parça alımlarında sepete anında otomatik %10 indirim uygulanır.",
       expiry: "Aktif",
-      badge: "KOMBİN SETİ",
+      badge: "KOLEKSİYON SETİ",
     },
   ];
 
   const handleCopy = (code: string) => {
-    playClickSound();
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
     setTimeout(() => setCopiedCode(null), 2000);
@@ -100,7 +98,7 @@ export default function PromotionsPage() {
 
           <Link
             href="/collections/all"
-            className="bg-primary text-on-primary font-label-mono text-xs px-6 py-2.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center gap-1.5"
+            className="bg-primary text-on-primary font-label-mono text-xs px-6 py-2.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             Alışverişe Başla <ArrowRight className="w-3.5 h-3.5" />
           </Link>

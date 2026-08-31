@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { Sheet } from "@/components/ui/sheet";
 import { MOBILE_NAV_LINKS } from "@/lib/constants/navigation";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface MobileNavProps {
   isOpen: boolean;
@@ -12,7 +11,6 @@ export interface MobileNavProps {
 }
 
 export function MobileNav({ isOpen, onClose }: MobileNavProps) {
-
   return (
     <Sheet
       isOpen={isOpen}
@@ -26,10 +24,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           <Link
             key={link.href}
             href={link.href}
-            onClick={() => {
-              playClickSound();
-              onClose();
-            }}
+            onClick={onClose}
             className="text-primary hover:opacity-60 border-b border-outline-variant pb-2 transition-opacity"
           >
             {link.label}

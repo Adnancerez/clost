@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { RotateCcw, PackageCheck, Copy, Check, ShieldCheck } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function ReturnsPortalPage() {
   const [orderNumber, setOrderNumber] = useState("ORD-94218-TR");
@@ -23,19 +22,16 @@ export default function ReturnsPortalPage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (orderNumber && email) {
-      playClickSound();
       setIsSearched(true);
     }
   };
 
   const handleSubmitReturn = (e: React.FormEvent) => {
     e.preventDefault();
-    playClickSound();
     setIsCompleted(true);
   };
 
   const handleCopyCode = () => {
-    playClickSound();
     navigator.clipboard.writeText(returnCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

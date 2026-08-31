@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#000000"/>
+  <rect x="24" y="24" width="144" height="144" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M48 48 H144 V68 H72 V124 H144 V144 H48 Z" fill="#ffffff"/>
+  <text x="96" y="174" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" letter-spacing="4" text-anchor="middle">CLOST</text>
+</svg>

@@ -7,7 +7,6 @@ import { Search, X, ArrowRight, History, Plus } from "lucide-react";
 import { MOCK_PRODUCTS } from "@/lib/shopify/mock-data";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useToastStore } from "@/lib/store/useToastStore";
-import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 export interface SearchModalProps {
   isOpen: boolean;
@@ -97,7 +96,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const handleQuickAdd = (product: typeof MOCK_PRODUCTS[0], e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    playAddCartSound();
 
     const firstVariant = product.variants[0];
     const size = firstVariant?.selectedOptions.find((o) => o.name.toLowerCase() === "beden")?.value || "M";
@@ -194,7 +192,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <button
                       key={term}
                       onClick={() => {
-                        playClickSound();
                         setQuery(term);
                       }}
                       className="font-label-mono text-xs uppercase px-3 py-1.5 border border-outline-variant bg-surface hover:border-primary hover:text-primary transition-colors cursor-pointer"
@@ -216,7 +213,6 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <button
                     key={tag}
                     onClick={() => {
-                      playClickSound();
                       setQuery(tag);
                       saveRecentSearch(tag);
                     }}

@@ -5,7 +5,8 @@ import {
   Cart,
   FilterOptions,
 } from "./types";
-import { MOCK_PRODUCTS, MOCK_COLLECTIONS } from "./mock-data";
+import { MOCK_COLLECTIONS } from "./mock-data";
+import { getEffectiveLocalProducts } from "./catalog-manager";
 import {
   getProductsQuery,
   getProductByHandleQuery,
@@ -102,8 +103,8 @@ export async function getProducts(options?: FilterOptions): Promise<Product[]> {
     }
   }
 
-  // Fallback to local mock catalog
-  let products = [...MOCK_PRODUCTS];
+  // Fallback to local catalog (respects clean mode and custom added products)
+  let products = [...getEffectiveLocalProducts()];
 
   if (options?.category && options.category.length > 0) {
     products = products.filter(
@@ -128,18 +129,22 @@ export async function getProducts(options?: FilterOptions): Promise<Product[]> {
   }
 
   if (options?.sort) {
-    if (options.sort === "price-asc") {
+    if (options.sort === "price-low") {
       products.sort(
         (a, b) =>
           parseFloat(a.priceRange.minVariantPrice.amount) -
           parseFloat(b.priceRange.minVariantPrice.amount)
       );
-    } else if (options.sort === "price-desc") {
+    } else if (options.sort === "price-high") {
       products.sort(
         (a, b) =>
           parseFloat(b.priceRange.minVariantPrice.amount) -
           parseFloat(a.priceRange.minVariantPrice.amount)
       );
+    } else if (options.sort === "name-asc") {
+      products.sort((a, b) => a.title.localeCompare(b.title, "tr"));
+    } else if (options.sort === "name-desc") {
+      products.sort((a, b) => b.title.localeCompare(a.title, "tr"));
     }
   }
 
@@ -160,7 +165,8 @@ export async function getProduct(handle: string): Promise<Product | null> {
     }
   }
 
-  const found = MOCK_PRODUCTS.find((p) => p.handle === handle);
+  const localProducts = getEffectiveLocalProducts();
+  const found = localProducts.find((p) => p.handle === handle);
   return found || null;
 }
 

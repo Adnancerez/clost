@@ -2,7 +2,6 @@
 
 import React from "react";
 import { X, Printer, FileText } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface InvoiceItem {
   name: string;
@@ -42,7 +41,6 @@ export function InvoiceModal({
   const kdvAmount = totalAmount - matrah;
 
   const handlePrint = () => {
-    playClickSound();
     if (typeof window !== "undefined") {
       window.print();
     }

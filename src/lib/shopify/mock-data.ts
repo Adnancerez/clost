@@ -228,7 +228,7 @@ export const MOCK_PRODUCTS: Product[] = [
       },
       {
         url: "https://lh3.googleusercontent.com/aida-public/AB6AXuCWE313CKKbVMGOlCdkOyRCH75aYprCxXv7nopqIAChruldZcdSQmngzKs6XC9RYsOPMxH3XxAGji2t-CApdVa_UOc8gKBtYtccQdvQ3GwvWU-7oceRDuO-jubQhJHJ8qrZYHi72SHKuCjPA69qCCI81zIpd4rvZov-S81qM6Dzf_wJln5h3-H4HTcfxqWV8yyrdeosOYJDCJjGcMDTKGBKWKvPogVzju3zYy-8BtNJqOlYX9t7-gm",
-        altText: "Asimetrik Ham Denim - Tam Boy Kombin",
+        altText: "Asimetrik Ham Denim - Tam Boy Görünüm",
       },
     ],
     options: [

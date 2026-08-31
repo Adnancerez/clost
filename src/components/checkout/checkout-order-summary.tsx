@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Tag, ShieldCheck, ArrowRight } from "lucide-react";
 import { CartItem } from "@/lib/store/useCartStore";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface CheckoutOrderSummaryProps {
   items: CartItem[];
@@ -91,7 +90,6 @@ export function CheckoutOrderSummary({
             </div>
             <button
               type="submit"
-              onClick={playClickSound}
               className="bg-primary text-on-primary px-4 font-label-mono text-xs uppercase hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer"
             >
               Uygula

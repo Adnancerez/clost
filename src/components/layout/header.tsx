@@ -3,10 +3,9 @@
 import React, { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, User, ShoppingBag, Heart, Volume2, VolumeX } from "lucide-react";
+import { Menu, Search, User, ShoppingBag, Heart } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useWishlistStore } from "@/lib/store/useWishlistStore";
-import { isAudioMuted, setAudioMuted, playClickSound, playDrawerSound } from "@/lib/audio/sound-effects";
 import { MobileNav } from "./mobile-nav";
 import { SearchModal } from "./search-modal";
 import { MAIN_NAV_LINKS } from "@/lib/constants/navigation";
@@ -22,24 +21,11 @@ export function Header() {
   );
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [mutedState, setMutedState] = useState<boolean | null>(null);
 
   const { openCart, getTotalQuantity } = useCartStore();
   const { getTotalCount: getWishlistCount } = useWishlistStore();
 
-  const isMuted = mutedState !== null ? mutedState : isMounted ? isAudioMuted() : false;
-
-  const toggleSound = () => {
-    const nextMuted = !isMuted;
-    setMutedState(nextMuted);
-    setAudioMuted(nextMuted);
-    if (!nextMuted) {
-      setTimeout(() => playClickSound(), 50);
-    }
-  };
-
   const handleOpenCart = () => {
-    playDrawerSound();
     openCart();
   };
 
@@ -63,7 +49,6 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={playClickSound}
                 className={`transition-opacity duration-200 uppercase tracking-wider ${
                   isActive
                     ? "text-primary border-b border-primary pb-0.5"
@@ -79,10 +64,7 @@ export function Header() {
         {/* Mobile / Tablet Hamburger Toggle */}
         <div className="lg:hidden flex items-center">
           <button
-            onClick={() => {
-              playClickSound();
-              setIsMobileNavOpen(true);
-            }}
+            onClick={() => setIsMobileNavOpen(true)}
             aria-label="Menüyü aç"
             className="text-primary p-2 hover:opacity-70 transition-opacity cursor-pointer"
           >
@@ -93,7 +75,6 @@ export function Header() {
         {/* Brand Logo */}
         <Link
           href="/"
-          onClick={playClickSound}
           className="font-headline-sm font-bold tracking-tighter text-primary uppercase absolute left-1/2 -translate-x-1/2 text-base md:text-lg"
         >
           CLOST
@@ -101,22 +82,9 @@ export function Header() {
 
         {/* Action Icons */}
         <div className="flex gap-2 sm:gap-4 text-primary items-center">
-          {/* Sound Toggle */}
-          <button
-            onClick={toggleSound}
-            aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
-            className="p-1.5 hover:opacity-70 transition-opacity duration-200 cursor-pointer hidden md:block"
-            title={isMuted ? "Sesi Aç" : "Sesi Kapat"}
-          >
-            {isMuted ? <VolumeX className="w-4 h-4 text-outline" /> : <Volume2 className="w-4 h-4 text-primary" />}
-          </button>
-
           {/* Search Trigger */}
           <button
-            onClick={() => {
-              playClickSound();
-              setIsSearchOpen(true);
-            }}
+            onClick={() => setIsSearchOpen(true)}
             aria-label="Arama yap"
             className="p-1.5 hover:opacity-70 transition-opacity duration-200 cursor-pointer"
           >
@@ -126,7 +94,6 @@ export function Header() {
           {/* Wishlist Link */}
           <Link
             href="/wishlist"
-            onClick={playClickSound}
             aria-label={`Favorilerim (${wishlistCount} ürün)`}
             className="p-1.5 hover:opacity-70 transition-opacity duration-200 relative flex items-center"
           >
@@ -141,7 +108,6 @@ export function Header() {
           {/* Account Link */}
           <Link
             href="/account"
-            onClick={playClickSound}
             aria-label="Müşteri Hesabı"
             className="p-1.5 hover:opacity-70 transition-opacity duration-200 hidden sm:block"
           >

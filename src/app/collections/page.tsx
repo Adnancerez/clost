@@ -130,29 +130,29 @@ export default async function CollectionsDirectoryPage() {
         </div>
       </section>
 
-      {/* Direct Outfit Studio CTA Banner */}
+      {/* Direct Lookbook CTA Banner */}
       <section className="p-6 md:p-12 border-t border-primary bg-surface-container-low">
         <div className="max-w-5xl mx-auto border border-primary bg-surface p-8 md:p-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="font-label-mono text-xs uppercase text-on-surface-variant">
-                KOMBİN STÜDYOSU
+                EDİTORYAL LOOKBOOK
               </span>
             </div>
             <h3 className="font-headline-sm uppercase text-primary text-xl md:text-2xl">
-              Tüm Parçaları Bir Vücutta Canlı Dene &amp; Kombinle
+              Sonbahar &apos;24 Editoryal Çekimleri Keşfedin
             </h3>
             <p className="font-body-md text-xs text-on-surface-variant mt-2 max-w-lg leading-relaxed">
-              Dış giyim, üst ve alt parçaları interaktif manken üzerinde giydirerek kendi techwear stilini oluşturun ve %10 anında indirim kazanın.
+              Brutalist mimari ve monokrom renk paletinin buluştuğu yüksek çözünürlüklü editoryal çekimlerimizi ve parçaların model üzerindeki duruşunu inceleyin.
             </p>
           </div>
 
           <Link
-            href="/kombin-olustur"
+            href="/lookbook"
             className="bg-primary text-on-primary font-label-mono text-xs px-8 py-4 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors whitespace-nowrap"
           >
-            Kombin Stüdyosuna Git →
+            Lookbook&apos;a Git →
           </Link>
         </div>
       </section>

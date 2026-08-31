@@ -40,7 +40,7 @@ export function ShopTheLookModal({
     0
   );
 
-  const bundleDiscount = (rawTotal * 10) / 100; // %10 kombin indirimi
+  const bundleDiscount = (rawTotal * 10) / 100; // %10 set indirimi
   const finalTotal = rawTotal - bundleDiscount;
 
   const handleSizeChange = (productId: string, size: string) => {
@@ -81,7 +81,6 @@ export function ShopTheLookModal({
     setTimeout(() => {
       setIsAdding(false);
       onClose();
-      openCart();
     }, 400);
   };
 
@@ -96,7 +95,7 @@ export function ShopTheLookModal({
         <div className="flex justify-between items-start border-b border-primary pb-4">
           <div>
             <span className="font-label-mono text-xs uppercase text-on-surface-variant block">
-              EDİTORYAL KOMBİN SETİ
+              EDİTORYAL STİL SETİ
             </span>
             <h2 className="font-headline-sm uppercase text-primary mt-0.5">
               {lookTitle}
@@ -169,16 +168,16 @@ export function ShopTheLookModal({
         {/* Bundle Summary & Action */}
         <div className="border-t border-primary pt-6 flex flex-col gap-4 bg-surface-container-low p-4">
           <div className="flex justify-between items-center font-label-mono text-xs">
-            <span className="text-on-surface-variant">Kombin Parça Sayısı:</span>
+            <span className="text-on-surface-variant">Set Parça Sayısı:</span>
             <span className="font-bold text-primary">{products.length} Parça</span>
           </div>
           <div className="flex justify-between items-center font-label-mono text-xs text-primary">
-            <span className="font-bold">%10 Kombin İndirimi:</span>
+            <span className="font-bold">%10 Set İndirimi:</span>
             <span>-{bundleDiscount.toLocaleString("tr-TR")} ₺</span>
           </div>
           <div className="flex justify-between items-baseline border-t border-outline-variant pt-2">
             <span className="font-body-lg uppercase font-bold text-primary text-sm">
-              Kombin Toplamı:
+              Set Toplamı:
             </span>
             <span className="font-price-lg text-primary text-xl font-bold">
               {finalTotal.toLocaleString("tr-TR")} ₺
@@ -192,10 +191,10 @@ export function ShopTheLookModal({
             className="w-full bg-primary text-on-primary h-14 flex items-center justify-center font-label-mono uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer text-xs gap-2"
           >
             {isAdding ? (
-              "Kombin Sepete Ekleniyor..."
+              "Set Sepete Ekleniyor..."
             ) : (
               <>
-                <ShoppingBag className="w-4 h-4" /> Kombini Sepete Ekle ({products.length} Parça)
+                <ShoppingBag className="w-4 h-4" /> Tüm Seti Sepete Ekle ({products.length} Parça)
               </>
             )}
           </button>

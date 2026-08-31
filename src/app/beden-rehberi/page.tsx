@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight, User } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function SizeGuidePage() {
   const [height, setHeight] = useState<number>(180);
@@ -110,7 +109,6 @@ export default function SizeGuidePage() {
                     key={item.id}
                     type="button"
                     onClick={() => {
-                      playClickSound();
                       setFitPreference(item.id as "regular" | "boxy" | "oversized");
                     }}
                     className={`py-2.5 border uppercase transition-colors cursor-pointer text-xs ${
@@ -165,7 +163,7 @@ export default function SizeGuidePage() {
 
             <Link
               href="/collections/all"
-              className="bg-primary text-on-primary h-12 font-label-mono text-xs uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center justify-center gap-2"
+              className="bg-primary text-on-primary h-12 font-label-mono text-xs uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               Kataloğu Bu Bedenle Keşfet <ArrowRight className="w-4 h-4" />
             </Link>

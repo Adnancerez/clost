@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Trash2, ShoppingBag, ArrowLeftRight, Check, X } from "lucide-react";
 import { useCompareStore } from "@/lib/store/useCompareStore";
 import { useCartStore } from "@/lib/store/useCartStore";
-import { playAddCartSound } from "@/lib/audio/sound-effects";
 
 const emptySubscribe = () => () => {};
 
@@ -22,7 +21,6 @@ export default function ComparePage() {
   if (!isMounted) return null;
 
   const handleAddToCart = (product: (typeof items)[0]) => {
-    playAddCartSound();
     const defaultVariant = product.variants[0];
     addItem({
       productId: product.id,
@@ -33,9 +31,7 @@ export default function ComparePage() {
       selectedOptions: defaultVariant ? defaultVariant.selectedOptions : [],
       price: parseFloat(product.priceRange.minVariantPrice.amount),
       image: product.featuredImage?.url || product.images[0]?.url,
-      sku: defaultVariant?.sku || product.sku,
     });
-    openCart();
   };
 
   // Helper specs based on productType

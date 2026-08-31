@@ -5,10 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, ArrowLeftRight } from "lucide-react";
 import { Product } from "@/lib/shopify/types";
-import { useCartStore } from "@/lib/store/useCartStore";
 import { useWishlistStore } from "@/lib/store/useWishlistStore";
 import { useCompareStore } from "@/lib/store/useCompareStore";
-import { playClickSound, playAddCartSound } from "@/lib/audio/sound-effects";
 
 const emptySubscribe = () => () => {};
 
@@ -23,7 +21,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     () => true,
     () => false
   );
-  const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
   const { toggleCompare, isInCompare } = useCompareStore();
 
@@ -36,57 +33,15 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
     product.images[0]?.url ||
     "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ";
 
-  // Extract size options for quick-add
-  const sizeOption = product.options.find(
-    (opt) => opt.name.toLowerCase() === "beden" || opt.name.toLowerCase() === "size"
-  );
-  const sizes = sizeOption?.values || ["S", "M", "L", "XL"];
-
-  const handleQuickAdd = (e: React.MouseEvent, size: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    playAddCartSound();
-
-    const variant =
-      product.variants.find((v) =>
-        v.selectedOptions.some(
-          (o) =>
-            (o.name.toLowerCase() === "beden" || o.name.toLowerCase() === "size") &&
-            o.value === size
-        )
-      ) || product.variants[0];
-
-    if (variant) {
-      addItem({
-        productId: product.id,
-        variantId: variant.id,
-        title: product.title,
-        handle: product.handle,
-        variantTitle: `${size} / ${
-          variant.selectedOptions.find(
-            (o) => o.name.toLowerCase() === "renk" || o.name.toLowerCase() === "color"
-          )?.value || "Siyah"
-        }`,
-        selectedOptions: variant.selectedOptions,
-        price: parseFloat(variant.price.amount),
-        image: imageUrl,
-        sku: variant.sku || product.sku,
-      });
-    }
-  };
-
   const handleWishlistClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    playClickSound();
     toggleWishlist(product);
   };
 
   const handleCompareClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    playClickSound();
     toggleCompare(product);
   };
 
@@ -160,46 +115,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           >
             <ArrowLeftRight className="w-3.5 h-3.5" />
           </button>
-        </div>
-
-        {/* Hover Size Grid Overlay (Quick Add) */}
-        <div className="absolute inset-0 bg-surface/90 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <span className="font-label-mono uppercase mb-4 text-xs tracking-wider text-primary font-bold">
-            Hızlı Ekle
-          </span>
-          <div className="flex flex-wrap gap-2 justify-center max-w-[200px] p-2">
-            {sizes.map((size) => {
-              const variant = product.variants.find((v) =>
-                v.selectedOptions.some(
-                  (o) =>
-                    (o.name.toLowerCase() === "beden" ||
-                      o.name.toLowerCase() === "size") &&
-                    o.value === size
-                )
-              );
-              const isAvailable = variant ? variant.availableForSale : true;
-
-              return isAvailable ? (
-                <button
-                  key={size}
-                  onClick={(e) => handleQuickAdd(e, size)}
-                  aria-label={`${size} beden hızlı ekle`}
-                  className="w-10 h-10 border border-primary flex items-center justify-center font-label-mono text-xs hover:bg-primary hover:text-on-primary transition-colors cursor-pointer bg-surface text-primary"
-                >
-                  {size}
-                </button>
-              ) : (
-                <button
-                  key={size}
-                  disabled
-                  aria-label={`${size} beden tükendi`}
-                  className="w-10 h-10 border border-outline-variant text-outline-variant flex items-center justify-center font-label-mono text-xs strike-through cursor-not-allowed bg-surface"
-                >
-                  {size}
-                </button>
-              );
-            })}
-          </div>
         </div>
       </Link>
 

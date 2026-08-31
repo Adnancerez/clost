@@ -1,11 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Image as ImageType } from "@/lib/shopify/types";
-import { RotateCw, Grid } from "lucide-react";
-import { ProductSpinner360 } from "./product-spinner-360";
 import { ImageMagnifier } from "./image-magnifier";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface ProductGalleryProps {
   images: ImageType[];
@@ -13,8 +10,6 @@ export interface ProductGalleryProps {
 }
 
 export function ProductGallery({ images, title }: ProductGalleryProps) {
-  const [viewMode, setViewMode] = useState<"gallery" | "360">("gallery");
-
   const displayImages =
     images && images.length > 0
       ? images
@@ -27,64 +22,21 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
 
   return (
     <div className="w-full md:w-[60%] lg:w-[65%] border-b md:border-b-0 md:border-r border-primary flex flex-col no-scrollbar md:h-[calc(100vh-64px)] md:overflow-y-auto bg-surface-variant relative">
-      {/* View Mode Switcher Header */}
-      <div className="sticky top-0 z-20 flex justify-between items-center p-3 border-b border-primary bg-surface font-label-mono text-xs uppercase">
-        <span className="text-on-surface-variant">{title}</span>
-        <div className="flex border border-primary">
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setViewMode("gallery");
-            }}
-            className={`px-3 py-1 flex items-center gap-1.5 transition-colors cursor-pointer ${
-              viewMode === "gallery"
-                ? "bg-primary text-on-primary"
-                : "bg-surface text-primary hover:bg-surface-variant"
-            }`}
+      {/* Gallery Container (Scrollable on desktop, Snap slider on mobile) */}
+      <div className="flex flex-row overflow-x-auto snap-x snap-mandatory md:flex-col md:overflow-visible no-scrollbar">
+        {displayImages.map((img, index) => (
+          <div
+            key={index}
+            className="min-w-full md:min-w-0 snap-start border-b border-primary aspect-[4/5] relative bg-surface-variant"
           >
-            <Grid className="w-3.5 h-3.5" /> Galeri ({displayImages.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setViewMode("360");
-            }}
-            className={`px-3 py-1 flex items-center gap-1.5 transition-colors cursor-pointer border-l border-primary ${
-              viewMode === "360"
-                ? "bg-primary text-on-primary"
-                : "bg-surface text-primary hover:bg-surface-variant"
-            }`}
-          >
-            <RotateCw className="w-3.5 h-3.5" /> 360° İnceleme
-          </button>
-        </div>
-      </div>
-
-      {viewMode === "360" ? (
-        <div className="p-4 md:p-8 flex items-center justify-center flex-1">
-          <div className="w-full max-w-lg">
-            <ProductSpinner360 images={displayImages} productTitle={title} />
+            <ImageMagnifier
+              src={img.url}
+              alt={img.altText || `${title} - Fotoğraf ${index + 1}`}
+              priority={index === 0}
+            />
           </div>
-        </div>
-      ) : (
-        /* Gallery Container (Scrollable on desktop, Snap slider on mobile) */
-        <div className="flex flex-row overflow-x-auto snap-x snap-mandatory md:flex-col md:overflow-visible no-scrollbar">
-          {displayImages.map((img, index) => (
-            <div
-              key={index}
-              className="min-w-full md:min-w-0 snap-start border-b border-primary aspect-[4/5] relative bg-surface-variant"
-            >
-              <ImageMagnifier
-                src={img.url}
-                alt={img.altText || `${title} - Fotoğraf ${index + 1}`}
-                priority={index === 0}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 }

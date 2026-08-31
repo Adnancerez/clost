@@ -106,5 +106,6 @@ export interface FilterOptions {
   size?: string[];
   color?: string[];
   priceRange?: string;
-  sort?: "newest" | "price-asc" | "price-desc";
+  inStockOnly?: boolean;
+  sort?: "newest" | "price-low" | "price-high" | "name-asc" | "name-desc";
 }

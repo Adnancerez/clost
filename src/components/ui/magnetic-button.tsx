@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface MagneticButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,7 +39,6 @@ export function MagneticButton({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    playClickSound();
     if (onClick) onClick(e);
   };
 

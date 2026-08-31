@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { User, Mail, Phone, Award } from "lucide-react";
 import { useToastStore } from "@/lib/store/useToastStore";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface ProfileTabProps {
   name: string;
@@ -27,7 +26,6 @@ export function ProfileTab({
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();
-    playClickSound();
     setProfileSaved(true);
     addToast({
       title: "Profil Güncellendi",

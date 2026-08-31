@@ -9,13 +9,22 @@ export interface UnlockedCoupon {
   redeemedAt: string;
 }
 
+export interface TierProgress {
+  current: number;
+  max: number;
+  percentage: number;
+  nextTier?: string;
+  pointsNeeded?: number;
+}
+
 interface LoyaltyStore {
   points: number;
   tier: "Operatif" | "Kıdemli" | "Mimar";
   unlockedCoupons: UnlockedCoupon[];
   redeemReward: (cost: number, codePrefix: string, title: string, discount: string) => boolean;
   addPoints: (amount: number) => void;
-  getTierProgress: () => { current: number; max: number; percentage: number };
+  resetLoyalty: () => void;
+  getTierProgress: () => TierProgress;
 }
 
 export const useLoyaltyStore = create<LoyaltyStore>()(
@@ -32,6 +41,10 @@ export const useLoyaltyStore = create<LoyaltyStore>()(
           redeemedAt: "20 Ağustos 2026",
         },
       ],
+
+      resetLoyalty: () => {
+        set({ points: 0, tier: "Operatif", unlockedCoupons: [] });
+      },
 
       redeemReward: (cost, codePrefix, title, discount) => {
         const { points, unlockedCoupons } = get();
@@ -75,9 +88,21 @@ export const useLoyaltyStore = create<LoyaltyStore>()(
           return { current: points, max: 5000, percentage: 100 };
         }
         if (points >= 1500) {
-          return { current: points - 1500, max: 2500, percentage: ((points - 1500) / 2500) * 100 };
+          return {
+            current: points - 1500,
+            max: 2500,
+            percentage: Math.min(100, Math.round(((points - 1500) / 2500) * 100)),
+            nextTier: "Mimar",
+            pointsNeeded: 4000 - points,
+          };
         }
-        return { current: points, max: 1500, percentage: (points / 1500) * 100 };
+        return {
+          current: points,
+          max: 1500,
+          percentage: Math.min(100, Math.round((points / 1500) * 100)),
+          nextTier: "Kıdemli",
+          pointsNeeded: 1500 - points,
+        };
       },
     }),
     {

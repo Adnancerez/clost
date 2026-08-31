@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Product, Collection, FilterOptions } from "@/lib/shopify/types";
 import { ProductCard } from "./product-card";
 import { FilterSidebar } from "./filter-sidebar";
+import { X, ArrowUpDown } from "lucide-react";
 
 export interface CollectionViewProps {
   collection: Collection;
@@ -16,7 +17,27 @@ export function CollectionView({
 }: CollectionViewProps) {
   const [filters, setFilters] = useState<FilterOptions>({});
   const [sortBy, setSortBy] = useState<string>("newest");
-  const [visibleCount, setVisibleCount] = useState<number>(6);
+  const [visibleCount, setVisibleCount] = useState<number>(9);
+
+  // Match color families
+  const matchesColorFamily = (optionValue: string, requestedColor: string): boolean => {
+    const val = optionValue.toLowerCase();
+    const req = requestedColor.toLowerCase();
+
+    if (req === "siyah") {
+      return val.includes("siyah") || val.includes("black");
+    }
+    if (req === "gri") {
+      return val.includes("gri") || val.includes("gray") || val.includes("grey") || val.includes("kömür") || val.includes("yıkanmış");
+    }
+    if (req === "beyaz") {
+      return val.includes("beyaz") || val.includes("white") || val.includes("kemik");
+    }
+    if (req === "yeşil") {
+      return val.includes("yeşil") || val.includes("haki") || val.includes("olive") || val.includes("zeytin");
+    }
+    return val.includes(req);
+  };
 
   const filteredProducts = useMemo(() => {
     let result = [...initialProducts];
@@ -32,7 +53,7 @@ export function CollectionView({
       );
     }
 
-    // Size filter
+    // Size filter (Matches S/M/L/XL or 30/32/34/36)
     if (filters.size && filters.size.length > 0) {
       result = result.filter((p) =>
         p.variants.some((v) =>
@@ -43,20 +64,30 @@ export function CollectionView({
                 (s) => s.toLowerCase() === opt.value.toLowerCase()
               )
           )
+        ) ||
+        p.options.some((opt) =>
+          (opt.name.toLowerCase() === "beden" || opt.name.toLowerCase() === "size") &&
+          opt.values.some((val) =>
+            filters.size?.some((s) => s.toLowerCase() === val.toLowerCase())
+          )
         )
       );
     }
 
-    // Color filter
+    // Color filter with family matching
     if (filters.color && filters.color.length > 0) {
       result = result.filter((p) =>
         p.variants.some((v) =>
           v.selectedOptions.some(
             (opt) =>
               (opt.name.toLowerCase() === "renk" || opt.name.toLowerCase() === "color") &&
-              filters.color?.some(
-                (c) => c.toLowerCase() === opt.value.toLowerCase()
-              )
+              filters.color?.some((c) => matchesColorFamily(opt.value, c))
+          )
+        ) ||
+        p.options.some((opt) =>
+          (opt.name.toLowerCase() === "renk" || opt.name.toLowerCase() === "color") &&
+          opt.values.some((val) =>
+            filters.color?.some((c) => matchesColorFamily(val, c))
           )
         )
       );
@@ -80,6 +111,13 @@ export function CollectionView({
       }
     }
 
+    // In Stock filter
+    if (filters.inStockOnly) {
+      result = result.filter(
+        (p) => p.availableForSale && p.variants.some((v) => v.availableForSale)
+      );
+    }
+
     // Sorting
     if (sortBy === "price-low") {
       result.sort(
@@ -93,6 +131,10 @@ export function CollectionView({
           parseFloat(b.priceRange.minVariantPrice.amount) -
           parseFloat(a.priceRange.minVariantPrice.amount)
       );
+    } else if (sortBy === "name-asc") {
+      result.sort((a, b) => a.title.localeCompare(b.title, "tr"));
+    } else if (sortBy === "name-desc") {
+      result.sort((a, b) => b.title.localeCompare(a.title, "tr"));
     }
 
     return result;
@@ -100,9 +142,36 @@ export function CollectionView({
 
   const displayedProducts = filteredProducts.slice(0, visibleCount);
 
+  // Active filter removals
+  const removeCategory = (cat: string) => {
+    const updated = (filters.category || []).filter((c) => c !== cat);
+    setFilters({ ...filters, category: updated });
+  };
+
+  const removeSize = (sz: string) => {
+    const updated = (filters.size || []).filter((s) => s !== sz);
+    setFilters({ ...filters, size: updated });
+  };
+
+  const removeColor = (col: string) => {
+    const updated = (filters.color || []).filter((c) => c !== col);
+    setFilters({ ...filters, color: updated });
+  };
+
+  const clearAllFilters = () => {
+    setFilters({});
+  };
+
+  const hasActiveFilters =
+    (filters.category && filters.category.length > 0) ||
+    (filters.size && filters.size.length > 0) ||
+    (filters.color && filters.color.length > 0) ||
+    (filters.priceRange && filters.priceRange !== "all") ||
+    filters.inStockOnly;
+
   return (
-    <div className="flex flex-col md:flex-row w-full max-w-[1920px] mx-auto">
-      {/* Sidebar Filter (Sticky Desktop / Modal Mobile) */}
+    <div className="flex flex-col md:flex-row w-full max-w-[1920px] mx-auto min-h-screen">
+      {/* Sidebar Filter (Sticky Desktop / Slide-out Mobile) */}
       <FilterSidebar
         initialFilters={filters}
         onFilterChange={setFilters}
@@ -110,61 +179,149 @@ export function CollectionView({
       />
 
       {/* Product Catalog Grid */}
-      <section className="flex-grow p-4 md:p-10">
-        {/* Catalog Header */}
-        <header className="mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-primary pb-6">
-          <div>
-            <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
-              {collection.title}
-            </h1>
-            <p className="font-body-md text-on-surface-variant mt-2 text-xs md:text-sm">
-              {filteredProducts.length} ÜRÜN / SONBAHAR &apos;24
-            </p>
-          </div>
+      <section className="flex-grow p-4 md:p-10 flex flex-col justify-between">
+        <div>
+          {/* Catalog Header */}
+          <header className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-primary pb-6">
+            <div>
+              <span className="font-label-mono text-[10px] uppercase text-on-surface-variant block mb-1">
+                KATALOG GÖRÜNÜMÜ // SONBAHAR &apos;24
+              </span>
+              <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
+                {collection.title}
+              </h1>
+              <p className="font-label-mono text-on-surface-variant mt-1 text-xs">
+                {filteredProducts.length} ÜRÜN LİSTELENİYOR
+              </p>
+            </div>
 
-          <div className="hidden md:flex items-center gap-2">
-            <span className="font-label-mono text-xs uppercase text-on-surface-variant">
-              Sırala:
-            </span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="border-b border-primary bg-transparent font-label-mono text-xs uppercase py-1 pr-6 focus:ring-0 cursor-pointer appearance-none rounded-none text-primary"
-            >
-              <option value="newest">En Yeniler</option>
-              <option value="price-low">Fiyat: Düşükten Yükseğe</option>
-              <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
-            </select>
-          </div>
-        </header>
+            {/* Sort Dropdown */}
+            <div className="flex items-center gap-2 border border-primary p-2 bg-surface">
+              <ArrowUpDown className="w-3.5 h-3.5 text-primary" />
+              <span className="font-label-mono text-xs uppercase text-on-surface-variant">
+                Sırala:
+              </span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-transparent font-label-mono text-xs uppercase focus:outline-none cursor-pointer text-primary pr-2 font-bold"
+              >
+                <option value="newest">En Yeniler (Varsayılan)</option>
+                <option value="price-low">Fiyat: Düşükten Yükseğe</option>
+                <option value="price-high">Fiyat: Yüksekten Düşüğe</option>
+                <option value="name-asc">İsim: A - Z</option>
+                <option value="name-desc">İsim: Z - A</option>
+              </select>
+            </div>
+          </header>
 
-        {/* Product Cards */}
-        {displayedProducts.length === 0 ? (
-          <div className="py-24 text-center">
-            <p className="font-label-mono uppercase text-on-surface-variant text-xs">
-              Seçilen filtrelere uygun ürün bulunamadı.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
-            {displayedProducts.map((product, idx) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                priority={idx < 3}
-              />
-            ))}
-          </div>
-        )}
+          {/* Active Filter Pills Bar */}
+          {hasActiveFilters && (
+            <div className="mb-6 p-3 bg-surface-container-low border border-primary/40 flex flex-wrap items-center gap-2 font-label-mono text-xs">
+              <span className="text-on-surface-variant uppercase text-[10px] font-bold mr-1">
+                AKTİF FİLTRELER:
+              </span>
+
+              {filters.category?.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => removeCategory(cat)}
+                  className="bg-primary text-on-primary px-2.5 py-1 text-[11px] uppercase flex items-center gap-1.5 hover:bg-surface-variant hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Kategori: {cat}</span>
+                  <X className="w-3 h-3" />
+                </button>
+              ))}
+
+              {filters.size?.map((sz) => (
+                <button
+                  key={sz}
+                  onClick={() => removeSize(sz)}
+                  className="bg-primary text-on-primary px-2.5 py-1 text-[11px] uppercase flex items-center gap-1.5 hover:bg-surface-variant hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Beden: {sz}</span>
+                  <X className="w-3 h-3" />
+                </button>
+              ))}
+
+              {filters.color?.map((col) => (
+                <button
+                  key={col}
+                  onClick={() => removeColor(col)}
+                  className="bg-primary text-on-primary px-2.5 py-1 text-[11px] uppercase flex items-center gap-1.5 hover:bg-surface-variant hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Renk: {col}</span>
+                  <X className="w-3 h-3" />
+                </button>
+              ))}
+
+              {filters.priceRange && filters.priceRange !== "all" && (
+                <button
+                  onClick={() => setFilters({ ...filters, priceRange: "all" })}
+                  className="bg-primary text-on-primary px-2.5 py-1 text-[11px] uppercase flex items-center gap-1.5 hover:bg-surface-variant hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Fiyat: {filters.priceRange}</span>
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+
+              {filters.inStockOnly && (
+                <button
+                  onClick={() => setFilters({ ...filters, inStockOnly: false })}
+                  className="bg-primary text-on-primary px-2.5 py-1 text-[11px] uppercase flex items-center gap-1.5 hover:bg-surface-variant hover:text-primary transition-colors cursor-pointer"
+                >
+                  <span>Sadece Stoktaki</span>
+                  <X className="w-3 h-3" />
+                </button>
+              )}
+
+              <button
+                onClick={clearAllFilters}
+                className="text-red-600 underline text-[11px] uppercase ml-auto hover:opacity-75 cursor-pointer font-bold"
+              >
+                Tümünü Temizle
+              </button>
+            </div>
+          )}
+
+          {/* Product Cards */}
+          {displayedProducts.length === 0 ? (
+            <div className="py-24 text-center border border-dashed border-primary p-8 bg-surface">
+              <p className="font-headline-sm uppercase text-primary text-base">
+                Seçilen filtrelere uygun parça bulunamadı.
+              </p>
+              <p className="font-label-mono text-xs text-on-surface-variant mt-2">
+                Farklı bir beden, renk veya kategori seçmeyi deneyebilir veya filtreleri sıfırlayabilirsiniz.
+              </p>
+              <button
+                type="button"
+                onClick={clearAllFilters}
+                className="mt-6 bg-primary text-on-primary font-label-mono text-xs px-6 py-3 uppercase tracking-wider hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer"
+              >
+                Filtreleri Sıfırla
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
+              {displayedProducts.map((product, idx) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  priority={idx < 3}
+                />
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Load More Button */}
         {visibleCount < filteredProducts.length && (
           <div className="mt-16 flex justify-center border-t border-primary pt-8">
             <button
               onClick={() => setVisibleCount((prev) => prev + 6)}
-              className="border border-primary px-12 py-4 font-label-mono text-xs uppercase hover:bg-primary hover:text-on-primary transition-colors cursor-pointer"
+              className="border border-primary px-12 py-4 font-label-mono text-xs uppercase hover:bg-primary hover:text-on-primary transition-colors cursor-pointer font-bold"
             >
-              Daha Fazla Ürün Göster
+              Daha Fazla Ürün Göster ({filteredProducts.length - visibleCount} Kalan)
             </button>
           </div>
         )}

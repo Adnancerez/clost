@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { MapPin, Plus, Trash2, CheckCircle2 } from "lucide-react";
 import { useToastStore } from "@/lib/store/useToastStore";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface Address {
   id: string;
@@ -32,7 +31,6 @@ export function AddressesTab({ addresses, setAddresses }: AddressesTabProps) {
   const [fullAddress, setFullAddress] = useState("");
 
   const handleSetDefault = (id: string) => {
-    playClickSound();
     setAddresses((prev) =>
       prev.map((a) => ({
         ...a,
@@ -47,7 +45,6 @@ export function AddressesTab({ addresses, setAddresses }: AddressesTabProps) {
   };
 
   const handleDelete = (id: string) => {
-    playClickSound();
     setAddresses((prev) => prev.filter((a) => a.id !== id));
     addToast({
       title: "Adres Silindi",
@@ -60,7 +57,6 @@ export function AddressesTab({ addresses, setAddresses }: AddressesTabProps) {
     e.preventDefault();
     if (!title || !fullAddress) return;
 
-    playClickSound();
     const newAddr: Address = {
       id: `addr-${Date.now()}`,
       title,
@@ -93,7 +89,6 @@ export function AddressesTab({ addresses, setAddresses }: AddressesTabProps) {
         <button
           type="button"
           onClick={() => {
-            playClickSound();
             setIsAddingNew(!isAddingNew);
           }}
           className="bg-primary text-on-primary hover:bg-surface-variant hover:text-primary border border-primary px-3 py-1.5 font-label-mono text-xs uppercase flex items-center gap-1.5 transition-colors cursor-pointer"

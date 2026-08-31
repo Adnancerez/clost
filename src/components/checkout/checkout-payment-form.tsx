@@ -2,7 +2,6 @@
 
 import React from "react";
 import { CreditCard, Landmark, PackageCheck, ShieldCheck } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export interface CheckoutPaymentFormProps {
   paymentMethod: "card" | "bank" | "cod";
@@ -43,7 +42,6 @@ export function CheckoutPaymentForm({
         <button
           type="button"
           onClick={() => {
-            playClickSound();
             setPaymentMethod("card");
           }}
           className={`p-3 border flex flex-col items-center gap-1.5 transition-colors cursor-pointer ${
@@ -59,7 +57,6 @@ export function CheckoutPaymentForm({
         <button
           type="button"
           onClick={() => {
-            playClickSound();
             setPaymentMethod("bank");
           }}
           className={`p-3 border flex flex-col items-center gap-1.5 transition-colors cursor-pointer ${
@@ -75,7 +72,6 @@ export function CheckoutPaymentForm({
         <button
           type="button"
           onClick={() => {
-            playClickSound();
             setPaymentMethod("cod");
           }}
           className={`p-3 border flex flex-col items-center gap-1.5 transition-colors cursor-pointer ${

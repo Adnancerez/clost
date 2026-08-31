@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Download, FileText, Check, Mail, Image as ImageIcon, ExternalLink } from "lucide-react";
-import { playClickSound } from "@/lib/audio/sound-effects";
 
 export default function PressKitPage() {
   const [downloading, setDownloading] = useState<string | null>(null);
 
   const handleDownload = (name: string) => {
-    playClickSound();
     setDownloading(name);
     setTimeout(() => setDownloading(null), 2000);
   };
@@ -255,7 +253,7 @@ export default function PressKitPage() {
 
           <div className="border-t border-outline-variant pt-4 font-label-mono text-xs text-primary flex flex-col gap-1">
             <span className="font-bold">Basın Koordinasyonu:</span>
-            <span className="text-on-surface-variant">press@voidarchive.com / +90 (212) 000 00 00</span>
+            <span className="text-on-surface-variant">press@clost.store / +90 (212) 000 00 00</span>
             <span className="text-on-surface-variant mt-1">Levent Mah. Cömert Sok. No: 12, Beşiktaş / İstanbul</span>
           </div>
         </div>

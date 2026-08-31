@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FOOTER_SECTIONS } from "@/lib/constants/navigation";
-import { playClickSound, playSuccessSound } from "@/lib/audio/sound-effects";
 import { useToastStore } from "@/lib/store/useToastStore";
 
 export function Footer() {
@@ -14,7 +13,6 @@ export function Footer() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      playSuccessSound();
       setSubscribed(true);
       setEmail("");
       addToast({
@@ -46,7 +44,6 @@ export function Footer() {
               <Link
                 key={link.href + link.label}
                 href={link.href}
-                onClick={playClickSound}
                 className="text-on-surface-variant hover:text-primary underline transition-colors"
               >
                 {link.label}
