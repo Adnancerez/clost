@@ -6,6 +6,8 @@ import { Header } from "@/components/layout/header";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { SupportWidget } from "@/components/ui/support-widget";
 import { WelcomeModal } from "@/components/layout/welcome-modal";
+import { FeedbackModal } from "@/components/ui/feedback-modal";
+import { FeedbackTrigger } from "@/components/ui/feedback-trigger";
 import { ToastContainer } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
 import { PwaProvider } from "@/components/pwa/pwa-provider";
@@ -74,6 +76,8 @@ export default function RootLayout({
 
           <CartDrawer />
           <SupportWidget />
+          <FeedbackModal />
+          <FeedbackTrigger />
           <WelcomeModal />
           <ToastContainer />
           <Footer />

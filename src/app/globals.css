@@ -1,46 +1,48 @@
 @import "tailwindcss";
 
 @theme {
-  --color-surface: #f9f9f9;
-  --color-surface-variant: #e2e2e2;
-  --color-surface-bright: #f9f9f9;
-  --color-surface-dim: #dadada;
+  --color-surface: #ffffff;
+  --color-surface-variant: #f3f3f3;
+  --color-surface-bright: #fafafa;
+  --color-surface-dim: #e5e5e5;
   --color-surface-container: #eeeeee;
-  --color-surface-container-low: #f4f3f3;
-  --color-surface-container-high: #e8e8e8;
-  --color-surface-container-highest: #e2e2e2;
+  --color-surface-container-low: #f8f8f8;
+  --color-surface-container-high: #eaeaea;
+  --color-surface-container-highest: #e0e0e0;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-tint: #5f5e5e;
+  --color-surface-tint: #404040;
 
   --color-primary: #000000;
   --color-on-primary: #ffffff;
-  --color-on-surface: #1a1c1c;
-  --color-on-surface-variant: #444748;
-  --color-outline: #747878;
-  --color-outline-variant: #c4c7c7;
+  --color-on-surface: #0a0a0a;
+  --color-on-surface-variant: #525252;
+  --color-outline: #737373;
+  --color-outline-variant: #d4d4d4;
 
-  --font-body: var(--font-inter), sans-serif;
+  --font-sans: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-headline: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-mono), monospace;
 }
 
 :root {
-  --color-surface: #f9f9f9;
-  --color-surface-variant: #e2e2e2;
-  --color-surface-bright: #f9f9f9;
-  --color-surface-dim: #dadada;
+  --color-surface: #ffffff;
+  --color-surface-variant: #f3f3f3;
+  --color-surface-bright: #fafafa;
+  --color-surface-dim: #e5e5e5;
   --color-surface-container: #eeeeee;
-  --color-surface-container-low: #f4f3f3;
-  --color-surface-container-high: #e8e8e8;
-  --color-surface-container-highest: #e2e2e2;
+  --color-surface-container-low: #f8f8f8;
+  --color-surface-container-high: #eaeaea;
+  --color-surface-container-highest: #e0e0e0;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-tint: #5f5e5e;
+  --color-surface-tint: #404040;
 
   --color-primary: #000000;
   --color-on-primary: #ffffff;
-  --color-on-surface: #1a1c1c;
-  --color-on-surface-variant: #444748;
-  --color-outline: #747878;
-  --color-outline-variant: #c4c7c7;
+  --color-on-surface: #0a0a0a;
+  --color-on-surface-variant: #525252;
+  --color-outline: #737373;
+  --color-outline-variant: #d4d4d4;
 }
 
 @layer base {
@@ -51,77 +53,87 @@
   body {
     background-color: var(--color-surface);
     color: var(--color-on-surface);
-    font-family: var(--font-body);
+    font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: 0.015em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
 }
 
 /* Custom Typography Utilities */
 .font-label-mono {
   font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: 0.05em;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.04em;
   font-weight: 500;
 }
 
 .font-price-lg {
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 19px;
   line-height: 24px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .font-display-lg {
-  font-family: var(--font-body);
-  font-size: 72px;
-  line-height: 72px;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 68px;
+  line-height: 68px;
   letter-spacing: -0.04em;
   font-weight: 700;
 }
 
 .font-display-lg-mobile {
-  font-family: var(--font-body);
-  font-size: 40px;
-  line-height: 40px;
-  letter-spacing: -0.02em;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 38px;
+  line-height: 38px;
+  letter-spacing: -0.03em;
   font-weight: 700;
 }
 
 .font-headline-md {
-  font-family: var(--font-body);
-  font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -0.02em;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.025em;
   font-weight: 600;
 }
 
 .font-headline-sm {
-  font-family: var(--font-body);
-  font-size: 24px;
-  line-height: 32px;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: -0.02em;
   font-weight: 600;
 }
 
 .font-body-lg {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 28px;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 17px;
+  line-height: 26px;
   font-weight: 400;
 }
 
 .font-body-md {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 24px;
+  font-family: "Helvetica Neue Condensed Light", "Helvetica Neue Condensed", "Helvetica Neue", "Arial Narrow", sans-serif;
+  font-size: 15px;
+  line-height: 22px;
   font-weight: 400;
 }
 
-/* Custom UI Utilities */
+/* Aspect Ratio Utilities */
 .aspect-4-5 {
   aspect-ratio: 4 / 5;
 }
 
+/* Strikethrough diagonal line */
 .strike-through {
   position: relative;
 }
@@ -143,26 +155,32 @@
   pointer-events: none;
 }
 
-/* Hide scrollbar for Chrome, Safari, Edge, Firefox */
+/* Scrollbar Utilities */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Ticker Marquee Animation */
+/* Ticker Single-Line Precision Marquee */
 .ticker-wrap {
   width: 100%;
+  height: 32px;
+  line-height: 32px;
   overflow: hidden;
   box-sizing: border-box;
   white-space: nowrap;
 }
 
 .ticker {
-  display: inline-block;
-  animation: ticker-anim 25s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-anim 26s linear infinite;
+  will-change: transform;
 }
 
 @keyframes ticker-anim {

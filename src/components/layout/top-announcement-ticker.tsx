@@ -15,39 +15,28 @@ export function TopAnnouncementTicker() {
     }
   };
 
-  const tickerItems = [
-    "CLOST DROP '24 YAYINDA",
-    "1.500 ₺ ÜZERİ TÜM TÜRKİYE'YE ÜCRETSİZ SİGORTALI TESLİMAT",
-    "Y2K & GEN-Z STREETWEAR ARCHIVE",
-    "16:00'A KADAR AYNI GÜN KARGO",
-    "14 GÜN KOŞULSUZ İADE VE DEĞİŞİM",
-    "14.5 OZ RAW DENIM & KOMPAKT PAMUK",
-  ];
-
-  const fullText = tickerItems.join(" • ") + " • ";
+  const textChunk =
+    "CLOST DROP '24 YAYINDA • 1.500 ₺ ÜZERİ TÜM TÜRKİYE'YE ÜCRETSİZ SİGORTALI TESLİMAT • %10 İNDİRİM KODU: CLOST10 • 16:00'A KADAR AYNI GÜN KARGO • 14 GÜN KOŞULSUZ İADE & DEĞİŞİM • 14.5 OZ RAW DENIM & KOMPAKT PAMUK • ";
 
   return (
     <aside
       aria-label="Canlı Duyuru ve Kampanya Bandı"
-      className="fixed top-0 left-0 right-0 z-50 h-8 bg-primary text-on-primary font-label-mono text-[11px] flex items-center justify-between border-b border-surface/20 select-none overflow-hidden"
+      className="fixed top-0 left-0 right-0 z-50 h-8 bg-primary text-on-primary font-label-mono text-[11px] leading-8 flex items-center justify-between border-b border-surface/20 select-none overflow-hidden"
     >
-      {/* Infinite Smooth Scrolling Marquee */}
-      <div className="ticker-wrap flex-1 flex items-center h-full">
-        <div className="ticker flex items-center gap-4 text-white uppercase tracking-widest font-semibold hover:[animation-play-state:paused] cursor-default">
-          <span className="flex items-center gap-3">
-            {fullText}
+      {/* Infinite Smooth Scrolling Single-Line Marquee */}
+      <div className="ticker-wrap flex-1 h-8 leading-8 overflow-hidden">
+        <div className="ticker h-8 leading-8 flex items-center text-white uppercase tracking-widest font-semibold hover:[animation-play-state:paused] cursor-default">
+          <span className="inline-block whitespace-nowrap pr-8">
+            {textChunk} {textChunk}
           </span>
-          <span className="flex items-center gap-3">
-            {fullText}
-          </span>
-          <span className="flex items-center gap-3">
-            {fullText}
+          <span className="inline-block whitespace-nowrap pr-8">
+            {textChunk} {textChunk}
           </span>
         </div>
       </div>
 
       {/* Quick 1-Click Promo Code Copy Button on Right */}
-      <div className="flex-shrink-0 z-10 px-3 bg-primary border-l border-white/20 h-full flex items-center">
+      <div className="flex-shrink-0 z-10 px-3 bg-primary border-l border-white/20 h-8 flex items-center">
         <button
           type="button"
           onClick={handleCopy}

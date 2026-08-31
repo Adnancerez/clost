@@ -18,7 +18,7 @@ export default async function HomePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover transition-transform duration-[10s] group-hover:scale-105"
+          className="object-cover object-[center_12%] transition-transform duration-[10s] group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/40" />
 
