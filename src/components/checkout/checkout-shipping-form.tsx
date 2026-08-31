@@ -96,12 +96,14 @@ export function CheckoutShippingForm({
 
       {/* 2. Shipping Address */}
       <div className="border border-primary p-6 bg-surface">
-        <h2 className="font-headline-sm uppercase text-primary text-base mb-4 flex items-center gap-2">
-          <span className="bg-primary text-on-primary w-5 h-5 flex items-center justify-center text-xs">
-            2
-          </span>
-          <span>Teslimat Adresi</span>
-        </h2>
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="font-headline-sm uppercase text-primary text-base flex items-center gap-2">
+            <span className="bg-primary text-on-primary w-5 h-5 flex items-center justify-center text-xs">
+              2
+            </span>
+            <span>Teslimat Adresi</span>
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-label-mono text-xs mb-4">
           <div>

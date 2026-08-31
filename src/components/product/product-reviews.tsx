@@ -1,282 +1,342 @@
 "use client";
 
-import React, { useState } from "react";
-import { Star, CheckCircle, MessageSquarePlus } from "lucide-react";
+import React, { useState, useSyncExternalStore } from "react";
+import { Star, ThumbsUp, CheckCircle2, MessageSquarePlus, X } from "lucide-react";
+import { useReviewsStore, ProductReview } from "@/lib/store/useReviewsStore";
+import { useToastStore } from "@/lib/store/useToastStore";
 
-export interface Review {
-  id: string;
-  author: string;
-  rating: number;
-  date: string;
-  sizePurchased: string;
-  fit: "Tam Beden" | "Dar Kesim" | "Oversized";
-  comment: string;
-}
+const emptySubscribe = () => () => {};
 
-export interface ProductReviewsProps {
-  productId: string;
-  productTitle: string;
-}
+export function ProductReviews({ productHandle }: { productHandle: string }) {
+  const isMounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 
-export function ProductReviews({ productTitle }: ProductReviewsProps) {
-  const [reviews, setReviews] = useState<Review[]>([
-    {
-      id: "rev-1",
-      author: "Caner K.",
-      rating: 5,
-      date: "18 Ağustos 2026",
-      sizePurchased: "M",
-      fit: "Tam Beden",
-      comment:
-        "Kumaş kalitesi ve dikiş mimarisi inanılmaz. Su iticilik ve kapüşon yapısı tam bir techwear şaheseri. Beklediğimden çok daha tok bir duruşu var.",
-    },
-    {
-      id: "rev-2",
-      author: "Eren D.",
-      rating: 5,
-      date: "04 Ağustos 2026",
-      sizePurchased: "L",
-      fit: "Oversized",
-      comment:
-        "Oversized kesimi çok başarılı. 188 cm boy için L beden tam istediğim dökümlü silueti verdi. Paketleme ve kargo çok hızlıydı.",
-    },
-    {
-      id: "rev-3",
-      author: "Burak S.",
-      rating: 4,
-      date: "29 Temmuz 2026",
-      sizePurchased: "S",
-      fit: "Tam Beden",
-      comment:
-        "Fermuar kalitesi ve ceplerin yerleşimi çok fonksiyonel. Minimalist ve sert tasarım arayanlara kesinlikle tavsiye ederim.",
-    },
-  ]);
+  const { getReviewsByHandle, getAverageRating, addReview, likeReview } = useReviewsStore();
+  const { addToast } = useToastStore();
+
+  const reviews = isMounted ? getReviewsByHandle(productHandle) : [];
+  const { average, count } = isMounted ? getAverageRating(productHandle) : { average: 5.0, count: 0 };
 
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [author, setAuthor] = useState("");
+  const [name, setName] = useState("");
   const [rating, setRating] = useState(5);
   const [sizePurchased, setSizePurchased] = useState("M");
-  const [fit, setFit] = useState<"Tam Beden" | "Dar Kesim" | "Oversized">("Tam Beden");
+  const [fitVerdict, setFitVerdict] = useState<ProductReview["fitVerdict"]>("Tam Beden");
+  const [heightWeight, setHeightWeight] = useState("");
   const [comment, setComment] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const averageRating =
-    reviews.length > 0
-      ? (reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length).toFixed(1)
-      : "5.0";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!author || !comment) return;
+    if (!name.trim() || !comment.trim()) return;
 
-    const newReview: Review = {
-      id: `rev-${Date.now()}`,
-      author,
+    addReview(productHandle, {
+      productHandle,
+      author: name.trim(),
       rating,
-      date: "Bugün",
+      verified: true,
       sizePurchased,
-      fit,
-      comment,
-    };
+      fitVerdict,
+      heightWeight: heightWeight.trim() || undefined,
+      comment: comment.trim(),
+    });
 
-    setReviews([newReview, ...reviews]);
-    setSubmitted(true);
-    setAuthor("");
+    addToast({
+      title: "Değerlendirmeniz Alındı",
+      message: "Yorumunuz için teşekkür ederiz.",
+      type: "success",
+    });
+
+    setIsFormOpen(false);
+    setName("");
     setComment("");
-    setTimeout(() => {
-      setIsFormOpen(false);
-      setSubmitted(false);
-    }, 2000);
+    setHeightWeight("");
   };
 
-  return (
-    <div className="p-4 md:p-10 border-b border-primary bg-surface flex flex-col gap-8">
-      {/* Header & Rating Summary */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-primary pb-6">
-        <div>
-          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-1">
-            DOĞRULANMIŞ DEĞERLENDİRMELER
-          </span>
-          <h3 className="font-headline-sm uppercase text-primary">
-            Müşteri Yorumları ({reviews.length})
-          </h3>
-        </div>
+  // Fit calculations
+  const totalFitReviews = reviews.length;
+  const trueToSizeCount = reviews.filter((r) => r.fitVerdict === "Tam Beden").length;
+  const oversizeCount = reviews.filter((r) => r.fitVerdict === "Oversize / Dökümlü").length;
+  const smallCount = reviews.filter((r) => r.fitVerdict === "Dar Kalıp").length;
 
-        <div className="flex items-center gap-6">
-          <div className="flex items-baseline gap-2">
-            <span className="font-price-lg text-2xl text-primary font-bold">
-              {averageRating}
-            </span>
-            <span className="font-label-mono text-xs text-on-surface-variant">/ 5.0</span>
-            <div className="flex text-primary ml-1">
+  const trueToSizePercent = totalFitReviews > 0 ? Math.round((trueToSizeCount / totalFitReviews) * 100) : 85;
+  const oversizePercent = totalFitReviews > 0 ? Math.round((oversizeCount / totalFitReviews) * 100) : 15;
+  const smallPercent = totalFitReviews > 0 ? Math.round((smallCount / totalFitReviews) * 100) : 0;
+
+  return (
+    <section className="p-4 sm:p-6 md:p-10 border-b border-primary bg-surface font-label-mono text-xs">
+      {/* Header & Rating Summary */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-primary pb-6 mb-8">
+        <div>
+          <span className="text-[10px] uppercase text-on-surface-variant block mb-1 font-bold">
+            DOĞRULANMIŞ SOKAK TOPLULUĞU
+          </span>
+          <h2 className="font-headline-sm uppercase text-primary text-xl font-bold">
+            MÜŞTERİ DEĞERLENDİRMELERİ ({count})
+          </h2>
+
+          <div className="flex items-center gap-3 mt-2">
+            <div className="flex items-center text-amber-500">
               {[1, 2, 3, 4, 5].map((star) => (
                 <Star
                   key={star}
                   className={`w-4 h-4 ${
-                    star <= Math.round(Number(averageRating))
-                      ? "fill-primary text-primary"
-                      : "text-outline-variant"
+                    star <= Math.round(average) ? "fill-amber-400 text-amber-400" : "text-gray-300"
                   }`}
                 />
               ))}
             </div>
+            <span className="font-price-lg text-primary text-base font-bold">
+              {average.toFixed(1)} / 5.0
+            </span>
+            <span className="text-on-surface-variant text-[11px]">
+              ({count} Kullanıcı Oyu)
+            </span>
           </div>
+        </div>
 
-          <button
-            onClick={() => setIsFormOpen(!isFormOpen)}
-            className="flex items-center gap-2 border border-primary px-4 py-2 font-label-mono text-xs uppercase hover:bg-primary hover:text-on-primary transition-colors cursor-pointer bg-surface"
-          >
-            <MessageSquarePlus className="w-4 h-4" /> {isFormOpen ? "Kapat" : "Yorum Yaz"}
-          </button>
+        <button
+          type="button"
+          onClick={() => setIsFormOpen(true)}
+          className="px-6 py-3 bg-primary text-on-primary uppercase font-bold hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer flex items-center gap-2"
+        >
+          <MessageSquarePlus className="w-4 h-4" />
+          <span>Değerlendirme Yaz</span>
+        </button>
+      </div>
+
+      {/* Fit Scale Progress Bar */}
+      <div className="border border-primary bg-surface-container-low p-4 mb-8">
+        <div className="flex justify-between items-center mb-2">
+          <span className="font-bold text-primary uppercase text-[11px]">
+            KALIP &amp; SİLÜET UYUMU:
+          </span>
+          <span className="text-on-surface-variant text-[11px]">
+            Müşterilerin <strong>%{trueToSizePercent}</strong> kadarı tam beden öneriyor
+          </span>
+        </div>
+
+        {/* Multi-segment Bar */}
+        <div className="w-full h-3 bg-surface border border-primary flex overflow-hidden">
+          <div
+            style={{ width: `${smallPercent}%` }}
+            className="bg-amber-400 h-full transition-all"
+            title={`Dar Kalıp: %${smallPercent}`}
+          />
+          <div
+            style={{ width: `${trueToSizePercent}%` }}
+            className="bg-emerald-500 h-full transition-all"
+            title={`Tam Beden: %${trueToSizePercent}`}
+          />
+          <div
+            style={{ width: `${oversizePercent}%` }}
+            className="bg-sky-500 h-full transition-all"
+            title={`Oversize / Dökümlü: %${oversizePercent}`}
+          />
+        </div>
+
+        <div className="flex justify-between items-center text-[10px] text-on-surface-variant mt-2 font-bold uppercase">
+          <span>Dar Kalıp (%{smallPercent})</span>
+          <span className="text-emerald-700">Tam Beden (%{trueToSizePercent})</span>
+          <span>Oversize / Dökümlü (%{oversizePercent})</span>
         </div>
       </div>
 
-      {/* Write Review Form */}
-      {isFormOpen && (
-        <div className="p-6 border border-primary bg-surface-container-low flex flex-col gap-4 animate-in fade-in">
-          <h4 className="font-body-md font-bold uppercase text-primary text-sm">
-            {productTitle} İçin Değerlendirme Yazın
-          </h4>
+      {/* Reviews List */}
+      {reviews.length === 0 ? (
+        <div className="border border-dashed border-primary p-8 text-center bg-surface-container-low">
+          <p className="text-primary font-bold mb-2">Bu ürün için henüz yorum yazılmamış.</p>
+          <p className="text-on-surface-variant text-[11px] mb-4">
+            İlk değerlendirmeyi siz yazarak sokak topluluğuna ilham verin.
+          </p>
+          <button
+            onClick={() => setIsFormOpen(true)}
+            className="px-4 py-2 border border-primary bg-surface hover:bg-primary hover:text-white uppercase font-bold"
+          >
+            İlk Yorumu Yaz
+          </button>
+        </div>
+      ) : (
+        <div className="divide-y divide-outline-variant border-t border-b border-primary">
+          {reviews.map((rev) => (
+            <div key={rev.id} className="py-6 flex flex-col gap-3">
+              <div className="flex justify-between items-start">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-primary text-sm uppercase">{rev.author}</span>
+                    {rev.verified && (
+                      <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] px-2 py-0.5 border border-emerald-300 font-bold">
+                        <CheckCircle2 className="w-3 h-3" /> Doğrulanmış Alıcı
+                      </span>
+                    )}
+                  </div>
 
-          {submitted ? (
-            <p className="font-label-mono text-xs text-primary uppercase border border-primary p-3 bg-surface">
-              ✓ Yorumunuz başarıyla yayınlandı. Teşekkür ederiz.
-            </p>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {/* Rating Picker */}
-                <div className="flex flex-col gap-1">
-                  <label className="font-label-mono text-xs uppercase text-primary">Puan</label>
-                  <div className="flex gap-1 py-2">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <button
-                        key={star}
-                        type="button"
-                        onClick={() => setRating(star)}
-                        className="p-1 cursor-pointer"
-                      >
+                  <div className="flex items-center gap-2 mt-1 text-[11px] text-on-surface-variant">
+                    <div className="flex text-amber-500">
+                      {[1, 2, 3, 4, 5].map((s) => (
                         <Star
-                          className={`w-5 h-5 ${
-                            star <= rating
-                              ? "fill-primary text-primary"
-                              : "text-outline-variant"
+                          key={s}
+                          className={`w-3.5 h-3.5 ${
+                            s <= rev.rating ? "fill-amber-400 text-amber-400" : "text-gray-300"
                           }`}
                         />
-                      </button>
-                    ))}
+                      ))}
+                    </div>
+                    <span>•</span>
+                    <span>Beden: <strong>{rev.sizePurchased}</strong></span>
+                    {rev.heightWeight && (
+                      <>
+                        <span>•</span>
+                        <span>{rev.heightWeight}</span>
+                      </>
+                    )}
+                    <span>•</span>
+                    <span className="text-emerald-700 font-bold">{rev.fitVerdict}</span>
                   </div>
                 </div>
 
-                {/* Name */}
-                <div className="flex flex-col gap-1">
-                  <label className="font-label-mono text-xs uppercase text-primary">Ad Soyad</label>
-                  <input
-                    type="text"
-                    required
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                    placeholder="Adınız"
-                    className="border border-primary bg-surface p-2.5 font-label-mono text-xs text-primary focus:outline-none"
-                  />
-                </div>
+                <span className="text-[10px] text-on-surface-variant">{rev.date}</span>
+              </div>
 
-                {/* Size & Fit */}
-                <div className="flex flex-col gap-1">
-                  <label className="font-label-mono text-xs uppercase text-primary">Beden / Kalıp</label>
-                  <div className="flex gap-2">
-                    <select
-                      value={sizePurchased}
-                      onChange={(e) => setSizePurchased(e.target.value)}
-                      className="border border-primary bg-surface p-2.5 font-label-mono text-xs text-primary focus:outline-none"
+              <p className="font-body-md text-primary text-sm leading-relaxed mt-1">
+                {rev.comment}
+              </p>
+
+              <div className="flex items-center gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={() => likeReview(productHandle, rev.id)}
+                  className="inline-flex items-center gap-1 text-[10px] text-on-surface-variant hover:text-primary p-1 border border-outline-variant hover:border-primary transition-colors cursor-pointer"
+                >
+                  <ThumbsUp className="w-3 h-3" />
+                  <span>Faydalı Buldum ({rev.likes})</span>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Review Modal Form */}
+      {isFormOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog">
+          <div onClick={() => setIsFormOpen(false)} className="fixed inset-0 bg-black/75 animate-in fade-in" />
+
+          <div className="relative z-10 w-full max-w-lg bg-surface border-2 border-primary p-6 md:p-8 shadow-2xl animate-in zoom-in-95 max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center border-b border-primary pb-3 mb-4">
+              <h3 className="font-headline-sm uppercase text-primary text-base font-bold">
+                DEĞERLENDİRME YAPIN
+              </h3>
+              <button
+                onClick={() => setIsFormOpen(false)}
+                className="p-1 hover:bg-surface-variant border border-transparent hover:border-primary cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div>
+                <label className="block text-primary font-bold mb-1">Puanınız:</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setRating(star)}
+                      className="p-1 cursor-pointer"
                     >
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="XL">XL</option>
-                    </select>
-                    <select
-                      value={fit}
-                      onChange={(e) => setFit(e.target.value as "Tam Beden" | "Dar Kesim" | "Oversized")}
-                      className="border border-primary bg-surface p-2.5 font-label-mono text-xs text-primary focus:outline-none flex-1"
-                    >
-                      <option value="Tam Beden">Tam Beden</option>
-                      <option value="Oversized">Oversized</option>
-                      <option value="Dar Kesim">Dar Kesim</option>
-                    </select>
-                  </div>
+                      <Star
+                        className={`w-6 h-6 ${
+                          star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-300"
+                        }`}
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Comment Text */}
-              <div className="flex flex-col gap-1">
-                <label className="font-label-mono text-xs uppercase text-primary">Yorumunuz</label>
-                <textarea
+              <div>
+                <label className="block text-primary font-bold mb-1">Adınız / Rumuzunuz:</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Örn: Derin A."
                   required
-                  rows={3}
+                  className="w-full border border-primary p-2.5 bg-surface text-primary"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-primary font-bold mb-1">Satın Alınan Beden:</label>
+                  <select
+                    value={sizePurchased}
+                    onChange={(e) => setSizePurchased(e.target.value)}
+                    className="w-full border border-primary p-2 bg-surface text-primary font-bold"
+                  >
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="30">30</option>
+                    <option value="32">32</option>
+                    <option value="34">34</option>
+                    <option value="36">36</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-primary font-bold mb-1">Kalıp Nasıl Geldi?</label>
+                  <select
+                    value={fitVerdict}
+                    onChange={(e) => setFitVerdict(e.target.value as ProductReview["fitVerdict"])}
+                    className="w-full border border-primary p-2 bg-surface text-primary font-bold"
+                  >
+                    <option value="Tam Beden">Tam Beden</option>
+                    <option value="Oversize / Dökümlü">Oversize / Dökümlü</option>
+                    <option value="Dar Kalıp">Dar Kalıp</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-primary font-bold mb-1">Boy / Kilo Bilgisi (Opsiyonel):</label>
+                <input
+                  type="text"
+                  value={heightWeight}
+                  onChange={(e) => setHeightWeight(e.target.value)}
+                  placeholder="Örn: 175 cm / 62 kg"
+                  className="w-full border border-primary p-2 bg-surface text-primary"
+                />
+              </div>
+
+              <div>
+                <label className="block text-primary font-bold mb-1">Yorumunuz:</label>
+                <textarea
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
-                  placeholder="Kumaş dokusu, kalıp ve kullanım deneyiminiz hakkında detay paylaşın..."
-                  className="border border-primary bg-surface p-3 font-body-md text-sm text-primary focus:outline-none"
+                  rows={3}
+                  placeholder="Kumaş dokusu, kalıbı ve kombin deneyiminizi paylaşın..."
+                  required
+                  className="w-full border border-primary p-2.5 bg-surface text-primary"
                 />
               </div>
 
               <button
                 type="submit"
-                className="self-start bg-primary text-on-primary font-label-mono text-xs px-8 py-3 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer"
+                className="w-full bg-primary text-on-primary h-12 flex items-center justify-center uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer font-bold mt-2"
               >
-                Yorumu Gönder
+                Yorumu Yayınla
               </button>
             </form>
-          )}
+          </div>
         </div>
       )}
-
-      {/* Reviews List */}
-      <div className="flex flex-col divide-y divide-primary border border-primary">
-        {reviews.map((rev) => (
-          <div key={rev.id} className="p-6 flex flex-col gap-3 bg-surface">
-            <div className="flex justify-between items-start">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-body-md font-bold text-primary text-sm">
-                    {rev.author}
-                  </span>
-                  <span className="flex items-center gap-1 font-label-mono text-[10px] uppercase text-primary border border-outline-variant px-1.5 py-0.5">
-                    <CheckCircle className="w-3 h-3 text-primary" /> Doğrulanmış Alıcı
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 mt-1">
-                  <div className="flex text-primary">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className={`w-3.5 h-3.5 ${
-                          star <= rev.rating
-                            ? "fill-primary text-primary"
-                            : "text-outline-variant"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <span className="font-label-mono text-xs text-on-surface-variant">
-                    {rev.date}
-                  </span>
-                </div>
-              </div>
-
-              <div className="font-label-mono text-xs text-on-surface-variant text-right">
-                <span>Alınan Beden: {rev.sizePurchased}</span>
-                <span className="block text-[11px]">Kalıp: {rev.fit}</span>
-              </div>
-            </div>
-
-            <p className="font-body-md text-sm text-primary leading-relaxed mt-1">
-              {rev.comment}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 }

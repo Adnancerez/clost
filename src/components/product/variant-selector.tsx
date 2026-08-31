@@ -7,6 +7,7 @@ import { useCartStore } from "@/lib/store/useCartStore";
 import { useToastStore } from "@/lib/store/useToastStore";
 import { FitFinderModal } from "./fit-finder-modal";
 import { BackInStockModal } from "./back-in-stock-modal";
+import { WhatsAppQuickOrder } from "./whatsapp-quick-order";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 
 export interface VariantSelectorProps {
@@ -258,6 +259,14 @@ export function VariantSelector({ product }: VariantSelectorProps) {
             <Bell className="w-4 h-4" /> Tekrar Gelince Haber Ver ({selectedSize})
           </button>
         )}
+
+        {/* WhatsApp Quick Order Button */}
+        <WhatsAppQuickOrder
+          productTitle={product.title}
+          productPrice={currentVariant?.price?.amount || product.priceRange.minVariantPrice.amount}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+        />
 
         {/* Guarantees & Conversion Trust Badges */}
         <div className="flex flex-col gap-2.5 pt-2 font-label-mono text-[11px] text-on-surface-variant border-t border-outline-variant">

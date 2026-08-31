@@ -1,12 +1,13 @@
 import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProduct } from "@/lib/shopify";
+import { getProduct, getProducts } from "@/lib/shopify";
 import { ProductGallery } from "@/components/product/product-gallery";
 import { VariantSelector } from "@/components/product/variant-selector";
 import { ProductAccordion } from "@/components/product/product-accordion";
 import { StickyMobileCTA } from "@/components/product/sticky-mobile-cta";
 import { ProductReviews } from "@/components/product/product-reviews";
+import { FrequentlyBoughtTogether } from "@/components/product/frequently-bought-together";
 
 interface Props {
   params: Promise<{ handle: string }>;
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProductDetailPage({ params }: Props) {
   const { handle } = await params;
   const product = await getProduct(handle);
+  const allProducts = await getProducts();
 
   if (!product) {
     notFound();
@@ -68,7 +70,7 @@ export default async function ProductDetailPage({ params }: Props) {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col w-full max-w-[1920px] mx-auto">
+    <main className="flex-grow pt-16 flex flex-col w-full max-w-[1920px] mx-auto bg-surface">
       {/* Schema.org Structured Data */}
       <script
         type="application/ld+json"
@@ -88,7 +90,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 <h1 className="font-headline-md text-primary uppercase tracking-tighter w-2/3">
                   {product.title}
                 </h1>
-                <span className="font-price-lg text-primary text-xl">
+                <span className="font-price-lg text-primary text-xl font-bold">
                   {parseFloat(product.priceRange.minVariantPrice.amount).toLocaleString("tr-TR")} ₺
                 </span>
               </div>
@@ -111,8 +113,14 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Product Reviews & Ratings Section */}
-      <ProductReviews productId={product.id} productTitle={product.title} />
+      {/* Frequently Bought Together Smart Bundle */}
+      <FrequentlyBoughtTogether
+        currentProduct={product}
+        allProducts={allProducts}
+      />
+
+      {/* Product Reviews & Fit Ratings Section */}
+      <ProductReviews productHandle={product.handle} />
 
       {/* Sticky Mobile CTA */}
       <StickyMobileCTA product={product} />

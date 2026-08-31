@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ArrowRight, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/lib/store/useCartStore";
+import { useAuthStore } from "@/lib/store/useAuthStore";
 import { CheckoutShippingForm } from "@/components/checkout/checkout-shipping-form";
 import { CheckoutPaymentForm } from "@/components/checkout/checkout-payment-form";
 import { CheckoutOrderSummary } from "@/components/checkout/checkout-order-summary";
@@ -19,16 +20,20 @@ export default function CheckoutPage() {
     () => false
   );
   const { items, getSubtotal, clearCart } = useCartStore();
+  const { user, isAuthenticated } = useAuthStore();
+
+  const defaultAddr = user?.addresses.find((a) => a.isDefault) || user?.addresses[0];
+  const nameParts = (user?.name || "").split(" ");
 
   // Form State
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [city, setCity] = useState("İstanbul");
-  const [district, setDistrict] = useState("Beşiktaş");
-  const [address, setAddress] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [email, setEmail] = useState(user?.email || "");
+  const [phone, setPhone] = useState(user?.phone || "");
+  const [firstName, setFirstName] = useState(nameParts[0] || "");
+  const [lastName, setLastName] = useState(nameParts.slice(1).join(" ") || "");
+  const [city, setCity] = useState(defaultAddr?.city || "İstanbul");
+  const [district, setDistrict] = useState(defaultAddr?.district || "Kadıköy");
+  const [address, setAddress] = useState(defaultAddr?.addressDetail || "");
+  const [postalCode, setPostalCode] = useState("34710");
 
   // Gift options
   const [isGift, setIsGift] = useState(false);
