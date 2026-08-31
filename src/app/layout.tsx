@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { TopAnnouncementTicker } from "@/components/layout/top-announcement-ticker";
 import { Header } from "@/components/layout/header";
@@ -10,6 +11,20 @@ import { FeedbackTrigger } from "@/components/ui/feedback-trigger";
 import { ToastContainer } from "@/components/ui/toast";
 import { Footer } from "@/components/layout/footer";
 import { PwaProvider } from "@/components/pwa/pwa-provider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -44,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="h-full antialiased">
+    <html lang="tr" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-surface text-on-surface">
         <PwaProvider>
           {/* 1. Global Infinite Marquee Announcement Ticker (32px / top-0) */}
