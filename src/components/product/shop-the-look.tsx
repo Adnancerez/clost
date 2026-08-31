@@ -5,6 +5,7 @@ import Image from "next/image";
 import { X, ShoppingBag } from "lucide-react";
 import { Product } from "@/lib/shopify/types";
 import { useCartStore } from "@/lib/store/useCartStore";
+import { useToastStore } from "@/lib/store/useToastStore";
 
 export interface ShopTheLookModalProps {
   isOpen: boolean;
@@ -20,6 +21,7 @@ export function ShopTheLookModal({
   products,
 }: ShopTheLookModalProps) {
   const { addItem, openCart } = useCartStore();
+  const { addToast } = useToastStore();
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>(() => {
     const initial: Record<string, string> = {};
     products.forEach((p) => {
@@ -78,6 +80,14 @@ export function ShopTheLookModal({
       });
     });
 
+    addToast({
+      title: "Lookbook Seti Sepete Eklendi",
+      message: `${lookTitle} (${products.length} Parça • %10 İndirimli: ${finalTotal.toLocaleString("tr-TR")} ₺)`,
+      type: "success",
+      actionLabel: "Sepeti Gör",
+      onAction: () => openCart(),
+    });
+
     setTimeout(() => {
       setIsAdding(false);
       onClose();
@@ -87,7 +97,7 @@ export function ShopTheLookModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true">
       {/* Backdrop */}
-      <div onClick={onClose} className="fixed inset-0 bg-black/70 backdrop-blur-[2px] animate-in fade-in" />
+      <div onClick={onClose} className="fixed inset-0 bg-black/70 animate-in fade-in" />
 
       {/* Modal Container */}
       <div className="relative z-10 w-full max-w-2xl bg-surface border border-primary p-6 md:p-8 flex flex-col gap-6 shadow-2xl animate-in zoom-in-95 max-h-[90vh] overflow-y-auto no-scrollbar">
@@ -101,7 +111,7 @@ export function ShopTheLookModal({
               {lookTitle}
             </h2>
           </div>
-          <button onClick={onClose} className="p-1 hover:bg-surface-variant cursor-pointer">
+          <button onClick={onClose} className="p-1 hover:bg-surface-variant cursor-pointer border border-transparent hover:border-primary">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -150,7 +160,7 @@ export function ShopTheLookModal({
                           onClick={() => handleSizeChange(product.id, s)}
                           className={`w-8 h-8 border border-primary font-label-mono text-xs cursor-pointer transition-colors ${
                             currentSize === s
-                              ? "bg-primary text-on-primary"
+                              ? "bg-primary text-on-primary font-bold"
                               : "bg-surface text-primary hover:bg-surface-variant"
                           }`}
                         >
@@ -188,7 +198,7 @@ export function ShopTheLookModal({
             type="button"
             disabled={isAdding}
             onClick={handleAddAllToCart}
-            className="w-full bg-primary text-on-primary h-14 flex items-center justify-center font-label-mono uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer text-xs gap-2"
+            className="w-full bg-primary text-on-primary h-14 flex items-center justify-center font-label-mono uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer text-xs gap-2 font-bold"
           >
             {isAdding ? (
               "Set Sepete Ekleniyor..."

@@ -218,26 +218,38 @@
   animation: cartBounceAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 3. Futuristic Laser Scanline (Outfit Studio Dressing Effect) */
-@keyframes laserScan {
+/* 3. Brutalist Toast Slide & Spring Animation */
+@keyframes toastEntrance {
   0% {
-    top: -10%;
     opacity: 0;
+    transform: translate3d(0, 32px, 0) scale(0.92);
   }
-  20% {
-    opacity: 0.9;
-  }
-  80% {
-    opacity: 0.9;
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(1.02);
   }
   100% {
-    top: 110%;
-    opacity: 0;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
-.animate-laser-scan {
-  animation: laserScan 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.animate-toast-in {
+  animation: toastEntrance 0.35s cubic-bezier(0.21, 1.02, 0.46, 1) forwards;
+}
+
+/* Toast Countdown Progress Bar */
+@keyframes toastTimerBar {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.animate-toast-progress {
+  animation: toastTimerBar 4s linear forwards;
 }
 
 /* 4. Brutalist Shimmer Sheen */
