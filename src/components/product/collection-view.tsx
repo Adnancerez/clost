@@ -24,17 +24,23 @@ export function CollectionView({
     const val = optionValue.toLowerCase();
     const req = requestedColor.toLowerCase();
 
+    if (req === "sarı") {
+      return val.includes("sarı") || val.includes("yellow") || val.includes("neon");
+    }
+    if (req === "turkuaz") {
+      return val.includes("turkuaz") || val.includes("cyan") || val.includes("mavi");
+    }
+    if (req === "pembe") {
+      return val.includes("pembe") || val.includes("pink") || val.includes("bordo");
+    }
+    if (req === "mavi") {
+      return val.includes("mavi") || val.includes("blue") || val.includes("indigo") || val.includes("lacivert");
+    }
     if (req === "siyah") {
-      return val.includes("siyah") || val.includes("black");
+      return val.includes("siyah") || val.includes("black") || val.includes("ham");
     }
     if (req === "gri") {
-      return val.includes("gri") || val.includes("gray") || val.includes("grey") || val.includes("kömür") || val.includes("yıkanmış");
-    }
-    if (req === "beyaz") {
-      return val.includes("beyaz") || val.includes("white") || val.includes("kemik");
-    }
-    if (req === "yeşil") {
-      return val.includes("yeşil") || val.includes("haki") || val.includes("olive") || val.includes("zeytin");
+      return val.includes("gri") || val.includes("gray") || val.includes("grey") || val.includes("kırçıllı");
     }
     return val.includes(req);
   };

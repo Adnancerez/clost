@@ -58,7 +58,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           fill
           priority={priority}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className={`object-cover grayscale mix-blend-multiply transition-all duration-500 ${
+          className={`object-cover transition-all duration-500 ${
             product.images?.[1] ? "group-hover:opacity-0 group-hover:scale-105" : "group-hover:scale-105"
           }`}
         />
@@ -70,7 +70,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             alt={`${product.title} - Detay Görünüm`}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover grayscale mix-blend-multiply absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none"
+            className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none"
           />
         )}
 

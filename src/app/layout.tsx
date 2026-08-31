@@ -31,9 +31,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "CLOST — Kullanışlılık İçin Tasarlandı",
+  title: {
+    default: "CLOST — Y2K & Gen-Z Streetwear Archive",
+    template: "%s — CLOST",
+  },
   description:
-    "Yapısal bütünlüğe tavizsiz bağlılık. Modern brutalist lüks techwear e-ticaret platformu.",
+    "Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Oversized silüetler, raw denimler ve özel grafik tasarımlar.",
   applicationName: "CLOST",
   appleWebApp: {
     capable: true,
@@ -61,7 +64,7 @@ export default function RootLayout({
         <PwaProvider>
           <CountdownBanner />
           <Header />
-          <div className="flex-grow flex flex-col pt-8">
+          <div className="flex-grow flex flex-col pt-24">
             <NavigationHistoryBar />
             {children}
           </div>
