@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, Package, Truck, CheckCircle2, Clock, MapPin, ShieldAlert } from "lucide-react";
+import { Search, Package, Truck, CheckCircle2, Clock, MapPin, ShieldAlert, Send, Navigation } from "lucide-react";
 
 interface TrackingResult {
   orderId: string;
@@ -12,6 +12,7 @@ interface TrackingResult {
   currentStatus: string;
   currentStep: number; // 1 to 5
   estimatedDelivery: string;
+  carrierPhone: string;
   timeline: {
     title: string;
     description: string;
@@ -27,22 +28,23 @@ export default function CargoTrackingPage() {
   const [result, setResult] = useState<TrackingResult | null>({
     orderId: "ORD-94218-TR",
     trackingNumber: "YK-889124012TR",
-    carrier: "Yurtiçi Kargo",
+    carrier: "Yurtiçi Kargo // Ekspres",
     recipient: "Caner K.",
     destination: "Beşiktaş / İstanbul",
     currentStatus: "Kargonuz Dağıtımda // Kurye Teslimat İçin Yolda",
     currentStep: 4,
     estimatedDelivery: "Bugün 14:00 - 17:00",
+    carrierPhone: "0850 999 12 34",
     timeline: [
       {
         title: "Sipariş Alındı & Onaylandı",
-        description: "Sipariş sistem tarafından işlendi ve depoya aktarıldı.",
+        description: "Sipariş CLOST sistemi tarafından işlendi ve depoya aktarıldı.",
         time: "24 Ağustos 2026 - 10:14",
         completed: true,
       },
       {
         title: "Paketlendi & Kalite Kontrol",
-        description: "Ürünler kalite kontrolünden geçti, barkodlandı ve paketlendi.",
+        description: "Ürünler kalite kontrolünden geçti, barkodlandı ve mühürlü kutuya konuldu.",
         time: "24 Ağustos 2026 - 14:30",
         completed: true,
       },
@@ -53,15 +55,15 @@ export default function CargoTrackingPage() {
         completed: true,
       },
       {
-        title: "Dağıtımda",
+        title: "Dağıtımda // Kurye Yolda",
         description: "Kurye teslimat adresine doğru hareket halindedir.",
-        time: "25 Ağustos 2026 - 09:15",
+        time: "Bugün 09:15",
         completed: true,
         current: true,
       },
       {
         title: "Teslim Edildi",
-        description: "Alıcıya imza karşılığı teslim edilecek.",
+        description: "Alıcıya imza ve SMS kodu karşılığı teslim edilecek.",
         time: "Tahmini Bugün",
         completed: false,
       },
@@ -84,6 +86,7 @@ export default function CargoTrackingPage() {
         currentStatus: "Kargoya Verildi // Transfer Merkezinde İşleniyor",
         currentStep: 3,
         estimatedDelivery: "1 - 2 İş Günü",
+        carrierPhone: "0850 999 12 34",
         timeline: [
           {
             title: "Sipariş Alındı & Onaylandı",
@@ -126,15 +129,15 @@ export default function CargoTrackingPage() {
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2">
-            LOJİSTİK &amp; TESLİMAT TAKİBİ
+          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2 font-bold">
+            LOJİSTİK &amp; TESLİMAT TAKİBİ // 7/24 CANLI
           </span>
-          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
+          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary font-bold">
             KARGO TAKİBİ
           </h1>
         </div>
-        <p className="font-label-mono text-xs uppercase text-on-surface-variant max-w-xs">
-          Yurtiçi Kargo güvencesiyle 7/24 canlı koli takip sistemi.
+        <p className="font-label-mono text-xs uppercase text-on-surface-variant max-w-xs font-bold">
+          Sigortalı teslimat güvencesiyle canlı koli &amp; kurye takip sistemi.
         </p>
       </header>
 
@@ -156,7 +159,7 @@ export default function CargoTrackingPage() {
             <button
               type="submit"
               disabled={isSearching}
-              className="bg-primary text-on-primary font-label-mono text-xs px-8 py-3.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer disabled:opacity-50"
+              className="bg-primary text-on-primary font-label-mono text-xs px-8 py-3.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer disabled:opacity-50 font-bold"
             >
               {isSearching ? "Sorgulanıyor..." : "Kargo Sorgula"}
             </button>
@@ -167,18 +170,62 @@ export default function CargoTrackingPage() {
       {/* Tracking Result View */}
       {result && (
         <section className="flex-1 p-6 md:p-12 max-w-4xl mx-auto w-full flex flex-col gap-8">
+          {/* Live Simulated GPS Map Route Card */}
+          <div className="border-2 border-primary bg-surface p-6 flex flex-col gap-4 shadow-sm">
+            <div className="flex justify-between items-center border-b border-primary pb-3 font-label-mono text-xs">
+              <div className="flex items-center gap-2 text-primary font-bold uppercase">
+                <Navigation className="w-4 h-4 text-emerald-600 animate-bounce" />
+                <span>CANLI TESLİMAT ROTASI (GPS SİMÜLASYONU)</span>
+              </div>
+              <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 border border-emerald-300 uppercase">
+                CANLI SİNYAL ● AKTİF
+              </span>
+            </div>
+
+            <div className="h-40 bg-surface-variant border border-primary relative overflow-hidden flex items-center justify-center p-4">
+              {/* Stylized Grid Map Background */}
+              <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
+              
+              <div className="z-10 flex items-center justify-between w-full max-w-md font-label-mono text-xs">
+                {/* Depot */}
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[11px]">
+                    HQ
+                  </div>
+                  <span className="text-[10px] font-bold uppercase text-primary">Ayazağa Hub</span>
+                </div>
+
+                {/* Animated Moving Courier */}
+                <div className="flex-1 px-4 relative flex items-center">
+                  <div className="w-full h-1 bg-primary/20" />
+                  <div className="absolute left-[70%] -top-3.5 bg-emerald-600 text-white p-1.5 rounded-full shadow-lg animate-pulse">
+                    <Truck className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Customer Address */}
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-8 h-8 rounded-full border-2 border-primary bg-surface text-primary flex items-center justify-center font-bold">
+                    <MapPin className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase text-primary">Teslimat Adresi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Status Card */}
           <div className="border border-primary p-6 md:p-8 bg-surface flex flex-col gap-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-outline-variant pb-6">
               <div>
-                <span className="font-label-mono text-xs uppercase text-on-surface-variant">
+                <span className="font-label-mono text-xs uppercase text-on-surface-variant font-bold">
                   GÜNCEL DURUM:
                 </span>
-                <h2 className="font-headline-sm text-primary uppercase text-lg mt-1">
+                <h2 className="font-headline-sm text-primary uppercase text-lg mt-1 font-bold">
                   {result.currentStatus}
                 </h2>
               </div>
-              <div className="bg-primary text-on-primary px-4 py-2 font-label-mono text-xs uppercase">
+              <div className="bg-primary text-on-primary px-4 py-2 font-label-mono text-xs uppercase font-bold">
                 Tahmini Teslimat: {result.estimatedDelivery}
               </div>
             </div>
@@ -186,21 +233,21 @@ export default function CargoTrackingPage() {
             {/* Info Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-label-mono text-xs">
               <div>
-                <span className="text-on-surface-variant block mb-1">SİPARİŞ KODU</span>
+                <span className="text-on-surface-variant block mb-1 font-bold">SİPARİŞ KODU</span>
                 <span className="text-primary font-bold">{result.orderId}</span>
               </div>
               <div>
-                <span className="text-on-surface-variant block mb-1">TAKİP NUMARASI</span>
+                <span className="text-on-surface-variant block mb-1 font-bold">TAKİP NUMARASI</span>
                 <span className="text-primary font-bold">{result.trackingNumber}</span>
               </div>
               <div>
-                <span className="text-on-surface-variant block mb-1">KARGO ŞİRKETİ</span>
+                <span className="text-on-surface-variant block mb-1 font-bold">KARGO ŞİRKETİ</span>
                 <span className="text-primary font-bold flex items-center gap-1">
                   <Truck className="w-3.5 h-3.5" /> {result.carrier}
                 </span>
               </div>
               <div>
-                <span className="text-on-surface-variant block mb-1">TESLİMAT ADRESİ</span>
+                <span className="text-on-surface-variant block mb-1 font-bold">TESLİMAT ADRESİ</span>
                 <span className="text-primary font-bold flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5" /> {result.destination}
                 </span>
@@ -210,7 +257,7 @@ export default function CargoTrackingPage() {
 
           {/* Step Timeline */}
           <div className="border border-primary p-6 md:p-8 bg-surface flex flex-col gap-6">
-            <h3 className="font-headline-sm uppercase text-primary text-base flex items-center gap-2">
+            <h3 className="font-headline-sm uppercase text-primary text-base flex items-center gap-2 font-bold">
               <Clock className="w-4 h-4" /> Kargo Hareketleri
             </h3>
 
@@ -242,7 +289,7 @@ export default function CargoTrackingPage() {
                       >
                         {step.title}
                       </h4>
-                      <span className="font-label-mono text-xs text-on-surface-variant">
+                      <span className="font-label-mono text-xs text-on-surface-variant font-bold">
                         {step.time}
                       </span>
                     </div>
@@ -256,7 +303,7 @@ export default function CargoTrackingPage() {
           </div>
 
           {/* Help Notice */}
-          <div className="flex items-center gap-3 p-4 border border-outline-variant bg-surface-container-low font-label-mono text-xs text-on-surface">
+          <div className="flex items-center gap-3 p-4 border border-outline-variant bg-surface-container-low font-label-mono text-xs text-on-surface font-bold">
             <ShieldAlert className="w-4 h-4 text-primary flex-shrink-0" />
             <span>
               Kargonuzla ilgili bir gecikme yaşamanız durumunda sağ alttaki Canlı Destek butonundan bize anında ulaşabilirsiniz.

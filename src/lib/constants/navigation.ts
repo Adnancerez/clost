@@ -12,14 +12,16 @@ export interface FooterSection {
 export const MAIN_NAV_LINKS: NavLink[] = [
   { label: "Tüm Ürünler", href: "/collections/all" },
   { label: "Koleksiyonlar", href: "/collections" },
+  { label: "Kombin Tasarımcısı", href: "/kombin-olustur" },
   { label: "Lookbook", href: "/lookbook" },
   { label: "Dergi", href: "/dergi" },
 ];
 
 export const MOBILE_NAV_LINKS: NavLink[] = [
   { label: "Tüm Ürünler", href: "/collections/all" },
+  { label: "Kombin Tasarımcısı", href: "/kombin-olustur" },
   { label: "Yeni Gelenler", href: "/collections/new" },
-  { label: "Lookbook Sonbahar '24", href: "/lookbook" },
+  { label: "Lookbook Summer '24", href: "/lookbook" },
   { label: "Dergi & Makaleler", href: "/dergi" },
   { label: "Beden & Silüet Rehberi", href: "/beden-rehberi" },
   { label: "İade & Değişim Portalı", href: "/iade-talebi" },
@@ -43,6 +45,7 @@ export const FOOTER_SECTIONS: FooterSection[] = [
     title: "Mağaza",
     links: [
       { label: "Tüm Ürünler", href: "/collections/all" },
+      { label: "Kombin Tasarımcısı", href: "/kombin-olustur" },
       { label: "Koleksiyonlar", href: "/collections" },
       { label: "Yeni Gelenler", href: "/collections/new" },
       { label: "Lookbook", href: "/lookbook" },

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/product-card";
 import { HeroVideoBanner } from "@/components/home/hero-video-banner";
+import { DropCountdownBanner } from "@/components/home/drop-countdown-banner";
 import { CategoryShowcase } from "@/components/layout/category-showcase";
 import { getProducts } from "@/lib/shopify";
 
@@ -44,7 +45,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 3. Editorial Manifesto Section */}
+      {/* 3. Live Drop 02 Countdown & VIP Early Access */}
+      <DropCountdownBanner />
+
+      {/* 4. Editorial Manifesto Section */}
       <section id="manifesto" className="border-b border-primary bg-surface-bright">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px] lg:min-h-[600px]">
           {/* Large Image (Left, spanning 7 cols) */}
@@ -72,17 +76,25 @@ export default async function HomePage() {
               2000&apos;ler Y2K skater silüetleri, siber neon kontrastlar ve 14.5 oz ham selvedge denimler.
               Yüksek kaliteli kompakt kumaşlar ve nefes alabilen yazlık teknik file panellerle hazırlandı.
             </p>
-            <Link
-              href="/collections/all"
-              className="inline-block border border-primary text-primary font-label-mono text-xs px-8 py-3 text-center hover:bg-primary hover:text-on-primary transition-colors duration-300 uppercase tracking-widest w-full sm:w-auto"
-            >
-              Koleksiyonu İncele
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/collections/all"
+                className="inline-block border border-primary text-primary font-label-mono text-xs px-8 py-3 text-center hover:bg-primary hover:text-on-primary transition-colors duration-300 uppercase tracking-widest font-bold"
+              >
+                Koleksiyonu İncele
+              </Link>
+              <Link
+                href="/kombin-olustur"
+                className="inline-block bg-primary text-on-primary font-label-mono text-xs px-8 py-3 text-center hover:bg-surface-variant hover:text-primary border border-primary transition-colors duration-300 uppercase tracking-widest font-bold"
+              >
+                Kombin Tasarla (%15 İndirim) →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Category Showcase (above footer) */}
+      {/* 5. Category Showcase (above footer) */}
       <CategoryShowcase />
     </main>
   );
