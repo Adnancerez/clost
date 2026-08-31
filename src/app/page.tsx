@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/product/product-card";
+import { HeroVideoBanner } from "@/components/home/hero-video-banner";
 import { CategoryShowcase } from "@/components/layout/category-showcase";
 import { getProducts } from "@/lib/shopify";
 
@@ -10,46 +11,11 @@ export default async function HomePage() {
 
   return (
     <main className="flex-grow flex flex-col">
-      {/* Hero Section */}
-      <section className="relative w-full h-[75vh] md:h-[820px] border-b border-outline-variant overflow-hidden group select-none">
-        <Image
-          src="/products/cyber-neon-rugby-polo-1.jpg"
-          alt="CLOST Summer Drop '24 — Y2K & Gen-Z Streetwear"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_15%] transition-transform duration-[10s] group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      {/* 1. Cinematic Autoplay Video Hero Section */}
+      <HeroVideoBanner />
 
-        <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-10 pb-12 md:pb-16 z-10 pointer-events-none">
-          <div className="pointer-events-auto mb-3">
-            <span className="font-label-mono text-xs text-white/80 tracking-widest inline-block">
-              YENİ DROP // SUMMER 2024
-            </span>
-          </div>
-          <h1 className="font-display-lg-mobile md:font-display-lg text-white mb-8 uppercase tracking-tight pointer-events-auto">
-            Y2K SOKAK ARŞİVİ
-          </h1>
-          <div className="pointer-events-auto flex flex-wrap gap-3">
-            <Link
-              href="/collections/all"
-              className="inline-block bg-white text-primary font-label-mono text-sm px-8 py-3.5 hover:opacity-80 transition-opacity duration-300 uppercase tracking-widest"
-            >
-              Tüm Parçaları Keşfet →
-            </Link>
-            <Link
-              href="/lookbook"
-              className="inline-block border border-white/60 text-white font-label-mono text-sm px-8 py-3.5 hover:bg-white hover:text-primary transition-colors duration-300 uppercase tracking-widest"
-            >
-              Lookbook &apos;24
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Grid (Tüm Yeni Parçalar) */}
-      <section className="py-14 md:py-20 border-b border-outline-variant bg-surface" id="featured">
+      {/* 2. Featured Grid (Tüm Yeni Parçalar) */}
+      <section className="py-12 md:py-16 border-b border-primary bg-surface" id="featured">
         <div className="px-4 md:px-10 mb-8 flex justify-between items-end">
           <div>
             <span className="font-label-mono text-xs text-on-surface-variant block mb-1">
@@ -78,8 +44,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Editorial Manifesto Section */}
-      <section id="manifesto" className="border-b border-outline-variant bg-surface-bright">
+      {/* 3. Editorial Manifesto Section */}
+      <section id="manifesto" className="border-b border-primary bg-surface-bright">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px] lg:min-h-[600px]">
           {/* Large Image (Left, spanning 7 cols) */}
           <div className="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-outline-variant relative h-[360px] lg:h-auto overflow-hidden group">
@@ -116,7 +82,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Category Showcase (above footer) */}
+      {/* 4. Category Showcase (above footer) */}
       <CategoryShowcase />
     </main>
   );
