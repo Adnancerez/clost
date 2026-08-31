@@ -54,3 +54,5 @@ export function TopAnnouncementTicker() {
     </aside>
   );
 }
+
+export default TopAnnouncementTicker;

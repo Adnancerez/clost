@@ -133,3 +133,5 @@ function ToastSingle({
     </div>
   );
 }
+
+export default ToastContainer;

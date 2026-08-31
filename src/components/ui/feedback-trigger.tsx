@@ -29,3 +29,5 @@ export function FeedbackTrigger() {
     </button>
   );
 }
+
+export default FeedbackTrigger;

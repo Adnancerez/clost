@@ -103,3 +103,5 @@ export function PwaProvider({ children }: { children: React.ReactNode }) {
     </>
   );
 }
+
+export default PwaProvider;
