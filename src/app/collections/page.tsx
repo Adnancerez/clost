@@ -16,29 +16,29 @@ export default async function CollectionsDirectoryPage() {
 
   const collectionHeroImages: Record<string, { image: string; tag: string; highlight: string }> = {
     all: {
-      image: "/products/striped-rugby-baggy-denim.jpg",
+      image: "/products/cyber-neon-rugby-polo-1.jpg",
       tag: "TAM ARŞİV",
-      highlight: "8 Parça // Y2K & Skater Koleksiyonu",
+      highlight: "5 Parça // Summer Drop '24",
     },
     new: {
-      image: "/products/sloid-unicorn-zip-hoodie.jpg",
+      image: "/products/volt-yellow-mesh-track-jacket-1.jpg",
       tag: "YENİ DROP",
-      highlight: "Sonbahar '24 // Sınırlı Üretim",
+      highlight: "Summer '24 // Sınırlı Üretim",
     },
     outerwear: {
-      image: "/products/sloid-unicorn-zip-hoodie.jpg",
+      image: "/products/volt-yellow-mesh-track-jacket-1.jpg",
       tag: "DIŞ GİYİM",
-      highlight: "Grafik Baskılı Zip Hoodie & Sweat",
+      highlight: "Volt Neon File Detaylı Rüzgarlık Ceket",
     },
     tops: {
-      image: "/products/jelly-star-longsleeve.jpg",
+      image: "/products/acid-purple-kanji-heavy-tee-1.jpg",
       tag: "ÜST GİYİM",
-      highlight: "Çizgili Rugby, Longsleeve & Baby Tee",
+      highlight: "Cyber Kanji Ağır Tişört & Boxy Rugby Polo",
     },
     bottoms: {
-      image: "/products/lafam-striped-jorts.jpg",
+      image: "/products/ultra-baggy-raw-denim-jorts-1.jpg",
       tag: "ALT GİYİM",
-      highlight: "Ultra Baggy Selvedge Denim & Jorts",
+      highlight: "14.5 oz Ham Selvedge Jorts & Paraşüt Kargo",
     },
   };
 
@@ -48,7 +48,7 @@ export default async function CollectionsDirectoryPage() {
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
           <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2 font-bold">
-            SOKAK ARŞİVİ // SONBAHAR &apos;24
+            SOKAK ARŞİVİ // SUMMER &apos;24
           </span>
           <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary font-bold">
             KOLEKSİYONLAR
@@ -65,7 +65,7 @@ export default async function CollectionsDirectoryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {collections.map((col) => {
             const meta = collectionHeroImages[col.handle] || {
-              image: "/products/sloid-unicorn-zip-hoodie.jpg",
+              image: "/products/cyber-neon-rugby-polo-1.jpg",
               tag: "ARŞİV",
               highlight: "CLOST Temel Parçaları",
             };
@@ -83,7 +83,7 @@ export default async function CollectionsDirectoryPage() {
                     alt={col.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
 
@@ -135,7 +135,7 @@ export default async function CollectionsDirectoryPage() {
               </span>
             </div>
             <h3 className="font-headline-sm uppercase text-primary text-xl md:text-2xl font-bold">
-              Sonbahar &apos;24 Lookbook Arşivini Keşfedin
+              Summer &apos;24 Lookbook Arşivini Keşfedin
             </h3>
             <p className="font-body-md text-xs text-on-surface-variant mt-2 max-w-lg leading-relaxed">
               Sokak kombinlerimizi ve parçaların model üzerindeki duruşunu yüksek çözünürlüklü editoryal çekimlerle inceleyin.

@@ -23,28 +23,28 @@ export default function JournalPage() {
       weight: "14.5 oz",
       description:
         "Sert ve dayanıklı ham denim dokusu. Kimyasal ağartma veya suni eskitme yapılmamış, giyildikçe kullanıcının hareketlerine göre kişiselleşen doğal kırılma ve iz yapısı.",
-      imageUrl: "/products/striped-rugby-baggy-denim.jpg",
-      products: [MOCK_PRODUCTS[2], MOCK_PRODUCTS[5]],
+      imageUrl: "/products/ultra-baggy-raw-denim-jorts-1.jpg",
+      products: [MOCK_PRODUCTS[3]],
     },
     {
       id: "mat-fleece",
-      title: "380 GSM Ağır Gramaj İnterlok Pamuk",
-      spec: "%100 Taranmış Kompakt Pamuk • Tüylenmez Yüzey",
-      weight: "380 GSM",
+      title: "320 GSM Ağır Gramaj Pique Pamuk",
+      spec: "%100 Taranmış Kompakt Pamuk • Reaktif Şerit Boyama",
+      weight: "320 GSM",
       description:
-        "Geleneksel hazır giyim kumaşlarının iki katı yoğunluktadır. Yüksek bükümlü kompakt iplik yapısı sayesinde yıkama sonrasında formunu kaybetmez, sarkma yapmaz.",
-      imageUrl: "/products/sloid-unicorn-zip-hoodie.jpg",
-      products: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[1]],
+        "Yüksek bükümlü kompakt iplik yapısı sayesinde nefes alabilir ve tok durur. Yıkama sonrasında formunu kaybetmez, sarkma yapmaz.",
+      imageUrl: "/products/cyber-neon-rugby-polo-1.jpg",
+      products: [MOCK_PRODUCTS[0], MOCK_PRODUCTS[2]],
     },
     {
       id: "mat-suprem",
-      title: "Vintage Yıkamalı 240 GSM Pamuk Süprem",
-      spec: "Reaktif Serigrafi Baskı • Nefes Alabilir Doku",
-      weight: "240 GSM",
+      title: "135 GSM Ultra Hafif Crinkle Naylon",
+      spec: "Su İtici • Micro-Ripstop • Diamond File Astar",
+      weight: "135 GSM",
       description:
-        "Özel enzim yıkamadan geçirilerek elde edilen yumuşak doku ve canlı renk tonları. Y2K grafiklerinin çatlama yapmadan kalıcı kalmasını sağlayan reaktif baskı teknolojisi.",
-      imageUrl: "/products/starlet-baby-tee.jpg",
-      products: [MOCK_PRODUCTS[4], MOCK_PRODUCTS[6]],
+        "Yaz aylarında rüzgara karşı koruma sağlayan ultra hafif teknik naylon. 3D kargo cepler ve ayarlanabilir bungee stoper donanımları.",
+      imageUrl: "/products/volt-yellow-mesh-track-jacket-1.jpg",
+      products: [MOCK_PRODUCTS[1], MOCK_PRODUCTS[4]],
     },
   ];
 
@@ -318,7 +318,7 @@ export default function JournalPage() {
                   </div>
 
                   <Link
-                    href={`/products/${mat.products[0]?.handle || "sloid-unicorn-graphic-zip-hoodie"}`}
+                    href={`/products/${mat.products[0]?.handle || "cyber-neon-rugby-boxy-polo"}`}
                     className="bg-primary text-on-primary font-label-mono text-xs px-6 py-2.5 uppercase tracking-wider hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center gap-1.5 flex-shrink-0 font-bold"
                   >
                     Ürünü İncele <ArrowRight className="w-3.5 h-3.5" />

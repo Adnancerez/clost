@@ -14,16 +14,16 @@ export default function PressKitPage() {
 
   const campaignImages = [
     {
-      title: "Look 01 // Sloid Unicorn Graphic Hoodie",
-      url: "/products/sloid-unicorn-zip-hoodie.jpg",
+      title: "Look 01 // Cyber Neon Rugby Boxy Polo",
+      url: "/products/cyber-neon-rugby-polo-1.jpg",
     },
     {
-      title: "Look 02 // Rugby Longsleeve & Ultra Baggy Denim",
-      url: "/products/striped-rugby-baggy-denim.jpg",
+      title: "Look 02 // Volt Yellow Mesh Track Jacket",
+      url: "/products/volt-yellow-mesh-track-jacket-1.jpg",
     },
     {
-      title: "Look 03 // La Fam Striped & Raw Jorts",
-      url: "/products/lafam-striped-jorts.jpg",
+      title: "Look 03 // Acid Purple Kanji Heavyweight Tee",
+      url: "/products/acid-purple-kanji-heavy-tee-1.jpg",
     },
   ];
 

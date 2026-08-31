@@ -107,7 +107,7 @@ export default function DeveloperPanelPage() {
   const [newCategory, setNewCategory] = useState("Dış Giyim");
   const [newColor, setNewColor] = useState("Siyah");
   const [newSizes, setNewSizes] = useState("S, M, L, XL");
-  const [newImage, setNewImage] = useState("/products/sloid-unicorn-zip-hoodie.jpg");
+  const [newImage, setNewImage] = useState("/products/cyber-neon-rugby-polo-1.jpg");
   const [newDesc, setNewDesc] = useState(
     "Y2K sokak silüeti, ağır gramajlı kompakt pamuk ve özel serigrafi baskı."
   );

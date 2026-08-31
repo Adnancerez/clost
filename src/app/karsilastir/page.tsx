@@ -37,30 +37,30 @@ export default function ComparePage() {
   // Helper specs based on productType
   const getSpecs = (product: (typeof items)[0]) => {
     const type = product.productType?.toLowerCase() || "";
-    if (type.includes("dış") || type.includes("parka") || type.includes("ceket")) {
+    if (type.includes("dış") || type.includes("ceket")) {
       return {
-        fabric: "%100 3L Naylon Ripstop (420 GSM)",
-        waterproof: "20.000 mm Su Sütunu (Tam Koruma)",
-        fit: "Oversized Brutalist Kutu Kesim",
-        hardware: "YKK Aquaguard Çift Yönlü Su Geçirmez Fermuarlar",
-        pockets: "6 Adet Modüler Gizli & Fermuarlı Cep",
+        fabric: "135 GSM Crinkle Naylon & Diamond File Astar",
+        waterproof: "DWR Su İtici & Rüzgar Geçirmez",
+        fit: "Y2K Cyberpunk Raglan Kesim",
+        hardware: "İki Yönlü Gümüş Metal Fermuar & Reflektif Kordonlar",
+        pockets: "Fermuarlı Yan Cepler & File Havalandırma",
       };
     }
-    if (type.includes("alt") || type.includes("denim") || type.includes("kargo")) {
+    if (type.includes("alt") || type.includes("denim") || type.includes("jorts") || type.includes("kargo") || type.includes("pantolon")) {
       return {
-        fabric: "Ağır Gramaj Kompakt Ham Denim / Naylon (380 GSM)",
-        waterproof: "DWR Yüzey Su İtici Kaplama",
-        fit: "Geniş Paça / Asimetrik Paça Kesim",
-        hardware: "Mat Siyah Çinko Alaşım Düğme & Tokalar",
-        pockets: "4 Adet Körük Cepli & Derin Yan Cepler",
+        fabric: "14.5 oz Ham Selvedge Denim / 135 GSM Micro-Ripstop",
+        waterproof: "Nefes Alabilir Yazlık Doku",
+        fit: "Ultra Baggy Skater / Balon Paraşüt Kesim",
+        hardware: "Parlak Krom Perçinler & Lazer D-Halkalar",
+        pockets: "Geniş Arka Cepler & 3D Taktik Kargo Cepleri",
       };
     }
     return {
-      fabric: "%100 Ağır Kompakt Pamuklu Polar (450 GSM)",
-      waterproof: "Nefes Alabilir Termal Katman",
-      fit: "Düşük Omuzlu Boxy Kesim",
-      hardware: "Güçlendirilmiş Ribana & Kordon Kilitleri",
-      pockets: "Gizli Kanguru Cep",
+      fabric: "280-320 GSM %100 Ağır Kompakt Pamuk",
+      waterproof: "Yüksek Nem Emici & Nefes Alabilir",
+      fit: "Oversized Boxy Düşük Omuzlu Kesim",
+      hardware: "Güçlendirilmiş Ribana Yaka & Sıvı Krom Baskı",
+      pockets: "Temiz Dikişli Gövde",
     };
   };
 

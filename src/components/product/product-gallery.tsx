@@ -15,7 +15,7 @@ export function ProductGallery({ images, title }: ProductGalleryProps) {
       ? images
       : [
           {
-            url: "/products/sloid-unicorn-zip-hoodie.jpg",
+            url: "/products/cyber-neon-rugby-polo-1.jpg",
             altText: title,
           },
         ];

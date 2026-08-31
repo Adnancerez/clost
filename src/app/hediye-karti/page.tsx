@@ -44,7 +44,7 @@ export default function GiftCardPage() {
         { name: "Alıcı", value: recipientName },
       ],
       price: currentAmount,
-      image: "/products/sloid-unicorn-zip-hoodie.jpg",
+      image: "/products/cyber-neon-rugby-polo-1.jpg",
       sku: "CLOST-GIFT-PASS",
     });
 

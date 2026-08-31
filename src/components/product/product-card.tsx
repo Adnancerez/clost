@@ -31,7 +31,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const imageUrl =
     product.featuredImage?.url ||
     product.images[0]?.url ||
-    "/products/sloid-unicorn-zip-hoodie.jpg";
+    "/products/cyber-neon-rugby-polo-1.jpg";
 
   const handleWishlistClick = (e: React.MouseEvent) => {
     e.preventDefault();
