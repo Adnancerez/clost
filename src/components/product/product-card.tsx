@@ -31,7 +31,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const imageUrl =
     product.featuredImage?.url ||
     product.images[0]?.url ||
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ";
+    "/products/sloid-unicorn-zip-hoodie.jpg";
 
   const handleWishlistClick = (e: React.MouseEvent) => {
     e.preventDefault();

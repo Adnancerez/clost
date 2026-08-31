@@ -103,11 +103,9 @@ export default function DeveloperPanelPage() {
   const [newCategory, setNewCategory] = useState("Dış Giyim");
   const [newColor, setNewColor] = useState("Siyah");
   const [newSizes, setNewSizes] = useState("S, M, L, XL");
-  const [newImage, setNewImage] = useState(
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ"
-  );
+  const [newImage, setNewImage] = useState("/products/sloid-unicorn-zip-hoodie.jpg");
   const [newDesc, setNewDesc] = useState(
-    "Brutalist techwear silüeti ve yüksek performanslı dikiş yapısı."
+    "Y2K sokak silüeti, ağır gramajlı kompakt pamuk ve özel serigrafi baskı."
   );
 
   // Live Orders Simulator State
@@ -768,7 +766,7 @@ export default function DeveloperPanelPage() {
                                 src={img}
                                 alt={p.title}
                                 fill
-                                className="object-cover grayscale"
+                                className="object-cover"
                                 sizes="48px"
                               />
                             )}

@@ -20,7 +20,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
@@ -91,7 +91,7 @@ export default function ContactPage() {
               <div>
                 <span className="font-bold block uppercase">E-Posta</span>
                 <span className="text-on-surface-variant mt-0.5 block">
-                  showroom@voidarchive.com / info@voidarchive.com
+                  destek@clost.store / hello@clost.store
                 </span>
               </div>
             </div>

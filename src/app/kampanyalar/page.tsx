@@ -19,7 +19,7 @@ export default function PromotionsPage() {
 
   const coupons: Coupon[] = [
     {
-      code: "HOSGELDIN10",
+      code: "CLOST10",
       title: "Yeni Üyelik & İlk Sipariş Fırsatı",
       discount: "%10 İNDİRİM",
       minSpend: "Alt limitsiz",
@@ -28,16 +28,16 @@ export default function PromotionsPage() {
       badge: "İLK SİPARİŞ",
     },
     {
-      code: "VOID15",
+      code: "CLOST15",
       title: "Sonbahar '24 Lansman İndirimi",
       discount: "%15 İNDİRİM",
       minSpend: "Tüm siparişlerde",
-      description: "Yeni sezon dış giyim, kargo pantolon ve ağır gramaj polar parçalarda geçerlidir.",
+      description: "Yeni sezon fermuarlı hoodie, rugby longsleeve ve raw denim parçalarda geçerlidir.",
       expiry: "Bu Gece 23:59'a Kadar",
       badge: "GÜNÜN FIRSATI",
     },
     {
-      code: "VOID20",
+      code: "CLOST20",
       title: "Büyük Sepet Avantajı",
       discount: "%20 İNDİRİM",
       minSpend: "3.000 ₺ ve üzeri",
@@ -63,18 +63,18 @@ export default function PromotionsPage() {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2">
+          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2 font-bold">
             AVANTAJLAR &amp; İNDİRİM KODLARI
           </span>
-          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
+          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary font-bold">
             KAMPANYALAR &amp; KUPONLAR
           </h1>
         </div>
-        <p className="font-label-mono text-xs uppercase text-on-surface-variant max-w-xs">
+        <p className="font-label-mono text-xs uppercase text-on-surface-variant max-w-xs font-bold">
           Ödeme adımında kullanabileceğiniz tüm aktif indirim kuponları.
         </p>
       </header>
@@ -87,7 +87,7 @@ export default function PromotionsPage() {
               <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-headline-sm uppercase text-sm text-primary">
+              <h3 className="font-headline-sm uppercase text-sm text-primary font-bold">
                 1.500 ₺ Ve Üzeri Tüm Siparişlerde Kargo Ücretsiz
               </h3>
               <p className="font-label-mono text-xs text-on-surface-variant">
@@ -98,7 +98,7 @@ export default function PromotionsPage() {
 
           <Link
             href="/collections/all"
-            className="bg-primary text-on-primary font-label-mono text-xs px-6 py-2.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="bg-primary text-on-primary font-label-mono text-xs px-6 py-2.5 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors flex items-center gap-1.5 cursor-pointer font-bold"
           >
             Alışverişe Başla <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -115,7 +115,7 @@ export default function PromotionsPage() {
             >
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <span className="font-label-mono text-[10px] uppercase bg-surface-container-low border border-primary px-2.5 py-1 text-primary">
+                  <span className="font-label-mono text-[10px] uppercase bg-surface-container-low border border-primary px-2.5 py-1 text-primary font-bold">
                     {coupon.badge}
                   </span>
                   <span className="font-label-mono text-xs text-on-surface-variant">
@@ -124,7 +124,7 @@ export default function PromotionsPage() {
                 </div>
 
                 <div className="flex items-baseline gap-3">
-                  <h3 className="font-headline-sm uppercase text-primary text-2xl">
+                  <h3 className="font-headline-sm uppercase text-primary text-2xl font-bold">
                     {coupon.discount}
                   </h3>
                   <span className="font-label-mono text-xs text-on-surface-variant">
@@ -153,11 +153,11 @@ export default function PromotionsPage() {
                 <button
                   type="button"
                   onClick={() => handleCopy(coupon.code)}
-                  className="w-full sm:w-auto bg-primary text-on-primary px-6 py-2.5 font-label-mono text-xs uppercase flex items-center justify-center gap-1.5 hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer"
+                  className="w-full sm:w-auto bg-primary text-on-primary px-6 py-2.5 font-label-mono text-xs uppercase flex items-center justify-center gap-1.5 hover:bg-surface-variant hover:text-primary border border-primary transition-colors cursor-pointer font-bold"
                 >
                   {copiedCode === coupon.code ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-green-400" /> Kopyalandı
+                      <Check className="w-3.5 h-3.5 text-emerald-400" /> Kopyalandı
                     </>
                   ) : (
                     <>

@@ -108,7 +108,7 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <main className="flex-grow pt-24 pb-16 flex flex-col items-center justify-center text-center p-6">
+      <main className="flex-grow pb-16 flex flex-col items-center justify-center text-center p-6">
         <div className="border border-primary p-12 max-w-md w-full bg-surface flex flex-col items-center gap-4">
           <ShoppingBag className="w-12 h-12 text-primary stroke-1" />
           <h1 className="font-headline-sm uppercase text-primary text-xl">
@@ -130,7 +130,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <main className="flex-grow pt-20 pb-16 bg-surface-container-low min-h-screen">
+    <main className="flex-grow pb-16 bg-surface-container-low min-h-screen">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <header className="py-6 border-b border-primary mb-8 flex justify-between items-center bg-surface p-4">
           <div>

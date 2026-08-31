@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { CountdownBanner } from "@/components/layout/countdown-banner";
+import { TopAnnouncementTicker } from "@/components/layout/top-announcement-ticker";
 import { Header } from "@/components/layout/header";
 import { CartDrawer } from "@/components/layout/cart-drawer";
 import { SupportWidget } from "@/components/ui/support-widget";
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s — CLOST",
   },
   description:
-    "Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Oversized silüetler, raw denimler ve özel grafik tasarımlar.",
+    "Y2K, Acubi, Skater ve Harajuku sokak modası arşivi. Oversized silüetler, 14.5 oz raw denimler ve özel serigrafi baskılar.",
   applicationName: "CLOST",
   appleWebApp: {
     capable: true,
@@ -61,14 +61,14 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-surface text-on-surface">
         <PwaProvider>
-          {/* 1. Slim Announcement / Ticker Band */}
-          <CountdownBanner />
+          {/* 1. Global Infinite Marquee Announcement Ticker (32px / top-0) */}
+          <TopAnnouncementTicker />
 
-          {/* 2. Compact Modern Header */}
+          {/* 2. Global Rigid Header (56px / top-8) */}
           <Header />
 
-          {/* 3. Main Content Container (No redundant extra bars) */}
-          <div className="flex-grow flex flex-col pt-[84px]">
+          {/* 3. Main Page Body (Unified 88px top offset across all pages) */}
+          <div className="flex-grow flex flex-col pt-[88px]">
             {children}
           </div>
 

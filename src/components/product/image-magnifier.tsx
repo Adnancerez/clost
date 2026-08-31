@@ -48,7 +48,7 @@ export function ImageMagnifier({
         fill
         priority={priority}
         sizes="(max-width: 768px) 100vw, 65vw"
-        className="object-cover grayscale mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.02]"
+        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
       />
 
       {/* Floating HUD Inspector Badge */}
@@ -89,7 +89,7 @@ export function ImageMagnifier({
             }}
           >
             <div className="absolute bottom-1 right-1 bg-primary text-on-primary font-label-mono text-[8px] uppercase px-1.5 py-0.5">
-              3L MİKRO DOKU
+              KUMAŞ DOKUSU
             </div>
           </div>
         </>

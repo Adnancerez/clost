@@ -8,7 +8,7 @@ import { getCollections } from "@/lib/shopify";
 export const metadata: Metadata = {
   title: "Koleksiyonlar Dizini — CLOST",
   description:
-    "CLOST arşiv koleksiyonlarını keşfedin. Dış Giyim, Üst Giyim, Alt Giyim ve Yeni Gelenler.",
+    "CLOST Y2K ve Gen-Z sokak modası koleksiyonları. Dış Giyim, Üst Giyim, Alt Giyim ve Yeni Gelenler.",
 };
 
 export default async function CollectionsDirectoryPage() {
@@ -16,52 +16,47 @@ export default async function CollectionsDirectoryPage() {
 
   const collectionHeroImages: Record<string, { image: string; tag: string; highlight: string }> = {
     all: {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDhVRpzb1ylxKworpFGnS9n9NPThs_A1JBQXmpHb0KPA0mK4ZFNf8Su2ZP6HZNpsMvuXCCaQ4gWtBhuuOyiA4uOB3qoKFfWvfK5Cv9RBuj50xdABVdQFLirtgan3BkAITJH7l1pDerfU1WeL8k3K7HM48Wu3t0EN3vM5l_vjmfzTpZIy1E5JOB4ZuMFRVh8Gs0bBlyINEHlHzlj-Hv8RuBHgcaPs61TwwMblhXxHSTD1s5HAN_TBcVb",
-      tag: "TAM KATALOG",
-      highlight: "8 Parça // Eksiksiz Arşiv",
+      image: "/products/striped-rugby-baggy-denim.jpg",
+      tag: "TAM ARŞİV",
+      highlight: "8 Parça // Y2K & Skater Koleksiyonu",
     },
     new: {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ",
-      tag: "DROP '24",
-      highlight: "Sonbahar 01 // Sınırlı Üretim",
+      image: "/products/sloid-unicorn-zip-hoodie.jpg",
+      tag: "YENİ DROP",
+      highlight: "Sonbahar '24 // Sınırlı Üretim",
     },
     outerwear: {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCcgbETzrQr3DMidnsbKEf8qbXM3goTtnUnNEuHrcqEGHZaLy9v2lVnwiRIXLXcF-rBbp_S1tuwGxzQkJzAwht8P8jakPrIhGDkieohzs_69yyNSNoK6a40_h96-VV-m5tJfauM0M47lz4UQRB8kul5fQe-kdSLMLCFgNXsJLX1tF-gvDYEcwRuO0dS8Y4DDgUX6Hp2GSe4vvGQT4pu6qISXlgK2YI1xaOHKoPW-vOHlNfaw0s946WO",
-      tag: "3L MEMBRAN",
-      highlight: "Teknik Parka, Ceket & Taktik Yelek",
+      image: "/products/sloid-unicorn-zip-hoodie.jpg",
+      tag: "DIŞ GİYİM",
+      highlight: "Grafik Baskılı Zip Hoodie & Sweat",
     },
     tops: {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuCdxcHT2JhGKFYhsnqXg_qqHbtxxYQCmToLiL1_2e1ihHnzouJ1ZuBy1690y6qJ-iBvU3lxzXTS2gqIR2VzSAGAidhnBMcJXGetFZnPeMGOzB5dnLnGsrHZQPIpCUonLIb1FQp8jju7_5XhsvfZqROlri_qwhJchhTUQt_3zQHGNh8Fz4HFlF5qCS8J501T-n6ac4jJT1-ZpNS_LV5cvpnT2Hv42bw9rkihkHvKPm8wgQub2mnx13Mh",
-      tag: "500 GSM POLAR",
-      highlight: "Kapüşonlu Hoodie, Gömlek & Tişört",
+      image: "/products/jelly-star-longsleeve.jpg",
+      tag: "ÜST GİYİM",
+      highlight: "Çizgili Rugby, Longsleeve & Baby Tee",
     },
     bottoms: {
-      image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBo1FQ7iwNeM3ACvTQSVdRxuK6DgTqqaxR0fIVr44t1OgQFpjH5zEVhDKYYhute1MkIeNssckFos4F9SRem5303jo75LYF-5r2xvYqV9snaEWOJgfJq1EKWAs1WpDqZU4WvLOfBBnQP4MJIub8sGoWHX7hzbSgXj384EEYcVWAbCRctAxVzAlvCGAR9C4gazSu3ojMX2M49khOhxtUphxtkL2eXGrOSnYJ_i8w9T2U42gNYl9Wq5B4R",
-      tag: "RIPSTOP & SELVEDGE",
-      highlight: "Asimetrik Denim & Modüler Kargo",
+      image: "/products/lafam-striped-jorts.jpg",
+      tag: "ALT GİYİM",
+      highlight: "Ultra Baggy Selvedge Denim & Jorts",
     },
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2">
-            ARŞİV DİZİNİ // SONBAHAR &amp; KIŞ &apos;24
+          <span className="font-label-mono text-xs uppercase text-on-surface-variant block mb-2 font-bold">
+            SOKAK ARŞİVİ // SONBAHAR &apos;24
           </span>
-          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary">
+          <h1 className="font-display-lg-mobile md:font-display-lg uppercase tracking-tighter text-primary font-bold">
             KOLEKSİYONLAR
           </h1>
         </div>
-        <div className="flex items-center gap-2 font-label-mono text-xs text-on-surface-variant uppercase">
+        <div className="flex items-center gap-2 font-label-mono text-xs text-on-surface-variant uppercase font-bold">
           <Layers className="w-4 h-4 text-primary" />
-          <span>5 Tematik Kategori • Mimari Silüetler</span>
+          <span>5 Kategori • Y2K &amp; Gen-Z Silüetleri</span>
         </div>
       </header>
 
@@ -70,8 +65,7 @@ export default async function CollectionsDirectoryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {collections.map((col) => {
             const meta = collectionHeroImages[col.handle] || {
-              image:
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuD0WDpvXYEs1ZQedwFf4RAbPlY8PaclgrCjPTRek-lPQR-vgNqLk5CZy3NSqp76kZG_DFr9Vk8ZUXPCpjB2GKWGN5JPuTyYgEDI-XaLjgICApVOD4vjf-p-DdB67Lb9rr2rgShNuAKZhQdbb0utIOMTG5TyN-V4WCOmgitGOfVdASEtmtWyh5BVkWT4jfngsTB8rHCtb1yMuw01StDzcYFN_3MsA5uUF8BjsmRAvR1TOpnqmw3rMviQ",
+              image: "/products/sloid-unicorn-zip-hoodie.jpg",
               tag: "ARŞİV",
               highlight: "CLOST Temel Parçaları",
             };
@@ -89,18 +83,18 @@ export default async function CollectionsDirectoryPage() {
                     alt={col.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
 
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex gap-2">
-                    <span className="bg-primary text-on-primary font-label-mono text-[10px] uppercase px-2.5 py-1">
+                    <span className="bg-primary text-on-primary font-label-mono text-[10px] uppercase px-2.5 py-1 font-bold">
                       {meta.tag}
                     </span>
                   </div>
 
-                  <span className="absolute bottom-3 right-3 bg-surface/90 backdrop-blur-sm border border-primary font-label-mono text-[10px] uppercase px-2 py-0.5 text-primary">
+                  <span className="absolute bottom-3 right-3 bg-surface/90 backdrop-blur-sm border border-primary font-label-mono text-[10px] uppercase px-2 py-0.5 text-primary font-bold">
                     {col.products?.length || 0} Ürün
                   </span>
                 </div>
@@ -108,10 +102,10 @@ export default async function CollectionsDirectoryPage() {
                 {/* Details Footer */}
                 <div className="p-6 flex flex-col justify-between gap-4 flex-1">
                   <div>
-                    <span className="font-label-mono text-[11px] uppercase text-on-surface-variant block mb-1">
+                    <span className="font-label-mono text-[11px] uppercase text-on-surface-variant block mb-1 font-bold">
                       {meta.highlight}
                     </span>
-                    <h2 className="font-headline-sm uppercase text-primary text-xl group-hover:underline">
+                    <h2 className="font-headline-sm uppercase text-primary text-xl group-hover:underline font-bold">
                       {col.title}
                     </h2>
                     <p className="font-body-md text-xs text-on-surface-variant mt-2 line-clamp-2 leading-relaxed">
@@ -136,21 +130,21 @@ export default async function CollectionsDirectoryPage() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="font-label-mono text-xs uppercase text-on-surface-variant">
+              <span className="font-label-mono text-xs uppercase text-on-surface-variant font-bold">
                 EDİTORYAL LOOKBOOK
               </span>
             </div>
-            <h3 className="font-headline-sm uppercase text-primary text-xl md:text-2xl">
-              Sonbahar &apos;24 Editoryal Çekimleri Keşfedin
+            <h3 className="font-headline-sm uppercase text-primary text-xl md:text-2xl font-bold">
+              Sonbahar &apos;24 Lookbook Arşivini Keşfedin
             </h3>
             <p className="font-body-md text-xs text-on-surface-variant mt-2 max-w-lg leading-relaxed">
-              Brutalist mimari ve monokrom renk paletinin buluştuğu yüksek çözünürlüklü editoryal çekimlerimizi ve parçaların model üzerindeki duruşunu inceleyin.
+              Sokak kombinlerimizi ve parçaların model üzerindeki duruşunu yüksek çözünürlüklü editoryal çekimlerle inceleyin.
             </p>
           </div>
 
           <Link
             href="/lookbook"
-            className="bg-primary text-on-primary font-label-mono text-xs px-8 py-4 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors whitespace-nowrap"
+            className="bg-primary text-on-primary font-label-mono text-xs px-8 py-4 uppercase tracking-widest hover:bg-surface-variant hover:text-primary border border-primary transition-colors whitespace-nowrap font-bold"
           >
             Lookbook&apos;a Git →
           </Link>

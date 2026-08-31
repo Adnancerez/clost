@@ -55,7 +55,7 @@ export function CheckoutOrderSummary({
                     alt={item.title}
                     fill
                     sizes="60px"
-                    className="object-cover grayscale"
+                    className="object-cover"
                   />
                 )}
                 <span className="absolute -top-1.5 -right-1.5 bg-primary text-on-primary font-label-mono text-[9px] w-4 h-4 flex items-center justify-center">

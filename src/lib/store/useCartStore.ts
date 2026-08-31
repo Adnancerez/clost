@@ -66,24 +66,7 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       isOpen: false,
       cartId: null,
-      items: [
-        {
-          id: "var_02_l_blk",
-          productId: "prod_02",
-          variantId: "var_02_l_blk",
-          title: "Fonksiyonel Ceket",
-          handle: "utility-jacket",
-          variantTitle: "L / Siyah",
-          selectedOptions: [
-            { name: "Beden", value: "L" },
-            { name: "Renk", value: "Siyah" },
-          ],
-          price: 2400,
-          quantity: 1,
-          image:
-            "https://lh3.googleusercontent.com/aida-public/AB6AXuCcgbETzrQr3DMidnsbKEf8qbXM3goTtnUnNEuHrcqEGHZaLy9v2lVnwiRIXLXcF-rBbp_S1tuwGxzQkJzAwht8P8jakPrIhGDkieohzs_69yyNSNoK6a40_h96-VV-m5tJfauM0M47lz4UQRB8kul5fQe-kdSLMLCFgNXsJLX1tF-gvDYEcwRuO0dS8Y4DDgUX6Hp2GSe4vvGQT4pu6qISXlgK2YI1xaOHKoPW-vOHlNfaw0s946WO",
-        },
-      ],
+      items: [],
 
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),

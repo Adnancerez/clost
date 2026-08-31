@@ -65,7 +65,7 @@ export default function ComparePage() {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col">
+    <main className="flex-grow flex flex-col">
       {/* Header */}
       <header className="p-6 md:p-12 border-b border-primary bg-surface flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
@@ -125,7 +125,7 @@ export default function ComparePage() {
                             alt={product.title}
                             fill
                             sizes="280px"
-                            className="object-cover grayscale"
+                            className="object-cover"
                           />
                           <button
                             onClick={() => removeFromCompare(product.id)}

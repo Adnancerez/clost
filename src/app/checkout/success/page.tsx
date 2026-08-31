@@ -137,7 +137,7 @@ function SuccessContent() {
 
 export default function CheckoutSuccessPage() {
   return (
-    <main className="flex-grow pt-16 flex flex-col justify-center">
+    <main className="flex-grow flex flex-col justify-center">
       <Suspense
         fallback={
           <div className="py-24 text-center font-label-mono text-xs uppercase text-on-surface-variant">

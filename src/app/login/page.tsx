@@ -48,7 +48,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex-grow pt-16 flex flex-col items-center justify-center p-4 md:p-12 min-h-[calc(100vh-64px)] bg-surface">
+    <main className="flex-grow flex flex-col items-center justify-center p-4 md:p-12 min-h-[calc(100vh-88px)] bg-surface">
       <div className="w-full max-w-md bg-surface border-2 border-primary p-6 md:p-10 shadow-2xl">
         {/* Header */}
         <div className="border-b border-primary pb-4 mb-6">

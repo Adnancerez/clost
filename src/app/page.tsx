@@ -88,7 +88,7 @@ export default async function HomePage() {
               alt="CLOST Streetwear Manifesto"
               fill
               sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover grayscale contrast-110 transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
 
